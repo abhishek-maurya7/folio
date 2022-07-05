@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Folio </title>
+    <meta name="keywords" content="Folio, Portfolio, Portfolio Generator">
+    <meta name="description" content="An amazing portfolio generator">
+    <meta name="author" content="Abhishek Maurya, Shashank Patil">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/0fe3b336ed.js" crossorigin="anonymous"></script>
+    <style>
+        /***RWD CSS***/
+        * {
+            box-sizing: border-box;
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* For mobile phones */
+        [class*="col-"] {
+            width: 100%;
+            float: left;
+            padding: 15px;
+        }
+
+        @media only screen and (min-width: 600px) {
+
+            /* For tablets: */
+            .col-s-1 {
+                width: 8.33%;
+            }
+
+            .col-s-2 {
+                width: 16.66%;
+            }
+
+            .col-s-3 {
+                width: 25%;
+            }
+
+            .col-s-4 {
+                width: 33.33%;
+            }
+
+            .col-s-5 {
+                width: 41.66%;
+            }
+
+            .col-s-6 {
+                width: 50%;
+            }
+
+            .col-s-7 {
+                width: 58.33%;
+            }
+
+            .col-s-8 {
+                width: 66.66%;
+            }
+
+            .col-s-9 {
+                width: 75%;
+            }
+
+            .col-s-10 {
+                width: 83.33%;
+            }
+
+            .col-s-11 {
+                width: 91.66%;
+            }
+
+            .col-s-12 {
+                width: 100%;
+            }
+        }
+
+        @media only screen and (min-width: 768px) {
+
+            /* For desktop: */
+            .col-1 {
+                width: 8.33%;
+            }
+
+            .col-2 {
+                width: 16.66%;
+            }
+
+            .col-3 {
+                width: 25%;
+            }
+
+            .col-4 {
+                width: 33.33%;
+            }
+
+            .col-5 {
+                width: 41.66%;
+            }
+
+            .col-6 {
+                width: 50%;
+            }
+
+            .col-7 {
+                width: 58.33%;
+            }
+
+            .col-8 {
+                width: 66.66%;
+            }
+
+            .col-9 {
+                width: 75%;
+            }
+
+            .col-10 {
+                width: 83.33%;
+            }
+
+            .col-11 {
+                width: 91.66%;
+            }
+
+            .col-12 {
+                width: 100%;
+            }
+        }
+
+        /***END RWD CSS***/
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            --background-colour: #0d1117;
+        }
+
+        body {
+            font-family: 'segoe ui';
+            background-color: var(--background-colour);
+        }
+
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .login-page {
+            margin: 50px;
+            padding: 20px;
+            border: #3b3a3a solid 2px;
+            border-radius: 5px;
+        }
+
+        .form-label {
+            position: relative;
+            margin-bottom: 1rem;
+            margin-top: 0px;
+            color: #ffffff;
+        }
+
+        .form-input {
+            background-color: #161b22;
+            border: 1px solid #381b22;
+            width: 100%;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="login-page">
+            <form class="login-form">
+                <div class="form-items">
+                    <label for="fname" class="form-label">Username or Email address:</label><br>
+                    <input type="text" class="form-input">
+                </div>
+            </form>
+        </div>
+</body>
+
+</html>
