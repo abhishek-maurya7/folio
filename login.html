@@ -8,6 +8,7 @@
     <meta name="author" content="Abhishek Maurya, Shashank Patil">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/0fe3b336ed.js" crossorigin="anonymous"></script>
+    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
     <style>
         /***RWD CSS***/
         * {
@@ -132,58 +133,120 @@
         }
 
         /***END RWD CSS***/
+
+
         * {
             box-sizing: border-box;
         }
 
         html {
-            --background-colour: #0d1117;
+            --font-family: sans-serif;
+            --background-colour: #341d5c;
+            --font-colour: #ffffff;
+            --header-font-size: 1.5rem;
+            --box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+
         }
 
         body {
-            font-family: 'segoe ui';
+            margin: 0px;
+            font-family: var(--font-family);
             background-color: var(--background-colour);
+            color: var(--font-colour);
         }
 
         .container {
             width: 100%;
             margin: 0 auto;
-            padding: 0;
+        }
+
+        .navbar {
+            width: 100%;
+        }
+
+        .nav {
+            height: 50px;
+            width: 100%;
+            position: relative;
+        }
+
+        .nav>.nav-header {
+            display: inline;
+        }
+
+        .nav>.nav-header>.nav-title {
+            font-family: 'Sofia';
+            font-size: 24px;
+            display: inline-block;
         }
 
         .login-page {
-            margin: 50px;
+            width: 100%;
+
+        }
+
+        .title {
+            text-align: center;
+        }
+
+        .login-form-field {
+            width: 100%;
+            margin: 0 auto;
+            padding: 40px;
+            border: 1px solid #341c5d;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .login-form {
             padding: 20px;
-            border: #3b3a3a solid 2px;
-            border-radius: 5px;
         }
 
-        .form-label {
-            position: relative;
-            margin-bottom: 1rem;
-            margin-top: 0px;
-            color: #ffffff;
-        }
-
-        .form-input {
-            background-color: #161b22;
-            border: 1px solid #381b22;
+        .login-form-items {
             width: 100%;
             border-radius: 5px;
+            margin: 5px 0;
+            padding: 5px;
+        }
+
+        .login-form-items:focus {
+            outline: none;
+        }
+
+        @media only screen and (min-width: 600px) {
+            .login-page {
+                padding: 0 30%;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="login-page">
-            <form class="login-form">
-                <div class="form-items">
-                    <label for="fname" class="form-label">Username or Email address:</label><br>
-                    <input type="text" class="form-input">
+    <div class="container col-9">
+        <div class="navbar">
+            <div class="nav">
+                <div class="nav-header">
+                    <div class="nav-title">
+                        Folio
+                    </div>
                 </div>
-            </form>
+            </div>
         </div>
+        <div class="login-page">
+            <div class="title">
+                <h1>Sign in to <span style="font-family: 'Sofia';">Folio</span></h1>
+            </div>
+            <div class="login-form-field">
+                <form action="" method="post" autocomplete="on" name="login-form" class="login-form">
+                    <label for="username">Username or Email</label></br>
+                    <input type="text" id="username" name="username" class="login-form-items"></br>
+                    <label for="password">Password</label></br>
+                    <input type="password" id="password" name="password" class="login-form-items"></br></br>
+                    <input type="submit" name="submit" value="Login" class="login-form-items">
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
