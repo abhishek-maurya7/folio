@@ -1,0 +1,240 @@
+ /***RWD CSS***/
+ * {
+     box-sizing: border-box;
+ }
+
+ .row::after {
+     content: "";
+     clear: both;
+     display: table;
+ }
+
+ /* For mobile phones */
+ [class*="col-"] {
+     width: 100%;
+     float: left;
+     padding: 15px;
+ }
+
+ @media only screen and (min-width: 600px) {
+
+     /* For tablets: */
+     .col-s-1 {
+         width: 8.33%;
+     }
+
+     .col-s-2 {
+         width: 16.66%;
+     }
+
+     .col-s-3 {
+         width: 25%;
+     }
+
+     .col-s-4 {
+         width: 33.33%;
+     }
+
+     .col-s-5 {
+         width: 41.66%;
+     }
+
+     .col-s-6 {
+         width: 50%;
+     }
+
+     .col-s-7 {
+         width: 58.33%;
+     }
+
+     .col-s-8 {
+         width: 66.66%;
+     }
+
+     .col-s-9 {
+         width: 75%;
+     }
+
+     .col-s-10 {
+         width: 83.33%;
+     }
+
+     .col-s-11 {
+         width: 91.66%;
+     }
+
+     .col-s-12 {
+         width: 100%;
+     }
+ }
+
+ @media only screen and (min-width: 768px) {
+
+     /* For desktop: */
+     .col-1 {
+         width: 8.33%;
+     }
+
+     .col-2 {
+         width: 16.66%;
+     }
+
+     .col-3 {
+         width: 25%;
+     }
+
+     .col-4 {
+         width: 33.33%;
+     }
+
+     .col-5 {
+         width: 41.66%;
+     }
+
+     .col-6 {
+         width: 50%;
+     }
+
+     .col-7 {
+         width: 58.33%;
+     }
+
+     .col-8 {
+         width: 66.66%;
+     }
+
+     .col-9 {
+         width: 75%;
+     }
+
+     .col-10 {
+         width: 83.33%;
+     }
+
+     .col-11 {
+         width: 91.66%;
+     }
+
+     .col-12 {
+         width: 100%;
+     }
+ }
+
+ /***END RWD CSS***/
+
+
+ * {
+     box-sizing: border-box;
+ }
+
+ html {
+     --font-family: sans-serif;
+     --background-colour: #341d5c;
+     --font-colour: #ffffff;
+     --header-font-size: 2.4rem;
+     --header-title-font-size: 0.8rem;
+     --label-font-size: 1rem;
+     --box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+
+ }
+
+ body {
+     margin: 0px;
+     font-family: var(--font-family);
+     background-color: var(--background-colour);
+     color: var(--font-colour);
+ }
+
+ .container {
+     width: 100%;
+     margin: 0 auto;
+ }
+
+ .navbar {
+     width: 100%;
+ }
+
+ .nav {
+     height: 50px;
+     width: 100%;
+     position: relative;
+ }
+
+ .nav>.nav-header {
+     display: inline;
+ }
+
+ .nav>.nav-header>.nav-title {
+     font-family: 'Sofia';
+     display: inline-block;
+ }
+
+ .nav>.nav-header>.nav-title>a {
+     text-decoration: none;
+     color: #ffffff;
+     font-size: var(--header-font-size);
+ }
+
+
+ .login-page {
+     width: 100%;
+
+ }
+
+ .title {
+     text-align: center;
+     font-size: var(--header-title-font-size);
+ }
+
+ .login-form-field {
+     width: 100%;
+     margin: 0 auto;
+     padding: 40px;
+     border: 1px solid #341c5d;
+     border-radius: 10px;
+     box-shadow: var(--box-shadow);
+ }
+
+ .login-form {
+     padding: 20px;
+ }
+
+ .field-part {
+     margin: 25px 0px;
+ }
+
+ .field-part>label {
+     font-size: var(--label-font-size);
+ }
+
+ .login-form-items {
+     width: 100%;
+     border-radius: 5px;
+     margin: 10px 0;
+     padding: 5px;
+ }
+
+ .login-form-items:focus {
+     outline: none;
+ }
+
+ .account-status {
+     width: 100%;
+     margin: 0 auto;
+     padding: 10px;
+     border: 1px solid #341c5d;
+     border-radius: 10px;
+     box-shadow: var(--box-shadow);
+     text-align: center;
+ }
+
+ .account {
+     text-decoration: underline;
+     color: #ffffff;
+ }
+
+ @media only screen and (min-width: 600px) {
+     .login-page {
+         padding: 0 30%;
+     }
+ }
