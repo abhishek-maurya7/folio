@@ -11,3 +11,5 @@ $conn = new mysqli(DBSERVER, DBUSERNAME, DBPASSWORD, DBNAME);
 if ($conn === false) {
     die("Connection failed: " . mysqli_connect_error());
 }
+
+?>

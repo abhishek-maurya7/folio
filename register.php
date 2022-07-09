@@ -83,14 +83,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
             </div>
             <div class="login-form-field">
                 <form action="" method="post" autocomplete="on" name="login-form" class="login-form">
-                    <div class="field-part"><label for="username">Username</label></br><input type="text" id="username"
-                            name="username" class="login-form-items" required /></br><label
-                            for="username">Email</label></br><input type="email" id="email" name="email"
-                            class="login-form-items" required /></br><label for="password">Password</label></br><input
-                            type="password" id="password" name="password" class="login-form-items"
-                            required /></br><label for="password">Re-Enter Password</label></br><input type="password"
-                            id="password" name="confirm-password" class="login-form-items" required /></br></div><input
-                        type="submit" name="submit" value="Sign Up" class="login-form-items">
+                    <div class="field-part"><label for="username">Username </label></br>
+                        <input type="text" id="username" name="username" class="login-form-items" required /></br><label for="username">Email</label></br><input type="email" id="email" name="email" class="login-form-items" required /></br><label for="password">Password</label></br><input type="password" id="password" name="password" class="login-form-items" required /></br><label for="password">Re-Enter Password</label></br><input type="password" id="password" name="confirm-password" class="login-form-items" required /></br>
+                    </div><input type="submit" name="submit" value="Sign Up" class="login-form-items">
                 </form>
             </div><br>
             <div class="account-status">
