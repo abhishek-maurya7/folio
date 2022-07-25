@@ -129,12 +129,9 @@
 
  html {
      --font-family: sans-serif;
-     --background-colour: #341d5c;
+     --background-colour: #4A1A8B;
+     --form-field-background-color: #2b124A;
      --font-colour: #ffffff;
-
-
-     --box-shadow: 0px 0px 12px 0px #00000033;
-
  }
 
  body {
@@ -185,10 +182,11 @@
      font-size: var(--header-title-font-size);
  }
 
- .login-form-field {
+ .form-field {
      width: 100%;
      margin: 0 auto;
      padding: 40px;
+     background-color: var(--form-field-background-color);
      border: 1px solid #341c5d;
      border-radius: 10px;
      box-shadow: var(--box-shadow);
@@ -206,7 +204,8 @@
      font-size: var(--label-font-size);
  }
 
- .login-form-items {
+ .form-control {
+     border: none;
      width: 100%;
      border-radius: 5px;
      margin: 10px 0;
@@ -217,10 +216,23 @@
      outline: none;
  }
 
+ .login {
+     display: flex;
+     justify-content: center;
+ }
+
+ .login-signup-button {
+     width: 40%;
+     padding: 5px;
+     border-radius: 5px;
+     border: none;
+ }
+
  .account-status {
      width: 100%;
      margin: 0 auto;
      padding: 10px;
+     background-color: var(--form-field-background-color);
      border: 1px solid #341c5d;
      border-radius: 10px;
      box-shadow: var(--box-shadow);
