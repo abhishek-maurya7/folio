@@ -3,12 +3,13 @@
 
 <head>
     <title> Folio </title>
+    <meta charset="utf-8">
     <meta name="keywords" content="Folio, Portfolio, Portfolio Generator">
     <meta name="description" content="An amazing portfolio generator">
     <meta name="author" content="Abhishek Maurya, Shashank Patil">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/0fe3b336ed.js" crossorigin="anonymous"></script>
-    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/0fe3b336ed.js" crossorigin="anonymous" media="screen"></script>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Sofia' media="screen">
 
     <style>
         /***RWD CSS***/
@@ -16,11 +17,6 @@
             box-sizing: border-box;
         }
 
-        .row::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
 
         /* For mobile phones */
         [class*="col-"] {
@@ -141,7 +137,7 @@
         }
 
         html {
-            --background-colour: #341d5c;
+            --background-colour: #4A1A8B;
             --font-family: 'segoe ui'
 
         }
@@ -261,6 +257,11 @@
                 overflow-y: auto;
             }
         }
+
+        .main {
+            padding: 0 10px;
+
+        }
     </style>
 </head>
 
@@ -291,6 +292,12 @@
                 </div>
             </div>
         </div>
+        <div class="main">
+            <h1>
+                folio
+            </h1>
+        </div>
+
     </div>
 </body>
 
