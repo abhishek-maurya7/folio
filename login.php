@@ -30,7 +30,7 @@
                 <h1>Sign in to <span style="font-family: 'Sofia';">Folio</span></h1>
             </div>
             <div class="form-field">
-                <form action="" method="post" autocomplete="on" name="login-form" class="login-form">
+                <form action="login.php" method="post" autocomplete="on" name="login-form" class="login-form">
                     <div class="field-part">
                         <label for="username">Username or Email</label></br>
                         <input type="text" id="username" name="username" class="form-control"></br>
@@ -44,10 +44,9 @@
             </div>
             <br>
             <div class="account-status">
-                <p>Don't have an account? <a href="register.html" target="_self" class="account">Register</a></p>
+                <p>Don't have an account? <a href="signup.php" target="_self" class="account">Register</a></p>
             </div>
         </div>
     </div>
 </body>
-
 </html>
