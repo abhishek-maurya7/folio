@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/0fe3b336ed.js" crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+    <link rel="stylesheet" href='css/base.css'>
     <link rel="stylesheet" href="css/login-register.css">
 </head>
 
@@ -49,4 +50,5 @@
         </div>
     </div>
 </body>
+
 </html>

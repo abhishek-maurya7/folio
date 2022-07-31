@@ -1,5 +1,5 @@
 <?php
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $err = "";
     include '_dbconnect.php';
     $username = $_POST['username'];
@@ -7,7 +7,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $email = $_POST['email'];
     $cpassword = $_POST['cpassword'];
     $exists = false;
-    if(($password == $cpassword) && $exists==false){
+    if (($password == $cpassword) && $exists == false) {
         $sql = "INSERT INTO `users` (`username`, `email`, `password`, `Date`) VALUES ('$username', '$email', '$password', current_timestamp())";
         $result = mysqli_query($conn, $sql);
         if ($result) {
@@ -31,6 +31,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/0fe3b336ed.js" crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+    <link rel="stylesheet" href='css/base.css'>
     <link rel="stylesheet" href="css/login-register.css">
     <script src=register.php></script>
 </head>
@@ -54,11 +55,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <div class="field-part"><label for="username">Username </label></br>
                         <input type="text" id="username" name="username" class="form-control" required /></br>
                         <label for="username">Email</label></br>
-                        <input type="email" id="email" name="email" class="form-control" required /></br><label
-                            for="password">Password</label></br><input type="password" id="password" name="password"
-                            class="form-control" required /></br><label for="password">Re-Enter
-                            Password</label></br><input type="password" id="password" name="cpassword"
-                            class="form-control" required /></br>
+                        <input type="email" id="email" name="email" class="form-control" required /></br><label for="password">Password</label></br><input type="password" id="password" name="password" class="form-control" required /></br><label for="password">Re-Enter
+                            Password</label></br><input type="password" id="password" name="cpassword" class="form-control" required /></br>
                     </div>
                     <div class="login">
                         <input type="submit" name="submit" value="Sign Up" class="login-signup-button">
