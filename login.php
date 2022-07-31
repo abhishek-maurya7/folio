@@ -31,7 +31,7 @@
                 <h1>Sign in to <span style="font-family: 'Sofia';">Folio</span></h1>
             </div>
             <div class="form-field">
-                <form action="login.php" method="post" autocomplete="on" name="login-form" class="login-form">
+                <form action="login.php" method="post" name="login-form" class="login-form" autocomplete="on">
                     <div class="field-part">
                         <label for="username">Username or Email</label></br>
                         <input type="text" id="username" name="username" class="form-control"></br>
