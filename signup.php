@@ -6,16 +6,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
     $email = $_POST['email'];
     $cpassword = $_POST['cpassword'];
+
     $exists = false;
-    if ($password == $cpassword) {
-        $sql = "INSERT INTO `users` (`username`, `email`, `password`, `Date`) VALUES ('$username', '$email', '$password', current_timestamp())";
-        $result = mysqli_query($conn, $sql);
-        if ($result) {
-            echo "New record created successfully";
-        } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    try {
+        if ($password == $cpassword) {
+            $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("sss", $username, $email, $password);
+            $stmt->execute();
+            echo "Account created successfully";
         }
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
     }
+    $conn = null;
 }
 
 ?>
