@@ -1,13 +1,9 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $err = "";
     include '_dbconnect.php';
     $username = $_POST['username'];
     $password = $_POST['password'];
     $email = $_POST['email'];
-    $cpassword = $_POST['cpassword'];
-
-    $exists = false;
     try {
         if ($password == $cpassword) {
             $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
@@ -17,9 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Account created successfully";
         }
     } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
-    $conn = null;
 }
 
 ?>
