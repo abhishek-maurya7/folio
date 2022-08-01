@@ -1,127 +1,129 @@
- * {
-     box-sizing: border-box;
- }
+* {
+    box-sizing: border-box;
+}
 
- html {
-     --font-family: sans-serif;
-     --background-colour: #4A1A8B;
-     --form-field-background-color: #2b124A;
-     --font-colour: #ffffff;
- }
+html {
+    --font-family: sans-serif;
+    --background-colour: #4A1A8B;
+    --form-field-background-color: #2b124A;
+    --font-colour: #ffffff;
+}
 
- body {
-     margin: 0px;
-     font-family: var(--font-family);
-     background-color: var(--background-colour);
-     color: var(--font-colour);
- }
+body {
+    margin: 0px;
+    font-family: var(--font-family);
+    background-color: var(--background-colour);
+    color: var(--font-colour);
+}
 
- .container {
-     width: 100%;
-     margin: 0 auto;
- }
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
 
- .navbar {
-     width: 100%;
- }
+.navbar {
+    width: 100%;
+}
 
- .nav {
-     height: 50px;
-     width: 100%;
-     position: relative;
- }
+.nav {
+    height: 50px;
+    width: 100%;
+    position: relative;
+}
 
- .nav>.nav-header {
-     display: inline;
- }
+.nav>.nav-header {
+    display: inline;
+}
 
- .nav>.nav-header>.nav-title {
-     font-family: 'Sofia';
-     display: inline-block;
-     font-size: 2rem;
- }
-
- .nav>.nav-header>.nav-title>a {
-     text-decoration: none;
-     color: #ffffff;
- }
+.nav>.nav-header>.nav-title {
+    font-family: 'Sofia';
+    display: inline-block;
+    font-size: 2rem;
+    font-display: swap;
+}
 
 
- .login-page {
-     width: 100%;
+.nav>.nav-header>.nav-title>a {
+    text-decoration: none;
+    color: #ffffff;
+}
 
- }
 
- .title {
-     text-align: center;
-     font-size: var(--header-title-font-size);
- }
+.login-page {
+    width: 100%;
 
- .form-field {
-     width: 100%;
-     margin: 0 auto;
-     padding: 40px;
-     background-color: var(--form-field-background-color);
-     border: 1px solid #341c5d;
-     border-radius: 10px;
-     box-shadow: var(--box-shadow);
- }
+}
 
- .login-form {
-     padding: 20px;
- }
+.title {
+    text-align: center;
+    font-size: var(--header-title-font-size);
+}
 
- .field-part {
-     margin: 25px 0px;
- }
+.form-field {
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: var(--form-field-background-color);
+    border: 1px solid #341c5d;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+}
 
- .field-part>label {
-     font-size: var(--label-font-size);
- }
+.login-form {
+    padding: 20px;
+}
 
- .form-control {
-     border: none;
-     width: 100%;
-     border-radius: 5px;
-     margin: 10px 0;
-     padding: 5px;
- }
+.field-part {
+    margin: 25px 0px;
+}
 
- .login-form-items:focus {
-     outline: none;
- }
+.field-part>label {
+    font-size: var(--label-font-size);
+}
 
- .login {
-     display: flex;
-     justify-content: center;
- }
+.form-control {
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 5px;
+}
 
- .login-signup-button {
-     width: 40%;
-     padding: 5px;
-     border-radius: 5px;
-     border: none;
- }
+.login-form-items:focus {
+    outline: none;
+}
 
- .account-status {
-     width: 100%;
-     margin: 0 auto;
-     padding: 10px;
-     background-color: var(--form-field-background-color);
-     border: 1px solid #341c5d;
-     border-radius: 10px;
-     box-shadow: var(--box-shadow);
-     text-align: center;
- }
+.login {
+    display: flex;
+    justify-content: center;
+}
 
- .account {
-     text-decoration: underline;
-     color: #ffffff;
- }
+.login-signup-button {
+    width: 40%;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
 
- @media only screen and (min-width: 600px) {
-     .login-page {
-         padding: 0 20%;
-     }
+.account-status {
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: var(--form-field-background-color);
+    border: 1px solid #341c5d;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+}
 
- }
+.account {
+    text-decoration: underline;
+    color: #ffffff;
+}
+
+@media only screen and (min-width: 600px) {
+    .login-page {
+        padding: 0 20%;
+    }
+
+}

@@ -3,12 +3,13 @@
 
 <head>
     <title> Folio </title>
-    <meta name="keywords" content="Folio, Portfolio, Portfolio Generator">
-    <meta name="description" content="An amazing portfolio generator">
+    <meta name="keywords" content="Folio, Portfolio, Portfolio Generator" />
+    <meta name="description" content="An amazing portfolio generator" />
     <meta name="author" content="Abhishek Maurya, Shashank Patil">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preload" as="font">
     <script src="https://kit.fontawesome.com/0fe3b336ed.js" crossorigin="anonymous"></script>
-    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Sofia&display=swap"' rel='stylesheet'>
     <link rel="stylesheet" href='css/base.css'>
     <link rel="stylesheet" href="css/login-register.css">
 </head>
