@@ -23,12 +23,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <head>
     <title> Folio </title>
-    <meta name="keywords" content="Folio, Portfolio, Portfolio Generator">
-    <meta name="description" content="An amazing portfolio generator">
+    <meta name="keywords" content="Folio, Portfolio, Portfolio Generator" />
+    <meta name="description" content="An amazing portfolio generator" />
     <meta name="author" content="Abhishek Maurya, Shashank Patil">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preload" as="font">
     <script src="https://kit.fontawesome.com/0fe3b336ed.js" crossorigin="anonymous"></script>
-    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Sofia&display=swap"' rel='stylesheet'>
     <link rel="stylesheet" href='css/base.css'>
     <link rel="stylesheet" href="css/login-register.css">
 </head>
@@ -51,7 +52,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <h1>Sign in to <span style="font-family: 'Sofia';">Folio</span></h1>
             </div>
             <div class="form-field">
-                <form action="login.php" method="post" autocomplete="on" name="login-form" class="login-form">
+                <form action="login.php" method="post" name="login-form" class="login-form" autocomplete="on">
                     <div class="field-part">
                         <label for="username">Username</label></br>
                         <input type="text" id="username" name="username" class="form-control"></br>
