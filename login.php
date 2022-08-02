@@ -1,3 +1,23 @@
+<?php
+$login = false;
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    include '_dbconnect.php';
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $email = $_POST['email'];
+
+    $sql = "SELECT * FROM `users` WHERE `username` = '$username' AND `email` = '$email' AND `password` = '$password'";
+    $result = mysqli_query($conn, $sql);
+    $num = mysqli_num_rows($result);
+    if($num == 1){
+        echo "Logged in successfully";
+    }
+    else{
+        echo "Invalid Credentials";
+    }
+}  
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,8 +53,10 @@
             <div class="form-field">
                 <form action="login.php" method="post" autocomplete="on" name="login-form" class="login-form">
                     <div class="field-part">
-                        <label for="username">Username or Email</label></br>
+                        <label for="username">Username</label></br>
                         <input type="text" id="username" name="username" class="form-control"></br>
+                        <label for="email">Email</label></br>
+                        <input type="email" id="email" name="email" class="form-control"></br>
                         <label for="password">Password</label></br>
                         <input type="password" id="password" name="password" class="form-control"></br></br>
                     </div>
