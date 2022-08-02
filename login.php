@@ -1,21 +1,22 @@
 <?php
 $login = false;
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include '_dbconnect.php';
     $username = $_POST['username'];
     $password = $_POST['password'];
     $email = $_POST['email'];
 
-    $sql = "SELECT * FROM `users` WHERE `username` = '$username' AND `email` = '$email' AND `password` = '$password'";
-    $result = mysqli_query($conn, $sql);
-    $num = mysqli_num_rows($result);
-    if($num == 1){
-        echo "Logged in successfully";
+    $sql = "SELECT username, email, password FROM users WHERE username = ? AND email = ? AND password = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sss", $username, $email, $password);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result->num_rows > 0) {
+        echo "Login successful";
+    } else {
+        echo "Login failed";
     }
-    else{
-        echo "Invalid Credentials";
-    }
-}  
+}
 
 ?>
 <!DOCTYPE html>
