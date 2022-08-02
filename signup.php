@@ -50,9 +50,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <h1>Sign up to <span style="font-family: 'Sofia', nunito-sans;">Folio</span></h1>
             </div>
             <div class="form-field">
-                <form action="signup.php" method="post" autocomplete="on" name="login-form" class="login-form">
+                    <form action="signup.php" method="post" autocomplete="on" name="login-form" class="login-form">
                     <div class="field-part">
                         <label for="username">Username </label></br>
+
                         <input type="text" id="username" name="username" class="form-control" required /></br>
 
                         <label for="email">Email</label></br>
