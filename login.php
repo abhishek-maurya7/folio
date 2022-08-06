@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <div class="login-page">
             <div class="title">
-                <h1>Sign in to <span style="font-family: 'Sofia';">Folio</span></h1>
+                <h1>Sign in to <span style="font-family: 'Sofia', sans-serif;">Folio</span></h1>
             </div>
             <div class="form-field">
                 <form action="login.php" method="post" name="login-form" class="login-form" autocomplete="on">

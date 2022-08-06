@@ -4,8 +4,7 @@
 
 html {
     --background-colour: #4A1A8B;
-    --font-family: 'segoe ui'
-
+    --font-family: 'segoe ui', sans-serif;
 }
 
 body {
@@ -35,7 +34,7 @@ body {
 }
 
 .nav>.nav-header>.nav-title {
-    font-family: 'Sofia';
+    font-family: 'Sofia', sans-serif;
     font-size: 24px;
     display: inline-block;
 
