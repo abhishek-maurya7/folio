@@ -8,8 +8,9 @@
     <meta name="description" content="An amazing portfolio generator">
     <meta name="author" content="Abhishek Maurya, Shashank Patil">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/0fe3b336ed.js" crossorigin="anonymous" media="screen" integrity="sha384-4COO9rz8I0+qYYdRdIIoVHqpA+m9v9vPG1zpGeyVCs2MGAE7y1pflv6aTZ1o6u2C"></script>
+    <script src="https://kit.fontawesome.com/0fe3b336ed.js" media="screen"></script>
     <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Sofia' media="screen">
 </head>

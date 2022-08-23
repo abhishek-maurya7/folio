@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="author" content="Abhishek Maurya, Shashank Patil">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preload" as="font">
-    <script src="https://kit.fontawesome.com/0fe3b336ed.js" integrity="sha384-4COO9rz8I0+qYYdRdIIoVHqpA+m9v9vPG1zpGeyVCs2MGAE7y1pflv6aTZ1o6u2C" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/0fe3b336ed.js"></script>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Sofia&display=swap'>
     <link rel="stylesheet" href='css/base.css'>
     <link rel="stylesheet" href="css/login-register.css">

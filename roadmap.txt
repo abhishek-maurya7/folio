@@ -1,0 +1,29 @@
+Database
+Login Page 
+Sign Up
+Session
+Cookie
+redirecting to the page which can be only seen by logged in user
+
+Information Form frontend
+Information Form backend
+Information form Database
+
+rough design
+design implementation for personal portfolio
+SEO Optimization for personal portfolio
+
+User Experience implementation'
+
+yet to learn:
+Hosting
+Database connectivity
+setting links
+
+security and meta elements (Twitter card, Facebook Card)
+
+full length testing
+
+
+
+
