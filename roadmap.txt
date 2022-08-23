@@ -5,6 +5,7 @@ Session
 Cookie
 redirecting to the page which can be only seen by logged in user
 
+requirement gathering for Information form and documenatation(name, number, email, skills etc)
 Information Form frontend
 Information Form backend
 Information form Database
