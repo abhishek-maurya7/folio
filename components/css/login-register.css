@@ -1,0 +1,89 @@
+.main {
+    padding: 10px;
+    text-align: center;
+    align-items: center;
+}
+
+.login-page {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.title {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.login-field {
+    font-size: 2.2rem;
+}
+
+.login-form {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #2b124A;
+}
+
+.form-control {
+    padding: 10px;
+    text-align: left;
+}
+
+input {
+    width: 100%;
+    border: none;
+    padding: 10px;
+    outline: none;
+    border-radius: 5px;
+    position: relative;
+}
+
+input:focus {
+    outline: none;
+    border: 3px solid #1974c8;
+}
+
+button {
+    width: 100%;
+    border: none;
+    padding: 8px;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: #5B4AA1;
+}
+
+
+.account-status {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #2b124A;
+}
+
+@media only screen and (min-width: 600px) {
+    .login-form {
+        margin: 0 20%;
+    }
+
+    .account-status {
+        margin: 0 20%;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #2b124A;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    .login-form {
+        margin: 0 30%;
+    }
+
+    .account-status {
+        margin: 0 30%;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #2b124A;
+    }
+}

@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    include '_dbconnect.php';
+    include 'components\db\_dbconnect.php';
     $username = $_POST['username'];
     $password = $_POST['password'];
     $cpassword = $_POST['cpassword'];
@@ -17,63 +17,84 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Folio </title>
-    <meta name="keywords" content="Folio, Portfolio, Portfolio Generator">
-    <meta name="description" content="An amazing portfolio generator">
+    <title> Folio </title>
+    <meta name="keywords" content="Folio, Portfolio, Portfolio Generator" />
+    <meta name="description" content="An amazing portfolio generator" />
     <meta name="author" content="Abhishek Maurya, Shashank Patil">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="preload" as="font">
     <script src="https://kit.fontawesome.com/0fe3b336ed.js"></script>
-    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
-    <link rel="stylesheet" href='css/base.css'>
-    <link rel="stylesheet" href="css/login-register.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Sofia&display=swap'>
+    <link rel="stylesheet" href='components\css\base.css'>
+    <link rel="stylesheet" href='components\css\nav.css'>
+    <link rel="stylesheet" href='components\css\login-register.css'>
 </head>
 
 <body>
-
-    <div class="container col-9">
-        <div class="navbar">
-            <div class="nav">
-                <div class="nav-header">
-                    <div class="nav-title"><a href="home.html">Folio </a></div>
+    <div class="container">
+        <div class="row nav">
+            <!-- <div class="nav"> -->
+            <input type="checkbox" id="nav-check">
+            <div class="nav-header">
+                <div class="nav-title">
+                    Folio
                 </div>
             </div>
-        </div>
-        <div class="login-page">
-            <div class="title">
-                <h1>Sign up to <span style="font-family: 'Sofia', sans-serif;">Folio</span></h1>
+            <div class="nav-btn">
+                <label for="nav-check">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
             </div>
-            <div class="form-field">
-                <form action="signup.php" method="post" autocomplete="on" name="login-form" class="login-form">
-                    <div class="field-part">
-                        <label for="username">Username </label></br>
+            <div class="nav-links">
+                <a href="https://github.com/NewbieCodes1/folio" target="_blank" rel="noopener">Github</a>
+                <a href="" target="_blank">ABC</a>
+                <a mailto="mailto:shashankpatil360@gmail.com,">Contact Us</a>
+                <a href="" target="_blank">About Us</a>
+            </div>
+            <!-- </div> -->
+        </div>
+        <hr>
+        <div class="main">
+            <div class="login-page">
+                <div class="title">
+                    <h1>Sign In</h1>
+                </div>
+                <div class="form-field">
+                    <form class="login-form" action="signup.php" method="post" name="login" autocomplete="on">
+                        <div class="form-control">
+                            <label for="username">Username</label><br><br>
+                            <input type="text" name="username" id="username" placeholder="Enter your Username" required>
+                        </div>
+                        <div class="form-control">
+                            <label for="email">Email</label><br><br>
+                            <input type="email" name="email" id="email" placeholder="Enter your Email" required>
+                        </div>
+                        <div class="form-control">
+                            <label for="password">Password</label><br><br>
+                            <input type="password" name="password" id="password" placeholder="Enter your Password" required>
+                        </div>
+                        <div class="form-control">
+                            <label for="password">Re-Enter Password</label><br><br>
+                            <input type="password" name="cpassword" id="cpassword" placeholder="Enter your Password" required>
+                        </div>
+                        <br>
+                        <div class="form-control">
+                            <button class="button" href="">Sign Up</button>
+                        </div>
+                    </form>
+                </div>
+                <br>
 
-                        <input type="text" id="username" name="username" class="form-control" required /></br>
-
-                        <label for="email">Email</label></br>
-                        <input type="email" id="email" name="email" class="form-control" required /></br>
-
-                        <label for="password">Password</label></br>
-                        <input type="password" id="password" name="password" class="form-control" required /></br>
-
-                        <label for="cpassword">Re-Enter Password</label></br>
-                        <input type="password" id="cpassword" name="cpassword" class="form-control" required /></br>
-                    </div>
-                    <div class="login">
-                        <input type="submit" name="submit" value="Sign Up" class="login-signup-button">
-
-                    </div>
-                </form>
-            </div><br>
-            <div class="account-status">
-                <p>Already have an account? <a href="login.php" target="_self" class="account">Login</a></p>
+                <div class="account-status">
+                    <p>Already Have an Account? <a href="login.php">Sign In</a> </p>
+                </div>
             </div>
         </div>
     </div>

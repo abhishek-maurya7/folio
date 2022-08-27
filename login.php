@@ -17,7 +17,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Login failed";
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,45 +30,63 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="preload" as="font">
     <script src="https://kit.fontawesome.com/0fe3b336ed.js"></script>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Sofia&display=swap'>
-    <link rel="stylesheet" href='css/base.css'>
-    <link rel="stylesheet" href="css/login-register.css">
+    <link rel="stylesheet" href='components\css\base.css'>
+    <link rel="stylesheet" href='components\css\nav.css'>
+    <link rel="stylesheet" href='components\css\login-register.css'>
 </head>
 
 <body>
-    <div class="container col-9">
-        <div class="navbar">
-            <div class="nav">
-                <div class="nav-header">
-                    <div class="nav-title">
-                        <a href="home.html">
-                            Folio
-                        </a>
-                    </div>
+    <div class="container">
+        <div class="row nav">
+            <!-- <div class="nav"> -->
+            <input type="checkbox" id="nav-check">
+            <div class="nav-header">
+                <div class="nav-title">
+                    Folio
                 </div>
             </div>
+            <div class="nav-btn">
+                <label for="nav-check">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+            </div>
+            <div class="nav-links">
+                <a href="https://github.com/NewbieCodes1/folio" target="_blank" rel="noopener">Github</a>
+                <a href="" target="_blank">ABC</a>
+                <a mailto="mailto:shashankpatil360@gmail.com,">Contact Us</a>
+                <a href="" target="_blank">About Us</a>
+            </div>
+            <!-- </div> -->
         </div>
-        <div class="login-page">
-            <div class="title">
-                <h1>Sign in to <span style="font-family: 'Sofia', sans-serif;">Folio</span></h1>
-            </div>
-            <div class="form-field">
-                <form action="login.php" method="post" name="login-form" class="login-form" autocomplete="on">
-                    <div class="field-part">
-                        <label for="username">Username</label></br>
-                        <input type="text" id="username" name="username" class="form-control"></br>
-                        <label for="email">Email</label></br>
-                        <input type="email" id="email" name="email" class="form-control"></br>
-                        <label for="password">Password</label></br>
-                        <input type="password" id="password" name="password" class="form-control"></br></br>
-                    </div>
-                    <div class="login">
-                        <input type="submit" name="login" value="Login" class="login-signup-button">
-                    </div>
-                </form>
-            </div>
-            <br>
-            <div class="account-status">
-                <p>Don't have an account? <a href="signup.php" target="_self" class="account">Register</a></p>
+        <hr>
+        <div class="main">
+            <div class="login-page">
+                <div class="title">
+                    <h1>Sign In</h1>
+                </div>
+                <div class="form-field">
+                    <form class="login-form" action="login.php" method="post" name="login" autocomplete="on">
+                        <div class="form-control">
+                            <label for="email">Email</label><br><br>
+                            <input type="email" name="email" id="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-control">
+                            <label for="password">Password</label><br><br>
+                            <input type="password" name="password" id="password" placeholder="Enter your password" required>
+                        </div>
+                        <br>
+                        <div class="form-control">
+                            <button class="button" href="">LOGIN</button>
+                        </div>
+                    </form>
+                </div>
+                <br>
+
+                <div class="account-status">
+                    <p>Don't Have a Account? <a href="signup.php">Sign Up</a> </p>
+                </div>
             </div>
         </div>
     </div>

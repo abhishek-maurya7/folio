@@ -1,0 +1,155 @@
+.main {
+    padding: 10px;
+    align-items: center;
+    text-align: center;
+}
+
+.description {
+    border: #e4dede41 1px solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.description-text {
+    padding: 10px;
+    font-size: 2.2rem;
+    text-align: center;
+}
+
+.description-image {
+    width: 100%;
+    height: auto;
+
+}
+
+.get-started {
+    padding: 10px;
+    margin: 10px;
+}
+
+.bn5 {
+    font-weight: bold;
+    padding: 0.6rem 2rem;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.bn5:before {
+    content: "";
+    background: linear-gradient(45deg,
+            #ff0000,
+            #ff7300,
+            #fffb00,
+            #48ff00,
+            #00ffd5,
+            #002bff,
+            #7a00ff,
+            #ff00c8,
+            #ff0000);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowingbn5 20s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+}
+
+@keyframes glowingbn5 {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 400% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+
+.bn5:active {
+    color: #000;
+}
+
+.bn5:active:after {
+    background: transparent;
+}
+
+.bn5:hover:before {
+    opacity: 1;
+}
+
+.bn5:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #191919;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@media screen and (min-width: 600px) {
+    .description-text {
+        font-size: 1.6rem;
+    }
+
+    .description-image {
+        width: 50%;
+        height: auto;
+        margin: 10px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .description-text {
+        font-size: 2rem;
+    }
+
+    .description-image {
+        width: 50%;
+        height: auto;
+        margin: 10px;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .description-text {
+        font-size: 2.4rem;
+    }
+
+    .description-image {
+        width: 50%;
+        height: auto;
+        margin: 10px;
+    }
+}
+
+@media screen and (min-width: 988px) {
+    .description-text {
+        font-size: 3rem;
+    }
+
+    .description-image {
+        width: 50%;
+        height: auto;
+        margin: 10px;
+    }
+}
