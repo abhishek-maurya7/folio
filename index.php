@@ -54,7 +54,7 @@
                 <!-- </div> -->
             </div>
             <div class="row get-started">
-                <button href="/" class="bn5">Get Started</button>
+                <button href="signup.php" class="bn5">Get Started</button>
             </div>
         </div>
     </div>
