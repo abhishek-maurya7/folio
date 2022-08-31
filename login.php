@@ -1,18 +1,17 @@
 <?php
-$login = false;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    include '_dbconnect.php';
+    include 'components\db\_dbconnect.php';
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $email = $_POST['email'];
 
-    $sql = "SELECT username, email, password FROM users WHERE username = ? AND email = ? AND password = ?";
+    $sql = "SELECT username, email, password FROM users WHERE username = ? AND password = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sss", $username, $email, $password);
+    $stmt->bind_param("ss", $username, $password);
     $stmt->execute();
     $result = $stmt->get_result();
     if ($result->num_rows > 0) {
         echo "Login successful";
+        header("Location: ");
     } else {
         echo "Login failed";
     }
@@ -69,8 +68,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="form-field">
                     <form class="login-form" action="login.php" method="post" name="login" autocomplete="on">
                         <div class="form-control">
-                            <label for="email">Email</label><br><br>
-                            <input type="email" name="email" id="email" placeholder="Enter your email" required>
+                            <label for="username">Username</label><br><br>
+                            <input type="text" name="username" id="username" placeholder="Enter your email" required>
                         </div>
                         <div class="form-control">
                             <label for="password">Password</label><br><br>
