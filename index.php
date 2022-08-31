@@ -34,10 +34,10 @@
             </div>
             <div class="nav-links">
                 <a href="https://github.com/NewbieCodes1/folio" target="_blank" rel="noopener">Github</a>
-                <a href="" target="_blank">ABC</a>
-                <a mailto="mailto:shashankpatil360@gmail.com,">Contact Us</a>
+                <a href="" target="_blank">Pricing</a>
+                <a href="mailto:shashankpatil360@gmail.com">Contact Us</a>
                 <a href="" target="_blank">About Us</a>
-                <a href="login.php" target="_blank">Login</a>
+                <a href="login.php">Login</a>
             </div>
             <!-- </div> -->
         </div>

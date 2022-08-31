@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $stmt->get_result();
     if ($result->num_rows > 0) {
         echo "Login successful";
-        header("Location: ");
+        header("Location:index.php"); // Redirecting To Other Page;
     } else {
         echo "Login failed";
     }
@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <form class="login-form" action="login.php" method="post" name="login" autocomplete="on">
                         <div class="form-control">
                             <label for="username">Username</label><br><br>
-                            <input type="text" name="username" id="username" placeholder="Enter your email" required>
+                            <input type="text" name="username" id="username" placeholder="Enter your username" required>
                         </div>
                         <div class="form-control">
                             <label for="password">Password</label><br><br>

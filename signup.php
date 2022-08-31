@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="main">
             <div class="login-page">
                 <div class="title">
-                    <h1>Sign In</h1>
+                    <h1>SIGN UP</h1>
                 </div>
                 <div class="form-field">
                     <form class="login-form" action="signup.php" method="post" name="login" autocomplete="on">
