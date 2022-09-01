@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="components\css\nav.css">
     <link rel="stylesheet" href="components\css\index.css">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Sofia' media="screen">
+    <link rel="icon" href="components\images\logo.png" type="image/x-icon">
 </head>
 
 <body>
