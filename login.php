@@ -11,7 +11,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $stmt->get_result();
     if ($result->num_rows > 0) {
         echo "Login successful";
-        header("Location:index.php"); // Redirecting To Other Page;
+        session_start();
+        $_SESSION['loggedin'] = true;
+        $_SESSION['username'] = $username;
+        header("location: welcome.php"); // Redirecting To Other Page;
     } else {
         echo "Login failed";
     }
