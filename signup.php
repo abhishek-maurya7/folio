@@ -7,9 +7,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     try {
         if ($password == $cpassword) {
+            $hash = password_hash($password, PASSWORD_DEFAULT);
             $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sss", $username, $email, $password);
+            $stmt->bind_param("sss", $username, $email, $hash);
             $stmt->execute();
             echo "Account created successfully";
         }
@@ -70,15 +71,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <form class="login-form" action="signup.php" method="post" name="login" autocomplete="on">
                         <div class="form-control">
                             <label for="username">Username</label><br><br>
-                            <input type="text" name="username" id="username" placeholder="Enter your Username" required>
+                            <input type="text" maxlength="14" name="username" id="username" placeholder="Enter your Username" required>
                         </div>
                         <div class="form-control">
                             <label for="email">Email</label><br><br>
-                            <input type="email" name="email" id="email" placeholder="Enter your Email" required>
+                            <input type="email" maxlength="25" name="email" id="email" placeholder="Enter your Email" required>
                         </div>
                         <div class="form-control">
                             <label for="password">Password</label><br><br>
-                            <input type="password" name="password" id="password" placeholder="Enter your Password" required>
+                            <input type="password" maxlength="14" name="password" id="password" placeholder="Enter your Password" required>
                         </div>
                         <div class="form-control">
                             <label for="password">Re-Enter Password</label><br><br>
