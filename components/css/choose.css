@@ -1,0 +1,56 @@
+.main {
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+}
+
+.template-container {
+    display: block;
+    border: #e4dede41 solid 1px;
+}
+
+.template {
+    border: 1px solid #e4dede41;
+    margin: 10px;
+}
+
+.template-title {
+    font-size: 25px;
+    margin: 10px;
+}
+
+.template-title a {
+    text-decoration: underline;
+    color: #fff;
+}
+
+.template-description {
+    font-size: 14px;
+    margin: 10px;
+}
+
+.template-image {
+    margin: 10px;
+}
+
+.template-image img {
+    width: 85%;
+    height: auto;
+}
+
+
+@media screen and (min-width: 988px) {
+    .template-container {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .template {
+        width: 50%;
+    }
+
+    .template-image img {
+        width: 85%;
+        height: auto;
+    }
+}

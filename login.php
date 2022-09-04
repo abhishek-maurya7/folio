@@ -1,31 +1,28 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    include 'components\db\_dbconnect.php';
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    $sql = "SELECT username, email, password FROM users WHERE username = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($result->num_rows > 0) {
-        while($row = mysqli_fetch_assoc($result)){
-            if(password_verify($password, $row['password'])){
-                echo "Login successful";
+    require "components\class.php";
+    require 'components\db\_dbconnect.php';
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        if(!$evaluate->checkUsername($username)) {
+            $sql = "SELECT password FROM users WHERE username = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("s", $username);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+            if (password_verify($password, $row['password'])) {
                 session_start();
                 $_SESSION['loggedin'] = true;
                 $_SESSION['username'] = $username;
-                header("location: welcome.php"); // Redirecting To Other Page  
+                header("location: choice.php");
+            } else {
+                echo '<script>alert("Incorrect password")</script>';
             }
-            else{
-                echo '<script>alert("Invalid Credentials")</script>';
-                }
+        } else {
+            echo "<script>alert('Username does not exist')</script>";
         }
-    } else {
-        echo '<script>alert("Invalid Credentials")</script>';
     }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">

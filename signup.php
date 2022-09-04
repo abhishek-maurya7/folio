@@ -1,23 +1,57 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    include 'components\db\_dbconnect.php';
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $cpassword = $_POST['cpassword'];
-    $email = $_POST['email'];
-    try {
-        if ($password == $cpassword) {
-            $hash = password_hash($password, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sss", $username, $email, $hash);
-            $stmt->execute();
-            echo "Account created successfully";
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     include 'components\db\_dbconnect.php';
+//     $username = $_POST['username'];
+//     $password = $_POST['password'];
+//     $cpassword = $_POST['cpassword'];
+//     $email = $_POST['email'];
+//     try {
+//         if ($password == $cpassword) {
+//             $hash = password_hash($password, PASSWORD_DEFAULT);
+//             $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+//             $stmt = $conn->prepare($sql);
+//             $stmt->bind_param("sss", $username, $email, $hash);
+//             $stmt->execute();
+//             echo "Account created successfully";
+//         }
+//     } catch (PDOException $e) {
+//         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+//     }
+// }
+
+require "components\class.php";
+    require 'components\db\_dbconnect.php';
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $cpassword = $_POST['cpassword'];
+        $email = $_POST['email'];;
+
+        if($password == $cpassword) {
+            if($evaluate->checkUsername($username)) {
+                if($evaluate->checkEmail($email)) {
+                    try {
+                        $hash = password_hash($password, PASSWORD_DEFAULT);
+                        $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bind_param("sss", $username, $email, $hash);
+                        $result = $stmt->execute();
+                        if ($result) {
+                            echo '<script>alert("Account created successfully")</script>';
+                        }
+                    } catch (PDOException $e) {
+                        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                    }
+                } else {
+                    echo '<script>alert("Email already exists")</script>';
+                }
+            } else {
+                echo '<script>alert("Username already exists")</script>';
+            }
+        } else {
+            echo '<script>alert("Passwords do not match")</script>';
         }
-    } catch (PDOException $e) {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +73,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="container">
         <div class="row nav">
-            <!-- <div class="nav"> -->
             <input type="checkbox" id="nav-check">
             <div class="nav-header">
                 <div class="nav-title">
@@ -59,7 +92,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <a mailto="mailto:shashankpatil360@gmail.com,">Contact Us</a>
                 <a href="" target="_blank">About Us</a>
             </div>
-            <!-- </div> -->
         </div>
         <hr>
         <div class="main">
@@ -75,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                         <div class="form-control">
                             <label for="email">Email</label><br><br>
-                            <input type="email" maxlength="25" name="email" id="email" placeholder="Enter your Email" required>
+                            <input type="email" maxlength="35" name="email" id="email" placeholder="Enter your Email" required>
                         </div>
                         <div class="form-control">
                             <label for="password">Password</label><br><br>
