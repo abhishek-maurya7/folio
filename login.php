@@ -1,5 +1,5 @@
 <?php
-    require "components\class.php";
+    require "components\classes\class.php";
     require 'components\db\_dbconnect.php';
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = $_POST['username'];
@@ -43,30 +43,7 @@
 
 <body>
     <div class="container">
-        <div class="row nav">
-            <!-- <div class="nav"> -->
-            <input type="checkbox" id="nav-check">
-            <div class="nav-header">
-                <div class="nav-title">
-                    Folio
-                </div>
-            </div>
-            <div class="nav-btn">
-                <label for="nav-check">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </label>
-            </div>
-            <div class="nav-links">
-                <a href="https://github.com/NewbieCodes1/folio" target="_blank" rel="noopener">Github</a>
-                <a href="" target="_blank">ABC</a>
-                <a mailto="mailto:shashankpatil360@gmail.com,">Contact Us</a>
-                <a href="" target="_blank">About Us</a>
-            </div>
-            <!-- </div> -->
-        </div>
-        <hr>
+        <?php include 'components/includes/nav.php'; ?>
         <div class="main">
             <div class="login-page">
                 <div class="title">

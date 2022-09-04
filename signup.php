@@ -1,25 +1,5 @@
 <?php
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     include 'components\db\_dbconnect.php';
-//     $username = $_POST['username'];
-//     $password = $_POST['password'];
-//     $cpassword = $_POST['cpassword'];
-//     $email = $_POST['email'];
-//     try {
-//         if ($password == $cpassword) {
-//             $hash = password_hash($password, PASSWORD_DEFAULT);
-//             $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
-//             $stmt = $conn->prepare($sql);
-//             $stmt->bind_param("sss", $username, $email, $hash);
-//             $stmt->execute();
-//             echo "Account created successfully";
-//         }
-//     } catch (PDOException $e) {
-//         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-//     }
-// }
-
-require "components\class.php";
+    require "components\classes\class.php";
     require 'components\db\_dbconnect.php';
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = $_POST['username'];

@@ -18,31 +18,9 @@
 
 <body>
     <div class="container">
-        <div class="row nav">
-            <!-- <div class="nav"> -->
-            <input type="checkbox" id="nav-check">
-            <div class="nav-header">
-                <div class="nav-title">
-                    Folio
-                </div>
-            </div>
-            <div class="nav-btn">
-                <label for="nav-check">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </label>
-            </div>
-            <div class="nav-links">
-                <a href="https://github.com/NewbieCodes1/folio" target="_blank" rel="noopener">Github</a>
-                <a href="pricing.html">Pricing</a>
-                <a href="mailto:shashankpatil360@gmail.com">Contact Us</a>
-                <a href="" target="_blank">About Us</a>
-                <a href="login.php">Login</a>
-            </div>
-            <!-- </div> -->
-        </div>
-        <hr>
+        <?php
+            include 'components/includes/nav.php';
+        ?>
         <div class="main">
             <div class="row description">
                 <!-- <div class="description"> -->

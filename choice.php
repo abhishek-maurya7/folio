@@ -1,8 +1,8 @@
 <?php
-session_start();
-if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true){
-    header("location: login.php");
-}
+    session_start();
+    if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true){
+        header("location: login.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,29 +26,9 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true){
 
 <body>
     <div class="container">
-        <div class="row nav">
-            <input type="checkbox" id="nav-check">
-            <div class="nav-header">
-                <div class="nav-title">
-                    Folio
-                </div>
-            </div>
-            <div class="nav-btn">
-                <label for="nav-check">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </label>
-            </div>
-            <div class="nav-links">
-                <a href="https://github.com/NewbieCodes1/folio" target="_blank" rel="noopener">Github</a>
-                <a href="pricing.html">Pricing</a>
-                <a href="mailto:shashankpatil360@gmail.com">Contact Us</a>
-                <a href="">About Us</a>
-                <a href="login.php">Login</a>
-            </div>
-        </div>
-        <hr>
+        <?php
+            include 'components/includes/nav.php';
+        ?>
         <div class="row main">
             <div class="title">
                 <h2>Choose Your Template</h2>
@@ -60,57 +40,32 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true){
                     </div>
                     <div class="template-description">
                         <p>Personal Portfolio is best to showcase one's skills, achievements and works. This is best option
-                            for Programmer, Designer, Teacher, Artist, Photographer, etc.
+                            for Programmer, Designer, Teacher, Freelancer, Artist, Photographer, etc.
                         </p>
                     </div>
                     <div class="template-image">
-                        <img src="components\images\personalPortfolio.png" alt="Person Template">
+                        <a href="">
+                            <img src="components\images\personalPortfolio.png" alt="Personal Template">
+                        </a>
                     </div>
                 </div>
                 <br />
                 <div class="template">
                     <div class="template-title">
-                        <a href="">Portfolio for Person</a>
+                        <a href="">Portfolio for Business</a>
                     </div>
                     <div class="template-description">
                         <p>Business Portfolio is best to showcase services, information, etc. This is best option for Small
-                            Businesses, Companies, NGO's, Shops etc.
+                            Businesses, Companies, NGO's, Projects, Shops etc.
                         </p>
                     </div>
                     <div class="template-image">
-                        <img src="components\images\businessPortfolio.png" alt="Business Template">
+                        <a href="">
+                            <img src="components\images\businessPortfolio.png" alt="Business Template">
+                        </a>
                     </div>
                 </div>
-                <!-- <div class="template">
-                    <div class="template-title">
-                        <h3><a href="">Portfolio for Person</a></h3>
-                    <div>
-                    <div class="template-description">
-                        <p>
-                            Personal Portfolio is best to showcase one's skills, achievements and works. This is best option
-                            for Programmer, Designer, Teacher, Artist, Photographer, etc.
-                        </p>
-                    </div>
-                    <div class="template-image">
-                        <img src="components\images\portfolio.png" alt="Portfolio for Person">
-                    </div>
-                </div>
-                <div class="template">
-                    <div class="template-title">
-                        <h3><a href="">Portfolio for Person</a></h3>
-                    <div>
-                    <div class="template-description">
-                        <p>
-                            Business Portfolio is best to showcase services, information, etc. This is best option for Small
-                            Businesses, Companies, NGO's, Shops etc. 
-                        </p>
-                    </div>
-                    <div class="template-image">
-                        <img src="components\images\portfolio.png" alt="Portfolio for Person">
-                    </div>
-                </div> -->
             </div>
         </div>
-    </div>
     </div>
 </body>
