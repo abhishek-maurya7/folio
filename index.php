@@ -23,14 +23,12 @@
         ?>
         <div class="main">
             <div class="row description">
-                <!-- <div class="description"> -->
                 <div class="description-text col-4">
                     <p>Get Your Portfolio Ready In Just Few Minutes</p>
                 </div>
                 <span class="description-image">
                     <img class="description-image" src="components\images\mockup.avif" alt="folio">
                 </span>
-                <!-- </div> -->
             </div>
             <div class="row get-started">
                 <button onclick="document.location='signup.php'" class="bn5">Get Started</button>
