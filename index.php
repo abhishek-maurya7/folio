@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="components\css\base.css">
     <link rel="stylesheet" href="components\css\nav.css">
     <link rel="stylesheet" href="components\css\index.css">
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Sofia' media="screen">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Sofia&display=swap' media="screen">
     <link rel="icon" href="components\images\logo.png" type="image/x-icon">
 </head>
 
@@ -28,7 +28,7 @@
                     <p>Get Your Portfolio Ready In Just Few Minutes</p>
                 </div>
                 <span class="description-image">
-                    <img class="description-image" src="components\images\mockup.png" alt="folio">
+                    <img class="description-image" src="components\images\mockup.avif" alt="folio">
                 </span>
                 <!-- </div> -->
             </div>

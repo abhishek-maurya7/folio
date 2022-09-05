@@ -1,0 +1,64 @@
+<!-- <?php
+    session_start();
+    if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true){
+        header("location: login.php");  
+    }
+?> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> Folio </title>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Folio, Portfolio, Portfolio Generator">
+    <meta name="description" content="An amazing portfolio generator">
+    <meta name="author" content="Abhishek Maurya, Shashank Patil">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Sofia' media="screen">
+    <link rel="icon" href="\components\images\logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="components\css\base.css">
+    <link rel="stylesheet" href="components\css\nav.css">
+    <link rel="stylesheet" href="components\css\create-personal-portfolio.css">
+
+    <script src="https://kit.fontawesome.com/0fe3b336ed.js" media="screen"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- <?php
+            include 'components/includes/nav.php';
+        ?> -->
+        <div class="row main">
+            <div class="title">
+                <h1> Create your portfolio </h1>
+            </div>
+            <div class="form-field">
+                <form class="information-form" action="login.php" method="post" name="login" autocomplete="on">
+                    <div class="form-control">
+                        <label for="firstName">First Name</label><br><br>
+                        <input type="text" name="firstName" id="firstName" placeholder="Enter firstname" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="lastname">Last Name</label><br><br>
+                        <input type="text" name="lastName" id="lastName" placeholder="Enter your lastname" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="email">Email</label><br><br>
+                        <input type="email" name="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-control" style="display: block;">
+                        <label for="aboutMe">About Me</label><br><br>
+                        <textarea name="aboutMe" id="aboutMe" cols="35" rows="1"
+                            placeholder="Enter your about me"></textarea>
+                    </div>
+                    <br>
+                    <div class="form-control">
+                        <button class="button" href="">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+</body>
+
+</html
