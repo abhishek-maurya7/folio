@@ -4,10 +4,8 @@
 }
 
 .main {
-    padding: 10px;
     align-items: center;
     text-align: center;
-    border: 1px solid rgb(255, 0, 0);
 }
 
 .form-field {
@@ -25,22 +23,79 @@
     text-align: left;
 }
 
+.name-area {
+    display: block;
+}
+
 input {
     width: 100%;
-    border: none;
     padding: 10px;
     outline: none;
     border-radius: 5px;
-    position: relative;
+    /* position: relative; */
 }
 
 input:focus {
-    outline: none;
-    border: 3px solid #1974c8;
+    border: 2px solid #1974c8;
+}
+
+textarea {
+    width: 100%;
+    min-width: 100%;
+    max-height: 150px;
+    resize: vertical;
+    border-radius: 5px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.project {
+    font-size: 12px !important;
+    border: 1px solid #e4dede41;
+    border-radius: 5px;
+    padding: 10px;
+
+}
+
+.certificate {
+    font-size: 12px !important;
+    border: 1px solid #e4dede41;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+i[class*="fa-question"] {
+    color: #ff0000;
+    cursor: pointer;
+    float: right;
+}
+
+button {
+    width: 100%;
+    border: none;
+    padding: 8px;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: #5B4AA1;
 }
 
 @media screen and (min-width: 600px) {
     .form-field {
-        margin: 0 20%;
+        margin: 0 10%;
+    }
+
+    .name-area {
+        display: flex;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .form-field {
+        margin: 0 30%;
     }
 }

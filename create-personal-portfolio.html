@@ -26,19 +26,6 @@
 
 <body>
     <div class="container">
-        <!-- <?php
-            include 'components/includes/nav.php';
-        ?> -->
-        <!-- <div class="row main">
-            <div class="title">
-                <h1> Create your portfolio </h1>
-            </div>
-            <div class="form-field">
-                <form class="information-form" action="create-perosnal-portfolio.php" method="post"
-                    name="information-form" autocomplete="on">
-                    <h1>ji</h1>
-                </form>
-            </div> -->
         <div class="row title">
             <h1> Create your portfolio </h1>
         </div>
@@ -47,17 +34,133 @@
                 <form class="information-form" action="create-personal-portfolio.php" method="post"
                     name="information-form" autocomplete="on">
                     <div class="form-control">
-                        <label for="Firstname"> Firstname </label><br /> <br />
-                        <input type="text" name="name" id="name" placeholder="Enter your name" required>
-                    </div>
-                    <div class="form-control">
-                        <label for="Lastname"> Lastname </label><br /> <br />
-                        <input type="email" name="email" id="email" placeholder="Enter your email" required>
+                        <label for="Firstname"> Name </label><br /> <br />
+                        <div class="name-area">
+                            <input type="text" name="firstname" id="firstname" placeholder="Firstname" required />
+                            <br />
+                            <br />
+                            <input type="text" name="lastname" id="lastname" placeholder="Lastname" required />
+                        </div>
                     </div>
                     <div class="form-control">
                         <label for="email"> Email </label><br /> <br />
-                        <input type="email" name="email" id="email" placeholder="Enter your email" required>
+                        <input type="email" name="email" id="email" placeholder="Enter your email" required />
                     </div>
+                    <div class="form-control">
+                        <label for="profileImage">Profile Image</label> <br /> <br />
+                        <input type="file" accept="image/*" name="profileImage" id="profileImage" class="inputFile"
+                            required />
+                    </div>
+                    <div class="form-control">
+                        <label for="about"> About </label><br /> <br />
+                        <textarea class="form-control" maxlength="300" rows="5" name="about" id="about"
+                            placeholder="Write about you" required></textarea>
+                    </div>
+                    <br />
+                    <div class="form-control">
+                        <label for="socialLinks"> Social Links </label>
+                        <hr />
+                        <div class="social-links">
+                            <i class="fab fa-instagram"></i>
+                            <input type="url" name="instagram" id="instagram" placeholder="Instagram" />
+                        </div>
+                        <br />
+                        <div class="social-links">
+                            <i class="fab fa-youtube"></i>
+                            <input type="url" name="youtube" id="youtube" placeholder="Youtube" />
+                        </div>
+                        <br />
+                        <div class="social-links">
+                            <i class="fab fa-github"></i>
+                            <input type="url" name="github" id="github" placeholder="Github" />
+                        </div>
+                        <br />
+                        <div class="social-links">
+                            <i class="fab fa-twitter"></i>
+                            <input type="url" name="twitter" id="twitter" placeholder="Twitter" />
+                        </div>
+                        <br />
+                        <div class="social-links">
+                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                            <input type="url" name="facebook" id="facebook" placeholder="Facebook" />
+                        </div>
+                        <br />
+                        <div class="social-links">
+                            <i class="fab fa-linkedin-in"></i>
+                            <input type="url" name="linkedin" id="linkedin" placeholder="LinkedIn" />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-control">
+                        <label for="project"> Projects </label>
+                        <hr />
+                        <div class="project">
+                            <label for="project1"> Project 1 </label> <br /> <br />
+                            <input type="text" name="project1" id="project1" placeholder="Project1" /> <br />
+                            <br />
+                            <input type="url" name="project1Link" id="project1Link" placeholder="Project1 Link" />
+                            <br /> <br />
+                            <textarea class="form-control" maxlength="300" rows="5" name="project1Description"
+                                id="project1Description" placeholder="Project1 Description"></textarea>
+                        </div>
+                        <br />
+                        <div class="project">
+                            <label for="project2"> Project 2 </label> <br /> <br />
+                            <input type="text" name="project2" id="project2" placeholder="Project2" /> <br />
+                            <br />
+                            <input type="url" name="project2Link" id="project2Link" placeholder="Project2 Link" />
+                            <br /> <br />
+                            <textarea class="form-control" maxlength="300" rows="5" name="project2Description"
+                                id="project2Description" placeholder="Project2 Description" required></textarea>
+                        </div>
+                        <br />
+                        <div class="project">
+                            <label for="project3"> Project 3 </label> <br /> <br />
+                            <input type="text" name="project3" id="project3" placeholder="Project3" /> <br />
+                            <br />
+                            <input type="url" name="project3Link" id="project3Link" placeholder="Project3 Link" />
+                            <br /> <br />
+                            <textarea class="form-control" maxlength="300" rows="5" name="project3Description"
+                                id="project3Description" placeholder="Project3 Description" required></textarea>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-control">
+                        <label for="certificates"> Certificates <i class="fa-solid fa-question"
+                                onclick="alert('Enter Certificate Name, Certificate Link and Data of Issue')"></i>
+                        </label>
+                        <hr />
+                        <div class="certificate">
+                            <label for="certificate1"> Certificate 1 </label>
+                            <br />
+                            <br />
+                            <input type="text" name="certificate1" id="certificate1" placeholder="Certificate Name" />
+                            <br /> <br />
+                            <input type="url" name="certificate1Link" id="certificate1Link"
+                                placeholder="Certificate Link" /> <br /> <br />
+                            <input type="date" name="certificate1Date" id="certificate1Date" /> <br /> <br />
+                        </div>
+                        <br />
+                        <div class="certificate">
+                            <label for="certificate2"> Certificate 2 </label> <br /> <br />
+                            <input type="text" name="certificate2" id="certificate2" placeholder="Certificate Name" />
+                            <br /> <br />
+                            <input type="url" name="certificate2Link" id="certificate2Link"
+                                placeholder="Certificate Link" /> <br /> <br />
+                            <input type="date" name="certificate2Date" id="certificate2Date" /> <br /> <br />
+                        </div>
+                        <br />
+                        <div class="certificate">
+                            <label for="certificate3"> Certificate 3 </label> <br /> <br />
+                            <input type="text" name="certificate3" id="certificate3" placeholder="Certificate Name" />
+                            <br /> <br />
+                            <input type="url" name="certificate3Link" id="certificate3Link"
+                                placeholder="Certificate Link" /> <br /> <br />
+                            <input type="date" name="certificate3Date" id="certificate3Date" /> <br /> <br />
+                        </div>
+                        <div class="form-control">
+                            <button class="button" href="">Submit</button>
+                        </div>
                 </form>
             </div>
         </div>
