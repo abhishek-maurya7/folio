@@ -36,7 +36,7 @@
             <div class="row template-container col-12">
                 <div class="template">
                     <div class="template-title">
-                        <a href="">Portfolio for Person</a>
+                        <a href="create-personal-portfolio.html">Portfolio for Person</a>
                     </div>
                     <div class="template-description">
                         <p>Personal Portfolio is best to showcase one's skills, achievements and works. This is best option
@@ -44,7 +44,7 @@
                         </p>
                     </div>
                     <div class="template-image">
-                        <a href="">
+                        <a href="create-personal-portfolio.html">
                             <img src="components\images\personalPortfolio.png" alt="Personal Template">
                         </a>
                     </div>

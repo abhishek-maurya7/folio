@@ -29,36 +29,39 @@
         <!-- <?php
             include 'components/includes/nav.php';
         ?> -->
-        <div class="row main">
+        <!-- <div class="row main">
             <div class="title">
                 <h1> Create your portfolio </h1>
             </div>
             <div class="form-field">
-                <form class="information-form" action="login.php" method="post" name="login" autocomplete="on">
+                <form class="information-form" action="create-perosnal-portfolio.php" method="post"
+                    name="information-form" autocomplete="on">
+                    <h1>ji</h1>
+                </form>
+            </div> -->
+        <div class="row title">
+            <h1> Create your portfolio </h1>
+        </div>
+        <div class="row main">
+            <div class="form-field">
+                <form class="information-form" action="create-personal-portfolio.php" method="post"
+                    name="information-form" autocomplete="on">
                     <div class="form-control">
-                        <label for="firstName">First Name</label><br><br>
-                        <input type="text" name="firstName" id="firstName" placeholder="Enter firstname" required>
+                        <label for="Firstname"> Firstname </label><br /> <br />
+                        <input type="text" name="name" id="name" placeholder="Enter your name" required>
                     </div>
                     <div class="form-control">
-                        <label for="lastname">Last Name</label><br><br>
-                        <input type="text" name="lastName" id="lastName" placeholder="Enter your lastname" required>
-                    </div>
-                    <div class="form-control">
-                        <label for="email">Email</label><br><br>
+                        <label for="Lastname"> Lastname </label><br /> <br />
                         <input type="email" name="email" id="email" placeholder="Enter your email" required>
                     </div>
-                    <div class="form-control" style="display: block;">
-                        <label for="aboutMe">About Me</label><br><br>
-                        <textarea name="aboutMe" id="aboutMe" cols="35" rows="1"
-                            placeholder="Enter your about me"></textarea>
-                    </div>
-                    <br>
                     <div class="form-control">
-                        <button class="button" href="">Submit</button>
+                        <label for="email"> Email </label><br /> <br />
+                        <input type="email" name="email" id="email" placeholder="Enter your email" required>
                     </div>
                 </form>
             </div>
         </div>
+    </div>
 </body>
 
 </html
