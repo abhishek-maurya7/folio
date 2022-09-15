@@ -1,5 +1,5 @@
 .title {
-    font-size: 1.2rem;
+    font-size: 16px;
     text-align: center;
 }
 
@@ -86,7 +86,7 @@ button {
 
 @media screen and (min-width: 600px) {
     .form-field {
-        margin: 0 10%;
+        margin: 0 20%;
     }
 
     .name-area {
@@ -96,6 +96,6 @@ button {
 
 @media screen and (min-width: 1200px) {
     .form-field {
-        margin: 0 30%;
+        margin: 0 40%;
     }
 }
