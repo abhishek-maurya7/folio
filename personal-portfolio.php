@@ -1,11 +1,12 @@
 <?php
 session_start();
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
-    $username = $_SESSION['username'];
     header("location: login.php");
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    require "components\classes\class.php";
+    require 'components\db\_dbconnect.php';
     $username = $_SESSION['username'];
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
@@ -36,23 +37,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $certificateName3 = $_POST['certificateName3'];
     $certificateClaimDate3 = $_POST['certificateClaimDate3'];
     $certificateLink3 = $_POST['certificateLink3'];
-    require "components\classes\class.php";
-    require 'components\db\_dbconnect.php';
-    $_SESSION['username'] = $username;
-    echo $username; //returns root. expected username set in the session
-    echo ($evaluate->checkUsername($username)); //returns 0 because username root does not exist in the database
-
-    // if ($evaluate->checkUsername($username)) {
-    //     $sql = "SELECT password FROM users WHERE username = ?";
-    //     $stmt = $conn->prepare($sql);
-    //     $stmt->bind_param("s", $username);
-    //     $stmt->execute();
-    //     $result = $stmt->get_result();
-    //     $row = $result->fetch_assoc();
-    //     echo $row['password'];
-    // } else {
-    //     echo "<script>alert('Username does not exist')</script>";
-    // }
+    if ($evaluate->checkUsername($username)) {
+        try {
+            $sql = "INSERT INTO personalportfolio (username, firstName, lastName, email, profileImg, aboutMe, instagram, yt, github, twitter, facebook, linkedIn, projectTitle, projectLink, projectDescription, projectTitle2, projectLink2, projectDescription2, projectTitle3, projectLink3, projectDescription3, certificateName, certificateClaimDate, certificateLink, certificateName2, certificateClaimDate2, certificateLink2, certificateName3, certificateClaimDate3, certificateLink3) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("ssssssssssssssssssssssssssssss", $username, $firstName, $lastName, $email, $profileImg, $about, $instagram, $yt, $github, $twitter, $facebook, $linkedin, $projectTitle, $projectLink, $projectDescription, $projectTitle2, $projectLink2, $projectDescription2, $projectTitle3, $projectLink3, $projectDescription3, $certificateName, $certificateClaimDate, $certificateLink, $certificateName2, $certificateClaimDate2, $certificateLink2, $certificateName3, $certificateClaimDate3, $certificateLink3);
+            $stmt->execute();
+            echo "New record created successfully";
+        } catch (PDOException $e) {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+    } else {
+        echo "Username could not be found.";
+    }
 }
 ?>
 <!DOCTYPE html>
