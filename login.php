@@ -1,28 +1,28 @@
 <?php
-    require "components\classes\class.php";
-    require 'components\db\_dbconnect.php';
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        if(!$evaluate->checkUsername($username)) {
-            $sql = "SELECT password FROM users WHERE username = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("s", $username);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            $row = $result->fetch_assoc();
-            if (password_verify($password, $row['password'])) {
-                session_start();
-                $_SESSION['loggedin'] = true;
-                $_SESSION['username'] = $username;
-                header("location: choice.php");
-            } else {
-                echo '<script>alert("Incorrect password")</script>';
-            }
+require "components\classes\class.php";
+require 'components\db\_dbconnect.php';
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    if ($evaluate->checkUsername($username)) {
+        $sql = "SELECT password FROM users WHERE username = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        if (password_verify($password, $row['password'])) {
+            session_start();
+            $_SESSION['loggedin'] = true;
+            $_SESSION['username'] = $username;
+            header("location: choice.php");
         } else {
-            echo "<script>alert('Username does not exist')</script>";
+            echo '<script>alert("Incorrect password")</script>';
         }
+    } else {
+        echo "<script>alert('Username does not exist')</script>";
     }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

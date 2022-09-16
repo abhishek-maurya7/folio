@@ -1,8 +1,8 @@
 <?php
-    session_start();
-    if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true){
-        header("location: login.php");
-    }
+session_start();
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
+    header("location: login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +27,7 @@
 <body>
     <div class="container">
         <?php
-            include 'components/includes/nav.php';
+        include 'components/includes/nav.php';
         ?>
         <div class="row main">
             <div class="title">
@@ -36,10 +36,11 @@
             <div class="row template-container col-12">
                 <div class="template">
                     <div class="template-title">
-                        <a href="create-personal-portfolio.html">Portfolio for Person</a>
+                        <a href="personal-portfolio.php">Portfolio for Person</a>
                     </div>
                     <div class="template-description">
-                        <p>Personal Portfolio is best to showcase one's skills, achievements and works. This is best option
+                        <p>Personal Portfolio is best to showcase one's skills, achievements and works. This is best
+                            option
                             for Programmer, Designer, Teacher, Freelancer, Artist, Photographer, etc.
                         </p>
                     </div>
@@ -55,7 +56,8 @@
                         <a href="">Portfolio for Business</a>
                     </div>
                     <div class="template-description">
-                        <p>Business Portfolio is best to showcase services, information, etc. This is best option for Small
+                        <p>Business Portfolio is best to showcase services, information, etc. This is best option for
+                            Small
                             Businesses, Companies, NGO's, Projects, Shops etc.
                         </p>
                     </div>

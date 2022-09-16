@@ -1,37 +1,39 @@
 <?php
-    require "components\classes\class.php";
-    require 'components\db\_dbconnect.php';
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $cpassword = $_POST['cpassword'];
-        $email = $_POST['email'];;
+require "components\classes\class.php";
+require 'components\db\_dbconnect.php';
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $cpassword = $_POST['cpassword'];
+    $email = $_POST['email'];;
 
-        if($password == $cpassword) {
-            if($evaluate->checkUsername($username)) {
-                if($evaluate->checkEmail($email)) {
-                    try {
-                        $hash = password_hash($password, PASSWORD_DEFAULT);
-                        $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
-                        $stmt = $conn->prepare($sql);
-                        $stmt->bind_param("sss", $username, $email, $hash);
-                        $result = $stmt->execute();
-                        if ($result) {
-                            echo '<script>alert("Account created successfully")</script>';
-                        }
-                    } catch (PDOException $e) {
-                        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    if ($password == $cpassword) {
+        if ($evaluate->checkUsername($username)) {
+            if ($evaluate->checkEmail($email)) {
+                try {
+                    $hash = password_hash($password, PASSWORD_DEFAULT);
+                    $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("sss", $username, $email, $hash);
+                    $result = $stmt->execute();
+                    if ($result) {
+                        echo '<script>alert("Account created successfully")</script>';
                     }
-                } else {
-                    echo '<script>alert("Email already exists")</script>';
+                } catch (PDOException $e) {
+                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                 }
             } else {
-                echo '<script>alert("Username already exists")</script>';
+                echo '<script>alert("Email already exists")</script>';
             }
         } else {
-            echo '<script>alert("Passwords do not match")</script>';
+            echo '<script>alert("Username already exists")</script>';
         }
+    } else {
+        echo '<script>alert("Passwords do not match")</script>';
     }
+} else {
+    echo "<script>alert('An unexpected error has occurred.')</script>";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
