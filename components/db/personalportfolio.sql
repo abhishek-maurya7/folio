@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE personalportfolio (
-  username varchar(14) NOT NULL,
+  username varchar(14) NOT NULL PRIMARY,
   firstName varchar(12) NOT NULL,
   lastName varchar(12) NOT NULL,
   email varchar(35) NOT NULL,
@@ -57,7 +57,7 @@ CREATE TABLE personalportfolio (
   certificateLink2 int(20) DEFAULT NULL,
   certificateName3 int(20) DEFAULT NULL,
   certificateClaimDate3 int(11) DEFAULT NULL,
-  certificateLink3 int(20) DEFAULT NULL,
+  certificateLink3 int(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -78,7 +78,7 @@ ALTER TABLE personalportfolio
 -- Constraints for table personalportfolio
 --
 ALTER TABLE personalportfolio
-  ADD CONSTRAINT personalportfolio_ibfk_1 FOREIGN KEY (username) REFERENCES users (username);
+ADD FOREIGN KEY (username) REFERENCES users(username);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
