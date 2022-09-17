@@ -31,8 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo '<script>alert("Passwords do not match")</script>';
     }
-} else {
-    echo "<script>alert('An unexpected error has occurred.')</script>";
 }
 ?>
 <!DOCTYPE html>
