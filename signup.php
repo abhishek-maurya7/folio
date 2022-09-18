@@ -8,8 +8,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];;
 
     if ($password == $cpassword) {
-        if ($evaluate->checkUsername($username)) {
-            if ($evaluate->checkEmail($email)) {
+        if (!$evaluate->checkUsername($username)) {
+            if (!$evaluate->checkEmail($email)) {
                 try {
                     $hash = password_hash($password, PASSWORD_DEFAULT);
                     $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
