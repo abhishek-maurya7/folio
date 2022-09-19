@@ -1,6 +1,6 @@
 <?php
-require "components\classes\class.php";
-require 'components\db\_dbconnect.php';
+require "private\classes\class.php";
+require 'private\db\_dbconnect.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -19,8 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     if ($result) {
                         echo '<script>alert("Account created successfully")</script>';
                     }
-                } catch (PDOException $e) {
-                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                } catch (Exception $e) {
+                    echo "Error: " . $e->getMessage();
                 }
             } else {
                 echo '<script>alert("Email already exists")</script>';
@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="en">
 
 <head>
-    <title> Folio </title>
+    <title> Folio | Sign UP</title>
     <meta name="keywords" content="Folio, Portfolio, Portfolio Generator" />
     <meta name="description" content="An amazing portfolio generator" />
     <meta name="author" content="Abhishek Maurya, Shashank Patil">
@@ -45,9 +45,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="preload" as="font">
     <script src="https://kit.fontawesome.com/0fe3b336ed.js"></script>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Sofia&display=swap'>
-    <link rel="stylesheet" href='components\css\base.css'>
-    <link rel="stylesheet" href='components\css\nav.css'>
-    <link rel="stylesheet" href='components\css\login-register.css'>
+    <link rel="stylesheet" href='private\css\base.css'>
+    <link rel="stylesheet" href='private\css\nav.css'>
+    <link rel="stylesheet" href='private\css\login-register.css'>
 </head>
 
 <body>

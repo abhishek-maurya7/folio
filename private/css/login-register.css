@@ -1,17 +1,17 @@
 .main {
-    padding: 10px;
+    padding: 1rem;
     text-align: center;
     align-items: center;
 }
 
 .login-page {
-    margin: 10px;
-    padding: 10px;
-    border-radius: 5px;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
 }
 
 .title {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     text-align: center;
 }
 
@@ -21,44 +21,43 @@
 }
 
 .login-form {
-    padding: 10px;
-    border-radius: 10px;
+    padding: 1rem;
+    border-radius: 1rem;
     background-color: #2b124A;
 }
 
 .form-control {
-    padding: 10px;
+    padding: 1rem;
     text-align: left;
 }
 
 input {
     width: 100%;
     border: none;
-    padding: 10px;
+    padding: 1rem;
     outline: none;
-    border-radius: 5px;
+    border-radius: 0.5rem;
     position: relative;
 }
 
 input:focus {
     outline: none;
-    border: 3px solid #1974c8;
+    border: 0.3rem solid #1974c8;
 }
 
 button {
     width: 100%;
     border: none;
-    padding: 8px;
-    color: #fff;
+    padding: 0.8rem;
+    color: #ffffff;
     font-weight: bold;
-    border-radius: 5px;
+    border-radius: 0.5rem;
     background-color: #5B4AA1;
 }
 
 .account-status {
-    margin: 10px;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 1.2rem;
+    border-radius: 1rem;
     background-color: #2b124A;
 }
 
@@ -69,8 +68,8 @@ button {
 
     .account-status {
         margin: 0 20%;
-        padding: 10px;
-        border-radius: 5px;
+        padding: 1rem;
+        border-radius: 1rem;
         background-color: #2b124A;
     }
 }
@@ -82,8 +81,5 @@ button {
 
     .account-status {
         margin: 0 30%;
-        padding: 10px;
-        border-radius: 5px;
-        background-color: #2b124A;
     }
 }

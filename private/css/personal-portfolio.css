@@ -1,5 +1,5 @@
 .title {
-    font-size: 16px;
+    font-size: 1.2rem;
     text-align: center;
 }
 
@@ -9,17 +9,16 @@
 }
 
 .form-field {
-    /* font-size: 2.2rem; */
+    background-color: #2b124A;
+    border-radius: 1rem;
 }
 
 .information-form {
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #2b124A;
+    padding: 1rem;
 }
 
 .form-control {
-    padding: 10px;
+    padding: 1rem;
     text-align: left;
 }
 
@@ -29,10 +28,9 @@
 
 input {
     width: 100%;
-    padding: 10px;
+    padding: 1rem;
     outline: none;
-    border-radius: 5px;
-    /* position: relative; */
+    border-radius: 0.5rem;
 }
 
 input:focus {
@@ -42,9 +40,9 @@ input:focus {
 textarea {
     width: 100%;
     min-width: 100%;
-    max-height: 150px;
+    max-height: 15rem;
     resize: vertical;
-    border-radius: 5px;
+    border-radius: 0.5rem;
 }
 
 .social-links {
@@ -53,19 +51,23 @@ textarea {
     align-items: center;
 }
 
+i {
+    margin-right: 1rem;
+}
+
 .project {
     font-size: 12px !important;
     border: 1px solid #e4dede41;
-    border-radius: 5px;
-    padding: 10px;
+    border-radius: 0.5rem;
+    padding: 1rem;
 
 }
 
 .certificate {
     font-size: 12px !important;
     border: 1px solid #e4dede41;
-    border-radius: 5px;
-    padding: 10px;
+    border-radius: 0.5rem;
+    padding: 1rem;
 }
 
 i[class*="fa-question"] {
@@ -77,10 +79,10 @@ i[class*="fa-question"] {
 button {
     width: 100%;
     border: none;
-    padding: 8px;
+    padding: 0.8rem;
     color: #fff;
     font-weight: bold;
-    border-radius: 5px;
+    border-radius: 0.5rem;
     background-color: #5B4AA1;
 }
 

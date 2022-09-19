@@ -16,10 +16,10 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Sofia' media="screen">
-    <link rel="icon" href="\components\images\logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="components\css\base.css">
-    <link rel="stylesheet" href="components\css\nav.css">
-    <link rel="stylesheet" href="components\css\choose.css">
+    <link rel="icon" href="private\images\logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="private\css\base.css">
+    <link rel="stylesheet" href="private\css\nav.css">
+    <link rel="stylesheet" href="private\css\choice.css">
 
     <script src="https://kit.fontawesome.com/0fe3b336ed.js" media="screen"></script>
 </head>
@@ -27,7 +27,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
 <body>
     <div class="container">
         <?php
-        include 'components/includes/nav.php';
+        include 'private/includes/nav.php';
         ?>
         <div class="row main">
             <div class="title">
@@ -36,7 +36,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
             <div class="row template-container col-12">
                 <div class="template">
                     <div class="template-title">
-                        <a href="personal-portfolio.php">Portfolio for Person</a>
+                        <a href="personal-portfolio">Portfolio for Person</a>
                     </div>
                     <div class="template-description">
                         <p>Personal Portfolio is best to showcase one's skills, achievements and works. This is best
@@ -45,8 +45,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                         </p>
                     </div>
                     <div class="template-image">
-                        <a href="create-personal-portfolio.html">
-                            <img src="components\images\personalPortfolio.png" alt="Personal Template">
+                        <a href="personal-portfolio">
+                            <img src="private\images\personalPortfolio.png" alt="Personal Template">
                         </a>
                     </div>
                 </div>
@@ -63,7 +63,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                     </div>
                     <div class="template-image">
                         <a href="">
-                            <img src="components\images\businessPortfolio.png" alt="Business Template">
+                            <img src="private\images\businessPortfolio.png" alt="Business Template">
                         </a>
                     </div>
                 </div>
