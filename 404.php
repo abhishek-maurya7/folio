@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title> Folio </title>
+    <title> Folio | 404 </title>
     <meta charset="utf-8">
     <meta name="keywords" content="Folio, Portfolio, Portfolio Generator">
     <meta name="description" content="An amazing portfolio generator">
@@ -11,7 +11,7 @@
     <script src="https://kit.fontawesome.com/0fe3b336ed.js" media="screen"></script>
     <link rel="stylesheet" href="private\css\base.css">
     <link rel="stylesheet" href="private\css\nav.css">
-    <link rel="stylesheet" href="private\css\index.css">
+    <link rel="stylesheet" href="private\css\404.css">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Sofia&display=swap' media="screen">
     <link rel="icon" href="components\images\logo.png" type="image/x-icon">
 </head>
@@ -19,19 +19,6 @@
 <body>
     <div class="container">
         <?php include 'private\includes\nav.php'; ?>
-        <div class="main">
-            <div class="row  description">
-                <div class="description-text col-4">
-                    <p>Get Your Portfolio Ready In Just Few Minutes</p>
-                </div>
-                <span class="description-image">
-                    <img class="description-image" src="private\images\mockup.avif" alt="folio">
-                </span>
-            </div>
-            <div class="row get-started">
-                <button class="bn5" onclick="document.location='signup'">Get Started</button>
-            </div>
-        </div>
     </div>
 </body>
 

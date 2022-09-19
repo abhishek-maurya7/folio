@@ -6,17 +6,17 @@
 
 .template-container {
     display: block;
-    border: #e4dede41 solid 1px;
+    border: 1px solid #e4dede41;
 }
 
 .template {
     border: 1px solid #e4dede41;
-    margin: 10px;
+    margin: 1rem;
 }
 
 .template-title {
     font-size: 25px;
-    margin: 10px;
+    margin: 1rem;
 }
 
 .template-title a {
@@ -25,12 +25,12 @@
 }
 
 .template-description {
-    font-size: 14px;
-    margin: 10px;
+    font-size: 1.4rem;
+    margin: 1rem;
 }
 
 .template-image {
-    margin: 10px;
+    margin: 1rem;
 }
 
 .template-image img {

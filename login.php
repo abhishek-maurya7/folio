@@ -1,6 +1,6 @@
 <?php
-require "components\classes\class.php";
-require 'components\db\_dbconnect.php';
+require "private\classes\class.php";
+require 'private\db\_dbconnect.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             session_start();
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $username;
-            header("location: choice.php");
+            header("location: choice");
         } else {
             echo '<script>alert("Incorrect password")</script>';
         }
@@ -36,14 +36,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="preload" as="font">
     <script src="https://kit.fontawesome.com/0fe3b336ed.js"></script>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Sofia&display=swap'>
-    <link rel="stylesheet" href='components\css\base.css'>
-    <link rel="stylesheet" href='components\css\nav.css'>
-    <link rel="stylesheet" href='components\css\login-register.css'>
+    <link rel="stylesheet" href='private\css\base.css'>
+    <link rel="stylesheet" href='private\css\nav.css'>
+    <link rel="stylesheet" href='private\css\login-register.css'>
 </head>
 
 <body>
     <div class="container">
-        <?php include 'components/includes/nav.php'; ?>
+        <?php include 'private/includes/nav.php'; ?>
         <div class="main">
             <div class="login-page">
                 <div class="title">
@@ -66,9 +66,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </form>
                 </div>
                 <br>
-
                 <div class="account-status">
-                    <p>Don't Have a Account? <a href="signup.php">Sign Up</a> </p>
+                    <p>Don't Have a Account? <a href="signup">Sign Up</a> </p>
                 </div>
             </div>
         </div>

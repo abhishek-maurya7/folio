@@ -1,18 +1,16 @@
 .main {
-    padding: 10px;
     align-items: center;
     text-align: center;
 }
 
 .description {
     border: #e4dede41 1px solid;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px;
+    border-radius: 0.5rem;
+    margin: 0 0 1rem 0;
 }
 
 .description-text {
-    padding: 10px;
+    padding: 1rem;
     font-size: 2.2rem;
     text-align: center;
 }
@@ -20,17 +18,16 @@
 .description-image {
     width: 100%;
     height: auto;
-    aspect-ratio: 16/9;
 }
 
 .get-started {
-    padding: 10px;
-    margin: 10px;
+    padding: 1rem;
+    margin: 1rem;
 }
 
 .bn5 {
     font-weight: bold;
-    padding: 0.6rem 2rem;
+    padding: 1rem 3.2rem;
     border: none;
     outline: none;
     color: #ffffff;
@@ -106,51 +103,38 @@
     border-radius: 10px;
 }
 
+@media screen and (min-width: 540px) {
+    .description-text {
+        font-size: 3rem;
+    }
+}
+
 @media screen and (min-width: 600px) {
     .description-text {
-        font-size: 1.6rem;
+        font-size: 2.8rem;
     }
 
     .description-image {
         width: 50%;
         height: auto;
-        margin: 10px;
+        margin: 2rem auto;
     }
 }
 
 @media screen and (min-width: 768px) {
     .description-text {
-        font-size: 2rem;
-    }
-
-    .description-image {
-        width: 50%;
-        height: auto;
-        margin: 10px;
+        font-size: 3.5rem;
     }
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 820px) {
     .description-text {
-        font-size: 2.4rem;
-    }
-
-    .description-image {
-        width: 50%;
-        height: auto;
-        margin: 10px;
+        font-size: 3.6rem;
     }
 }
 
 @media screen and (min-width: 988px) {
     .description-text {
-        font-size: 3rem;
-    }
-
-    .description-image {
-        width: 50%;
-        height: auto;
-        margin: 10px;
-        /*  */
+        font-size: 7.2rem;
     }
 }
