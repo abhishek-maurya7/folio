@@ -43,14 +43,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <div class="container">
-        <?php include 'private/includes/nav.php'; ?>
+        <?php include 'private\includes\nav.php'; ?>
         <div class="main">
             <div class="login-page">
                 <div class="title">
                     <h1>Sign In</h1>
                 </div>
                 <div class="form-field">
-                    <form class="login-form" action="login.php" method="post" name="login" autocomplete="on">
+                    <form class="login-form" action="login" method="post" name="login" autocomplete="on">
                         <div class="form-control">
                             <label for="username">Username</label><br><br>
                             <input type="text" name="username" id="username" placeholder="Enter your username" required>

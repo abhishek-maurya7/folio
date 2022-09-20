@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <h1>SIGN UP</h1>
                 </div>
                 <div class="form-field">
-                    <form class="login-form" action="signup.php" method="post" name="login" autocomplete="on">
+                    <form class="login-form" action="signup" method="post" name="login" autocomplete="on">
                         <div class="form-control">
                             <label for="username">Username</label><br><br>
                             <input type="text" maxlength="14" name="username" id="username" placeholder="Enter your Username" required>

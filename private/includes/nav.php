@@ -19,10 +19,9 @@
         <a href="" target="_blank">About Us</a>
         <?php
         $url = $_SERVER['REQUEST_URI'];
-        //check if url contains login.php and signup.php and if it does then show nothing
-        if (strpos($url, 'login.php') == false || strpos($url, 'signup.php') == false) {
+        if (strpos($url, 'login') == false || strpos($url, 'signup') == false) {
             if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-                echo '<a href="logout.php">Logout</a>';
+                echo '<a href="logout">Logout</a>';
             } else {
                 echo '<a href="login">Login</a>';
             }
