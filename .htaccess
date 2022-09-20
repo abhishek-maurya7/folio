@@ -6,6 +6,7 @@ RewriteRule ^login$ login.php [L]
 RewriteRule ^signup$ signup.php [L]
 RewriteRule ^choice$ choice.php [L]
 RewriteRule ^personal-portfolio$ personal-portfolio.php [L]
+Rewriterule ^logout$ logout.php [L]
 RewriteRule ^404$ 404.php [L]
 
 RewriteRule ^([a-zA-Z0-9_]+)$ profile/ [NC]

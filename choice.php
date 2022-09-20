@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
-    header("location: login.php");
+    header("location: login");
 }
 ?>
 <!DOCTYPE html>
@@ -27,7 +27,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
 <body>
     <div class="container">
         <?php
-        include 'private/includes/nav.php';
+        include 'private\includes\nav.php';
         ?>
         <div class="row main">
             <div class="title">

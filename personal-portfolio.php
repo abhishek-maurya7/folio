@@ -1,12 +1,12 @@
 <?php
 session_start();
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
-    header("location: login.php");
+    header("location: login");
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    require "components\classes\class.php";
-    require 'components\db\_dbconnect.php';
+    require "private\classes\class.php";
+    require 'private\db\_dbconnect.php';
     $username = $_SESSION['username'];
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
@@ -64,10 +64,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Sofia' media="screen">
-    <link rel="icon" href="\components\images\logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="components\css\base.css">
-    <link rel="stylesheet" href="components\css\nav.css">
-    <link rel="stylesheet" href="components\css\create-personal-portfolio.css">
+    <link rel="icon" href="private\images\logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="private\css\base.css">
+    <link rel="stylesheet" href="private\css\nav.css">
+    <link rel="stylesheet" href="private\css\personal-portfolio.css">
 
     <script src="https://kit.fontawesome.com/0fe3b336ed.js" media="screen"></script>
 </head>
@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="container">
         <?php
-        include 'components/includes/nav.php';
+        include 'private\includes\nav.php';
         ?>
         <div class="row title">
             <h1> Create your portfolio </h1>
