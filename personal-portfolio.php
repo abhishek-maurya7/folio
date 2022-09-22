@@ -44,6 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bind_param("ssssssssssssssssssssssssssssss", $username, $firstName, $lastName, $email, $profileImg, $about, $instagram, $yt, $github, $twitter, $facebook, $linkedin, $projectTitle, $projectLink, $projectDescription, $projectTitle2, $projectLink2, $projectDescription2, $projectTitle3, $projectLink3, $projectDescription3, $certificateName, $certificateClaimDate, $certificateLink, $certificateName2, $certificateClaimDate2, $certificateLink2, $certificateName3, $certificateClaimDate3, $certificateLink3);
             $stmt->execute();
             echo "New record created successfully";
+            header("location: dashboard");
         } catch (PDOException $e) {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }

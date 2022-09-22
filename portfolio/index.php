@@ -23,8 +23,6 @@
         echo ("<pre>");
         print_r($row);
         echo ("</pre>");
-    } else {
-        header("Location: 404");
     }
     ?>
     <div class="container">

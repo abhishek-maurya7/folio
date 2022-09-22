@@ -20,6 +20,13 @@
     <div class="container">
         <?php include 'private\includes\nav.php'; ?>
     </div>
+    <div class="main">
+        <div class="error">
+            <h1>404</h1>
+            <h2>Page Not Found</h2>
+            <p>Sorry, the page you are looking for could not be found.</p>
+            <a href="index">Go to Home</a>
+        </div>
 </body>
 
 </html>

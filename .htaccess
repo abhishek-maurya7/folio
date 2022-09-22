@@ -1,14 +1,30 @@
 RewriteEngine On
+
+#If the file exists, don't rewrite
 RewriteCond %{REQUEST_FILENAME} !-f
+
+#If the directory exists, don't rewrite
 RewriteCond %{REQUEST_FILENAME} !-d
+
+#Forbid access to private files
+RewriteRule ^private/.*$ - [F]
+
+#Removing file extensions from base directory
 RewriteRule ^index$ index.php [L]
 RewriteRule ^login$ login.php [L]
 RewriteRule ^signup$ signup.php [L]
 RewriteRule ^choice$ choice.php [L]
 RewriteRule ^personal-portfolio$ personal-portfolio.php [L]
 Rewriterule ^logout$ logout.php [L]
+RewriteRule ^my-profile$ my-profile.php [L]
 RewriteRule ^404$ 404.php [L]
 
-RewriteRule ^([a-zA-Z0-9_]+)$ profile/ [NC]
-RewriteRule ^([a-zA-Z0-9_]+)/$ profile/ [NC]
-RewriteRule ^([a-zA-Z0-9_]+)/about$ profile/about.php [NC]
+#Rewriting URls for dashboard directory
+RewriteRule ^dashboard$ dashboard/ [L]
+RewriteRule ^dashboard/$ dashboard/ [L]
+RewriteRule ^dashboard/my-profile dashboard/my-profile.php [L]
+
+#Rewrriting URLs for portfolio folder and it's files
+RewriteRule ^([a-zA-Z0-9_]+)$ portfolio/ [NC]
+RewriteRule ^([a-zA-Z0-9_]+)/$ portfolio/ [NC]
+RewriteRule ^([a-zA-Z0-9_]+)/about$ portfolio/about.php [NC]
