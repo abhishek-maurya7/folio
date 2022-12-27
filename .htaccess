@@ -6,18 +6,19 @@ RewriteCond %{REQUEST_FILENAME} !-f
 #If the directory exists, don't rewrite
 RewriteCond %{REQUEST_FILENAME} !-d
 
-#Forbid access to private files
-RewriteRule ^private/.*$ - [F]
+#forbid access to the files in app folder
+RewriteRule ^app/private/.*$ - [F]
 
 #Removing file extensions from base directory
 RewriteRule ^index$ index.php [L]
-RewriteRule ^login$ login.php [L]
-RewriteRule ^signup$ signup.php [L]
-RewriteRule ^choice$ choice.php [L]
-RewriteRule ^personal-portfolio$ personal-portfolio.php [L]
-Rewriterule ^logout$ logout.php [L]
-RewriteRule ^my-profile$ my-profile.php [L]
-RewriteRule ^404$ 404.php [L]
+RewriteRule ^login$ app/login.php [L]
+RewriteRule ^signup$ app/signup.php [L]
+RewriteRule ^choice$ app/choice.php [L]
+RewriteRule ^personal-portfolio$ app/personal-portfolio.php [L]
+Rewriterule ^logout$ app/logout.php [L]
+RewriteRule ^pricing$ app/pricing.php [L]
+RewriteRule ^my-profile$ app/my-profile.php [L]
+RewriteRule ^404$ app/404.php [L]
 
 #Rewriting URls for dashboard directory
 RewriteRule ^dashboard$ dashboard/ [L]

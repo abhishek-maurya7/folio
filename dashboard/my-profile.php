@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
-    header("location: login");
+    header("location: http://localhost/folio/login");
 }
 ?>
 <!DOCTYPE html>
@@ -45,6 +45,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
             output.innerHTML += "<br/><br/> Good Night";
         }
     </script>
+
 </body>
 
 </html>

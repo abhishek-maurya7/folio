@@ -1,6 +1,7 @@
 <?php
 require "private\classes\class.php";
 require 'private\db\_dbconnect.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -15,42 +16,70 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             session_start();
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $username;
-            header("location: choice");
+            try {
+                $sql = "SELECT username FROM personalportfolio where username = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("s", $username);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                if ($result->num_rows > 0) {
+                    header("location: dashboard");
+                } else {
+                    header("location: choice");
+                }
+            } catch (mysqli_sql_exception $e) {
+                $showAlert =
+                    '<div class="notification alert">
+                        <i class="fa-solid fa-triangle-exclamation"></i>' . 'MySqlException: ' . $e->getMessage() . '<br/>' . $sql . '
+                    </div>';
+            }
         } else {
-            echo '<script>alert("Incorrect password")</script>';
+            $showAlert =
+                '<div class="notification alert">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    Invalid Password
+                </div>';
         }
     } else {
-        echo "<script>alert('Username does not exist')</script>";
+        $showAlert =
+            '<div class="notification alert">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                User does not exist
+            </div>';
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title> Folio </title>
+    <title> Folio | Sign IN</title>
     <meta name="keywords" content="Folio, Portfolio, Portfolio Generator" />
     <meta name="description" content="An amazing portfolio generator" />
     <meta name="author" content="Abhishek Maurya, Shashank Patil">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preload" as="font">
     <script src="https://kit.fontawesome.com/0fe3b336ed.js"></script>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Sofia&display=swap'>
-    <link rel="stylesheet" href='private\css\base.css'>
-    <link rel="stylesheet" href='private\css\nav.css'>
-    <link rel="stylesheet" href='private\css\login-register.css'>
+    <link rel="stylesheet" href='app\private\css\base.css' />
+    <link rel="stylesheet" href='app\private\css\nav.css' />
+    <link rel="stylesheet" href='app\private\css\login-register.css' />
 </head>
 
 <body>
-    <div class="container">
-        <?php include 'private\includes\nav.php'; ?>
-        <div class="main">
-            <div class="login-page">
+    <?php include 'private\includes\nav.php'; ?>
+    <main>
+        <section class="login-signup">
+            <div class="container">
+                <?php
+                global $showAlert;
+                echo  $showAlert;
+                ?>
                 <div class="title">
-                    <h1>Sign In</h1>
+                    <h1>SIGN IN</h1>
                 </div>
-                <div class="form-field">
-                    <form class="login-form" action="login" method="post" name="login" autocomplete="on">
+                <div class="login-signup-form">
+                    <form action="login" method="post" name="login-signup" autocomplete="on">
                         <div class="form-control">
                             <label for="username">Username</label><br><br>
                             <input type="text" name="username" id="username" placeholder="Enter your username" required>
@@ -65,13 +94,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                     </form>
                 </div>
-                <br>
-                <div class="account-status">
-                    <p>Don't Have a Account? <a href="signup">Sign Up</a> </p>
-                </div>
             </div>
-        </div>
-    </div>
+        </section>
+        <section class="account-status">
+            <div class="container">
+                <p>Don't Have an Account? <a href="signup">&nbsp; <u>Sign Up</u></a> </p>
+            </div>
+        </section>
+    </main>
 </body>
 
 </html>

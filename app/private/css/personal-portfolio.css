@@ -86,7 +86,7 @@ button {
     background-color: #5B4AA1;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 614px) {
     .form-field {
         margin: 10%;
     }
