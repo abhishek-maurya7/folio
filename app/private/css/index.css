@@ -1,23 +1,46 @@
-.main {
+main {
+    z-index: -1;
+}
+
+.hero {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    text-align: center;
 }
 
-.description {
-    border: #e4dede41 1px solid;
-    border-radius: 0.5rem;
-    margin: 0 0 1rem 0;
-}
-
-.description-text {
+.hero-content {
     padding: 1rem;
-    font-size: 2.2rem;
+    display: flex;
+    align-items: center;
+    border-radius: 0.5rem;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid #ffffff31;
+}
+
+.hero-title {
+    padding: 2rem;
+    font-size: 2rem;
+    color: #ffffff;
     text-align: center;
 }
 
-.description-image {
+.hero-image {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.hero-image img {
     width: 100%;
     height: auto;
+    border-radius: 0.5rem;
 }
 
 .get-started {
@@ -26,17 +49,15 @@
 }
 
 .bn5 {
-    font-weight: bold;
-    padding: 1rem 3.2rem;
+    padding: 0.6em 2em;
     border: none;
     outline: none;
-    color: #ffffff;
+    color: rgb(255, 255, 255);
     background: #111;
     cursor: pointer;
     position: relative;
     z-index: 0;
     border-radius: 10px;
-    text-decoration: none;
 }
 
 .bn5:before {
@@ -103,38 +124,28 @@
     border-radius: 10px;
 }
 
-@media screen and (min-width: 540px) {
-    .description-text {
-        font-size: 3rem;
-    }
-}
-
-@media screen and (min-width: 600px) {
-    .description-text {
-        font-size: 2.8rem;
+@media screen and (min-width: 614px) {
+    .hero-content {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 3rem;
     }
 
-    .description-image {
-        width: 50%;
+    .hero-image img {
+        width: 100%;
         height: auto;
-        margin: 2rem auto;
+        border-radius: 0.5rem;
     }
 }
 
-@media screen and (min-width: 768px) {
-    .description-text {
-        font-size: 3.5rem;
+@media screen and (min-width: 1536px) {
+    .hero-content {
+        padding: 1rem 5rem;
     }
-}
 
-@media screen and (min-width: 820px) {
-    .description-text {
-        font-size: 3.6rem;
-    }
-}
-
-@media screen and (min-width: 988px) {
-    .description-text {
-        font-size: 7.2rem;
+    .hero-image img {
+        width: 70%;
+        height: auto;
+        border-radius: 0.5rem;
     }
 }

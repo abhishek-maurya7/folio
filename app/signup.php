@@ -5,8 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $cpassword = $_POST['cpassword'];
-    $email = $_POST['email'];;
-
+    $email = $_POST['email'];
     if ($password == $cpassword) {
         if (!$evaluate->checkUsername($username)) {
             if (!$evaluate->checkEmail($email)) {
@@ -17,19 +16,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $stmt->bind_param("sss", $username, $email, $hash);
                     $result = $stmt->execute();
                     if ($result) {
-                        echo '<script>alert("Account created successfully")</script>';
+                        header("location: login");
                     }
-                } catch (Exception $e) {
-                    echo "Error: " . $e->getMessage();
+                } catch (mysqli_sql_exception $e) {
+                    $showAlert =
+                        '<div class="notification alert">
+                            <i class="fa-solid fa-triangle-exclamation"></i>' . 'MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
+                        </div>';
                 }
             } else {
-                echo '<script>alert("Email already exists")</script>';
+                $showAlert =
+                    '<div class="notification alert">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        Email already exists
+                    </div>';
             }
         } else {
-            echo '<script>alert("Username already exists")</script>';
+            $showAlert =
+                '<div class="notification alert">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    Username already exists
+                </div>';
         }
     } else {
-        echo '<script>alert("Passwords do not match")</script>';
+        $showAlert =
+            '<div class="notification alert">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                Passwords do not match
+            </div>';
     }
 }
 ?>
@@ -45,42 +59,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="preload" as="font">
     <script src="https://kit.fontawesome.com/0fe3b336ed.js"></script>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Sofia&display=swap'>
-    <link rel="stylesheet" href='private\css\base.css'>
-    <link rel="stylesheet" href='private\css\nav.css'>
-    <link rel="stylesheet" href='private\css\login-register.css'>
+    <link rel="stylesheet" href='app\private\css\base.css' />
+    <link rel="stylesheet" href='app\private\css\nav.css' />
+    <link rel="stylesheet" href='app\private\css\login-register.css' />
 </head>
 
 <body>
-    <div class="container">
-        <div class="row nav">
-            <input type="checkbox" id="nav-check">
-            <div class="nav-header">
-                <div class="nav-title">
-                    Folio
-                </div>
-            </div>
-            <div class="nav-btn">
-                <label for="nav-check">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </label>
-            </div>
-            <div class="nav-links">
-                <a href="https://github.com/NewbieCodes1/folio" target="_blank" rel="noopener">Github</a>
-                <a href="" target="_blank">ABC</a>
-                <a mailto="mailto:shashankpatil360@gmail.com,">Contact Us</a>
-                <a href="" target="_blank">About Us</a>
-            </div>
-        </div>
-        <hr>
-        <div class="main">
-            <div class="login-page">
+    <?php include 'private/includes/nav.php'; ?>
+    <main>
+        <section class="login-signup">
+            <div class="container">
+                <?php
+                global $showAlert;
+                echo  $showAlert;
+                ?>
                 <div class="title">
                     <h1>SIGN UP</h1>
                 </div>
-                <div class="form-field">
-                    <form class="login-form" action="signup" method="post" name="login" autocomplete="on">
+                <div class="login-signup-form">
+                    <form action="signup" method="post" name="login-signup" autocomplete="on">
                         <div class="form-control">
                             <label for="username">Username</label><br><br>
                             <input type="text" maxlength="14" name="username" id="username" placeholder="Enter your Username" required>
@@ -103,14 +100,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                     </form>
                 </div>
-                <br>
-
-                <div class="account-status">
-                    <p>Already Have an Account? <a href="login.php">Sign In</a> </p>
-                </div>
             </div>
-        </div>
-    </div>
+        </section>
+        <section class="account-status">
+            <div class="container">
+                <p>Already Have an Account? <a href="login">&nbsp; <u>Sign In</u></a> </p>
+            </div>
+        </section>
+    </main>
 </body>
 
 </html>

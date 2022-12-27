@@ -29,13 +29,5 @@ class Evaluate
             return true;
         }
     }
-
-    public function logout()
-    {
-        session_start();
-        session_unset();
-        session_destroy();
-        header("location: login");
-    }
 }
 $evaluate = new Evaluate();

@@ -8,7 +8,7 @@
 
 <body>
     <?php
-    require '..\private\db\_dbconnect.php';
+    require '..\app\private\db\_dbconnect.php';
     $path = $_SERVER['REQUEST_URI'];
     $file = explode('/', $path);
     $file = $file[2];

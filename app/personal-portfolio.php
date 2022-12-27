@@ -43,13 +43,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("ssssssssssssssssssssssssssssss", $username, $firstName, $lastName, $email, $profileImg, $about, $instagram, $yt, $github, $twitter, $facebook, $linkedin, $projectTitle, $projectLink, $projectDescription, $projectTitle2, $projectLink2, $projectDescription2, $projectTitle3, $projectLink3, $projectDescription3, $certificateName, $certificateClaimDate, $certificateLink, $certificateName2, $certificateClaimDate2, $certificateLink2, $certificateName3, $certificateClaimDate3, $certificateLink3);
             $stmt->execute();
-            echo "New record created successfully";
-            header("location: dashboard");
-        } catch (PDOException $e) {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            header("location: ../dashboard");
+        } catch (mysqli_sql_exception $e) {
+            $showAlert =
+                '<div class="notification alert">
+                    <i class="fa-solid fa-triangle-exclamation"></i>' . 'MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
+                </div>';
         }
     } else {
-        echo "Username could not be found.";
+        $showAlert =
+            '<div class="notification alert">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                User does not exist
+            </div>';
     }
 }
 ?>
@@ -63,12 +69,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="description" content="An amazing portfolio generator">
     <meta name="author" content="Abhishek Maurya, Shashank Patil">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Sofia' media="screen">
     <link rel="icon" href="private\images\logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="private\css\base.css">
-    <link rel="stylesheet" href="private\css\nav.css">
-    <link rel="stylesheet" href="private\css\personal-portfolio.css">
+    <link rel="stylesheet" href="app\private\css\base.css">
+    <link rel="stylesheet" href="app\private\css\nav.css">
+    <link rel="stylesheet" href="app\private\css\personal-portfolio.css">
 
     <script src="https://kit.fontawesome.com/0fe3b336ed.js" media="screen"></script>
 </head>
@@ -78,12 +83,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php
         include 'private\includes\nav.php';
         ?>
+        <?php
+        global $showAlert;
+        echo  $showAlert;
+        ?>
         <div class="row title">
             <h1> Create your portfolio </h1>
         </div>
         <div class="row main">
             <div class="form-field">
-                <form class="information-form" action="personal-portfolio.php" method="post" name="information-form" autocomplete="on">
+                <form class="information-form" action="personal-portfolio" method="post" name="information-form" autocomplete="on">
                     <div class="form-control">
                         <label for="Firstname"> Name </label><br /> <br />
                         <div class="name-area">

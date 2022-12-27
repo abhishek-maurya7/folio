@@ -1,7 +1,12 @@
-.main {
-    align-items: center;
+.title {
     text-align: center;
-    text-decoration: none;
+    font-size: 2rem;
+}
+
+.container {
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
 }
 
 .template-container {
@@ -36,12 +41,13 @@
 .template-image img {
     width: 85%;
     height: auto;
+    border-radius: 0.5rem;
 }
-
 
 @media screen and (min-width: 988px) {
     .template-container {
         display: flex;
+        flex-direction: row;
         justify-content: space-around;
     }
 

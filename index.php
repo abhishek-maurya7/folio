@@ -2,37 +2,37 @@
 <html lang="en">
 
 <head>
-    <title> Folio </title>
-    <meta charset="utf-8">
-    <meta name="keywords" content="Folio, Portfolio, Portfolio Generator">
-    <meta name="description" content="An amazing portfolio generator">
-    <meta name="author" content="Abhishek Maurya, Shashank Patil">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/0fe3b336ed.js" media="screen"></script>
-    <link rel="stylesheet" href="private\css\base.css">
-    <link rel="stylesheet" href="private\css\nav.css">
-    <link rel="stylesheet" href="private\css\index.css">
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Sofia&display=swap' media="screen">
-    <link rel="icon" href="components\images\logo.png" type="image/x-icon">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Folio | Home</title>
+    <link rel="stylesheet" href="app/private/css/base.css" />
+    <link rel="stylesheet" href="app/private/css/nav.css" />
+    <link rel="stylesheet" href="app/private/css/index.css" />
+    <style></style>
 </head>
 
 <body>
-    <div class="container">
-        <?php include 'private\includes\nav.php'; ?>
-        <div class="main">
-            <div class="row  description">
-                <div class="description-text col-4">
-                    <p>Get Your Portfolio Ready In Just Few Minutes</p>
+    <main>
+        <?php include 'app/private/includes/nav.php'; ?>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-title">
+                        <h1>Get Your Portfolio Ready In Just Few Minutes</h1>
+                    </div>
+                    <div class="hero-image">
+                        <img src="app/private/images/mockup.avif" alt="folio" />
+                    </div>
                 </div>
-                <span class="description-image">
-                    <img class="description-image" src="private\images\mockup.avif" alt="folio">
-                </span>
+                <div class="row get-started">
+                    <button class="bn5" onclick="document.location='signup'">
+                        Get Started
+                    </button>
+                </div>
             </div>
-            <div class="row get-started">
-                <button class="bn5" onclick="document.location='signup'">Get Started</button>
-            </div>
-        </div>
-    </div>
+        </section>
+    </main>
 </body>
 
 </html>
