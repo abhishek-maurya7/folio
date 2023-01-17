@@ -48,7 +48,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
 
 <body>
   <div class="container">
-    <?php include '../app/private/includes/nav.php' ?>
+    <?php include_once '../app/private/include_onces/nav.php' ?>
     <div class="main">
       <div class="card">
         <h4 class="greeting"></h4>

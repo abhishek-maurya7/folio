@@ -23,7 +23,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
 </head>
 
 <body>
-    <?php include 'private/includes/nav.php'; ?>
+    <?php include_once 'private/include_onces/nav.php'; ?>
     <main>
         <div class="container">
             <section class="title">

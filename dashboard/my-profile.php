@@ -24,7 +24,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
 
 <body>
     <div class="container">
-        <?php include '../app/private/includes/nav.php' ?>
+        <?php include_once '../app/private/include_onces/nav.php' ?>
         <div class="main" id="greeting">
             <h1>hi</h1>
         </div>
