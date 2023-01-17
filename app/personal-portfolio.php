@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("ssssssssssssssssssssssssssssss", $username, $firstName, $lastName, $email, $profileImg, $about, $instagram, $yt, $github, $twitter, $facebook, $linkedin, $projectTitle, $projectLink, $projectDescription, $projectTitle2, $projectLink2, $projectDescription2, $projectTitle3, $projectLink3, $projectDescription3, $certificateName, $certificateClaimDate, $certificateLink, $certificateName2, $certificateClaimDate2, $certificateLink2, $certificateName3, $certificateClaimDate3, $certificateLink3);
             $stmt->execute();
-            header("location: ../dashboard");
+            header("location: dashboard");
         } catch (mysqli_sql_exception $e) {
             $showAlert =
                 '<div class="notification alert">
