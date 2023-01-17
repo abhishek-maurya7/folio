@@ -15,7 +15,7 @@
             $url = $_SERVER['REQUEST_URI'];
             if (strpos($url, 'login') == false || strpos($url, 'signup') == false) {
                 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-                    echo '<li><button onclick="http://localhost/folio/logout">Logout</button></li>';
+                    echo '<li><a href="http://localhost/folio/logout">Logout</a></li>';
                 } else {
                     echo '<li><a href="http://localhost/folio/login">Login</a></li>';
                 }
