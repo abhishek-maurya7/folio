@@ -14,7 +14,7 @@
 
 <body>
     <main>
-        <?php include 'app/private/includes/nav.php'; ?>
+        <?php include_once 'app/private/include_onces/nav.php'; ?>
         <section class="hero">
             <div class="container">
                 <div class="hero-content">

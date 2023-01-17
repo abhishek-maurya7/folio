@@ -3,7 +3,7 @@ class Evaluate
 {
     public function checkUsername($validateUsername)
     {
-        require 'private\db\_dbconnect.php';
+        require_once 'private\db\_dbconnect.php';
         $sql = "SELECT username FROM users WHERE username = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $validateUsername);
@@ -17,7 +17,7 @@ class Evaluate
     }
     public function checkEmail($validateEmail)
     {
-        require 'private\db\_dbconnect.php';
+        require_once 'private\db\_dbconnect.php';
         $sql = "SELECT email FROM users WHERE email = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $validateEmail);

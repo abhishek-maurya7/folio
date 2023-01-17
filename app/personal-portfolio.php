@@ -5,8 +5,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    require "private\classes\class.php";
-    require 'private\db\_dbconnect.php';
+    require_once "private\classes\class.php";
+    require_once 'private\db\_dbconnect.php';
     $username = $_SESSION['username'];
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
@@ -81,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="container">
         <?php
-        include 'private\includes\nav.php';
+        include_once 'private\include_onces\nav.php';
         ?>
         <?php
         global $showAlert;
@@ -96,23 +96,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="form-control">
                         <label for="Firstname"> Name </label><br /> <br />
                         <div class="name-area">
-                            <input type="text" name="firstName" id="firstName" placeholder="Firstname" required />
+                            <input type="text" name="firstName" id="firstName" placeholder="Firstname" require_onced />
                             <br />
                             <br />
-                            <input type="text" name="lastName" id="lastName" placeholder="LastName" required />
+                            <input type="text" name="lastName" id="lastName" placeholder="LastName" require_onced />
                         </div>
                     </div>
                     <div class="form-control">
                         <label for="email"> Email </label><br /> <br />
-                        <input type="email" name="email" id="email" placeholder="Enter your email" required />
+                        <input type="email" name="email" id="email" placeholder="Enter your email" require_onced />
                     </div>
                     <div class="form-control">
                         <label for="profileImage">Profile Image</label> <br /> <br />
-                        <input type="file" accept="image/*" name="profileImg" id="profileImg" class="inputFile" required />
+                        <input type="file" accept="image/*" name="profileImg" id="profileImg" class="inputFile" require_onced />
                     </div>
                     <div class="form-control">
                         <label for="about"> About </label><br /> <br />
-                        <textarea class="form-control" maxlength="300" rows="5" name="aboutMe" id="about" placeholder="Write about you" required></textarea>
+                        <textarea class="form-control" maxlength="300" rows="5" name="aboutMe" id="about" placeholder="Write about you" require_onced></textarea>
                     </div>
                     <br />
                     <div class="form-control">

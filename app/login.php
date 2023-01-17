@@ -1,6 +1,6 @@
 <?php
-require "private\classes\class.php";
-require 'private\db\_dbconnect.php';
+require_once "private\classes\class.php";
+require_once 'private\db\_dbconnect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <?php include 'private\includes\nav.php'; ?>
+    <?php include_once 'private\include_onces\nav.php'; ?>
     <main>
         <section class="login-signup">
             <div class="container">
@@ -82,11 +82,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <form action="login" method="post" name="login-signup" autocomplete="on">
                         <div class="form-control">
                             <label for="username">Username</label><br><br>
-                            <input type="text" name="username" id="username" placeholder="Enter your username" required>
+                            <input type="text" name="username" id="username" placeholder="Enter your username" require_onced>
                         </div>
                         <div class="form-control">
                             <label for="password">Password</label><br><br>
-                            <input type="password" name="password" id="password" placeholder="Enter your password" required>
+                            <input type="password" name="password" id="password" placeholder="Enter your password" require_onced>
                         </div>
                         <br>
                         <div class="form-control">

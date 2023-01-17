@@ -1,6 +1,6 @@
 <?php
-require "private\classes\class.php";
-require 'private\db\_dbconnect.php';
+require_once "private\classes\class.php";
+require_once 'private\db\_dbconnect.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <?php include 'private/includes/nav.php'; ?>
+    <?php include_once 'private/include_onces/nav.php'; ?>
     <main>
         <section class="login-signup">
             <div class="container">
@@ -80,19 +80,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <form action="signup" method="post" name="login-signup" autocomplete="on">
                         <div class="form-control">
                             <label for="username">Username</label><br><br>
-                            <input type="text" maxlength="14" name="username" id="username" placeholder="Enter your Username" required>
+                            <input type="text" maxlength="14" name="username" id="username" placeholder="Enter your Username" require_onced>
                         </div>
                         <div class="form-control">
                             <label for="email">Email</label><br><br>
-                            <input type="email" maxlength="35" name="email" id="email" placeholder="Enter your Email" required>
+                            <input type="email" maxlength="35" name="email" id="email" placeholder="Enter your Email" require_onced>
                         </div>
                         <div class="form-control">
                             <label for="password">Password</label><br><br>
-                            <input type="password" maxlength="14" name="password" id="password" placeholder="Enter your Password" required>
+                            <input type="password" maxlength="14" name="password" id="password" placeholder="Enter your Password" require_onced>
                         </div>
                         <div class="form-control">
                             <label for="password">Re-Enter Password</label><br><br>
-                            <input type="password" name="cpassword" id="cpassword" placeholder="Enter your Password" required>
+                            <input type="password" name="cpassword" id="cpassword" placeholder="Enter your Password" require_onced>
                         </div>
                         <br>
                         <div class="form-control">
