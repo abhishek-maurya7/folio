@@ -19,7 +19,7 @@
             <div class="container">
                 <div class="hero-content">
                     <div class="hero-title">
-                        <h1>Get Your Portfolio Ready In Just Few Minutes</h1>
+                        <h1>Get Your Portfolio Ready In Just Few Minutes.</h1>
                     </div>
                     <div class="hero-image">
                         <img src="app/private/images/mockup.avif" alt="folio" />
