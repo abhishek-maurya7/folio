@@ -1,11 +1,15 @@
 <?php
-require_once "private\classes\class.php";
-require_once 'private\db\_dbconnect.php';
+require 'private\classes\Class.php';
+require 'private\db\_dbconnect.php';
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    if ($evaluate->checkUsername($username)) {
+    $username = strip_tags(htmlspecialchars(trim($_POST['username']), ENT_QUOTES, 'UTF-8'));
+    $password = strip_tags(htmlspecialchars(trim($_POST['password']), ENT_QUOTES, 'UTF-8'));
+    //strip_tags() removes HTML and PHP tags from a string
+    //htmlspecialchars() converts special characters to HTML entities
+    //trim() removes whitespace from both sides of a string
+    if ($validate->checkUsername($username)) {
         $sql = "SELECT password FROM users WHERE username = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $username);
@@ -14,6 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $row = $result->fetch_assoc();
         if (password_verify($password, $row['password'])) {
             session_start();
+            session_regenerate_id(true);
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $username;
             try {
@@ -67,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <?php include_once 'private\include_onces\nav.php'; ?>
+    <?php include 'private\includes\nav.php'; ?>
     <main>
         <section class="login-signup">
             <div class="container">
@@ -82,11 +87,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <form action="login" method="post" name="login-signup" autocomplete="on">
                         <div class="form-control">
                             <label for="username">Username</label><br><br>
-                            <input type="text" name="username" id="username" placeholder="Enter your username" require_onced>
+                            <input type="text" name="username" id="username" placeholder="Enter your username" required>
                         </div>
                         <div class="form-control">
                             <label for="password">Password</label><br><br>
-                            <input type="password" name="password" id="password" placeholder="Enter your password" require_onced>
+                            <input type="password" name="password" id="password" placeholder="Enter your password" required>
                         </div>
                         <br>
                         <div class="form-control">

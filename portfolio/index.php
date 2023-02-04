@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="utf-8">
@@ -8,11 +8,11 @@
 
 <body>
     <?php
-    require_once '..\app\private\db\_dbconnect.php';
+    require '..\app\private\db\_dbconnect.php';
     $path = $_SERVER['REQUEST_URI'];
     $file = explode('/', $path);
     $file = $file[2];
-    echo $file;
+    echo basename(__DIR__);
     $sql = "SELECT * FROM personalportfolio WHERE username = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $file);

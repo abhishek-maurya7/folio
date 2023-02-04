@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,29 +9,28 @@
     <link rel="stylesheet" href="app/private/css/nav.css" />
     <link rel="stylesheet" href="app/private/css/index.css" />
     <style></style>
-</head>
+  </head>
 
-<body>
+  <body>
     <main>
-        <?php include_once 'app/private/include_onces/nav.php'; ?>
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="hero-title">
-                        <h1>Get Your Portfolio Ready In Just Few Minutes.</h1>
-                    </div>
-                    <div class="hero-image">
-                        <img src="app/private/images/mockup.avif" alt="folio" />
-                    </div>
-                </div>
-                <div class="row get-started">
-                    <button class="bn5" onclick="document.location='signup'">
-                        Get Started
-                    </button>
-                </div>
+      <?php include 'app/private/includes/nav.php'; ?>
+      <section class="hero">
+        <div class="container">
+          <div class="hero-content">
+            <div class="hero-title">
+              <h1>Get Your Portfolio Ready In Just Few Minutes</h1>
             </div>
-        </section>
+            <div class="hero-image">
+              <img src="app/private/images/mockup.avif" alt="folio" />
+            </div>
+          </div>
+          <div class="row get-started">
+            <button class="bn5" onclick="document.location='signup'">
+              Get Started
+            </button>
+          </div>
+        </div>
+      </section>
     </main>
-</body>
-
+  </body>
 </html>
