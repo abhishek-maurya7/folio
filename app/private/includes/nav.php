@@ -17,7 +17,11 @@
                 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                     echo '<li><a href="http://localhost/folio/logout">Logout</a></li>';
                 } else {
-                    echo '<li><a href="http://localhost/folio/login">Login</a></li>';
+                    if (strpos($url, 'login') == true) {
+                        echo '<li><a href="http://localhost/folio/signup">Signup</a></li>';
+                    } else if (strpos($url, 'signup') == true) {
+                        echo '<li><a href="http://localhost/folio/login">Login</a></li>';
+                    }
                 }
             }
             ?>

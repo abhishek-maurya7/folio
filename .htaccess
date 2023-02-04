@@ -6,7 +6,7 @@ RewriteCond %{REQUEST_FILENAME} !-f
 #If the directory exists, don't rewrite
 RewriteCond %{REQUEST_FILENAME} !-d
 
-#forbid access to the files in app folder
+#forbid access to the files in private folder
 RewriteRule ^app/private/.*$ - [F]
 
 #Removing file extensions from base directory

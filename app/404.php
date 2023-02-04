@@ -18,7 +18,7 @@
 
 <body>
     <div class="container">
-        <?php include_once 'private\include_onces\nav.php'; ?>
+        <?php include 'private\includes\nav.php'; ?>
     </div>
     <div class="main">
         <div class="error">

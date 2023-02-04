@@ -1,29 +1,32 @@
 <?php
-require_once "private\classes\class.php";
-require_once 'private\db\_dbconnect.php';
+require "private\classes\class.php";
+require 'private\db\_dbconnect.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $cpassword = $_POST['cpassword'];
     $email = $_POST['email'];
+    $username = strip_tags(htmlspecialchars(trim($_POST['username']), ENT_QUOTES, 'UTF-8'));
+    $password = strip_tags(htmlspecialchars(trim($_POST['password']), ENT_QUOTES, 'UTF-8'));
     if ($password == $cpassword) {
-        if (!$evaluate->checkUsername($username)) {
-            if (!$evaluate->checkEmail($email)) {
-                try {
-                    $hash = password_hash($password, PASSWORD_DEFAULT);
-                    $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
-                    $stmt = $conn->prepare($sql);
-                    $stmt->bind_param("sss", $username, $email, $hash);
-                    $result = $stmt->execute();
-                    if ($result) {
-                        header("location: login");
-                    }
-                } catch (mysqli_sql_exception $e) {
-                    $showAlert =
-                        '<div class="notification alert">
-                            <i class="fa-solid fa-triangle-exclamation"></i>' . 'MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
-                        </div>';
-                }
+        if (!$validate->checkUsername($username)) {
+            if (!$validate->checkEmail($email)) {
+                $validate->createAccount($username, $email, $password);
+                // try {
+                //     $hash = password_hash($password, PASSWORD_DEFAULT);
+                //     $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+                //     $stmt = $conn->prepare($sql);
+                //     $stmt->bind_param("sss", $username, $email, $hash);
+                //     $result = $stmt->execute();
+                //     if ($result) {
+                //         header("location: login");
+                //     }
+                // } catch (mysqli_sql_exception $e) {
+                //     $showAlert =
+                //         '<div class="notification alert">
+                //             <i class="fa-solid fa-triangle-exclamation"></i>' . 'MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
+                //         </div>';
+                // }
             } else {
                 $showAlert =
                     '<div class="notification alert">
@@ -65,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <?php include_once 'private/include_onces/nav.php'; ?>
+    <?php include 'private/includes/nav.php'; ?>
     <main>
         <section class="login-signup">
             <div class="container">
@@ -80,19 +83,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <form action="signup" method="post" name="login-signup" autocomplete="on">
                         <div class="form-control">
                             <label for="username">Username</label><br><br>
-                            <input type="text" maxlength="14" name="username" id="username" placeholder="Enter your Username" require_onced>
+                            <input type="text" maxlength="14" name="username" id="username" placeholder="Enter your Username" required>
                         </div>
                         <div class="form-control">
                             <label for="email">Email</label><br><br>
-                            <input type="email" maxlength="35" name="email" id="email" placeholder="Enter your Email" require_onced>
+                            <input type="email" maxlength="35" name="email" id="email" placeholder="Enter your Email" required>
                         </div>
                         <div class="form-control">
                             <label for="password">Password</label><br><br>
-                            <input type="password" maxlength="14" name="password" id="password" placeholder="Enter your Password" require_onced>
+                            <input type="password" maxlength="14" name="password" id="password" placeholder="Enter your Password" required>
                         </div>
                         <div class="form-control">
                             <label for="password">Re-Enter Password</label><br><br>
-                            <input type="password" name="cpassword" id="cpassword" placeholder="Enter your Password" require_onced>
+                            <input type="password" name="cpassword" id="cpassword" placeholder="Enter your Password" required>
                         </div>
                         <br>
                         <div class="form-control">
