@@ -1,43 +1,24 @@
 <?php
-require 'private\classes\Class.php';
+require 'private\functions\function.php';
 require 'private\db\_dbconnect.php';
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = strip_tags(htmlspecialchars(trim($_POST['username']), ENT_QUOTES, 'UTF-8'));
-    $password = strip_tags(htmlspecialchars(trim($_POST['password']), ENT_QUOTES, 'UTF-8'));
-    //strip_tags() removes HTML and PHP tags from a string
-    //htmlspecialchars() converts special characters to HTML entities
-    //trim() removes whitespace from both sides of a string
+    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
     if ($validate->checkUsername($username)) {
-        $sql = "SELECT password FROM users WHERE username = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $username);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
-        if (password_verify($password, $row['password'])) {
-            session_start();
+        if ($validate->checkPassword($username, $password)) {
+            // regenerate session ID after successful login
             session_regenerate_id(true);
+
+            // set session cookie options
+            $secure = true; // only set secure flag if using HTTPS
+            $httponly = true;
+            session_set_cookie_params(0, '/', '', $secure, $httponly);
+
+            session_start();
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $username;
-            try {
-                $sql = "SELECT username FROM personalportfolio where username = ?";
-                $stmt = $conn->prepare($sql);
-                $stmt->bind_param("s", $username);
-                $stmt->execute();
-                $result = $stmt->get_result();
-                if ($result->num_rows > 0) {
-                    header("location: dashboard");
-                } else {
-                    header("location: choice");
-                }
-            } catch (mysqli_sql_exception $e) {
-                $showAlert =
-                    '<div class="notification alert">
-                        <i class="fa-solid fa-triangle-exclamation"></i>' . 'MySqlException: ' . $e->getMessage() . '<br/>' . $sql . '
-                    </div>';
-            }
+            $validate->loginUser($username);
         } else {
             $showAlert =
                 '<div class="notification alert">

@@ -61,11 +61,11 @@
 .nav-links li {
     display: block;
     list-style: none;
-    padding: 1rem;
-    border-radius: 0.5rem;
 }
 
-.nav-links li a {
+.nav-links a {
+    padding: 1.2rem;
+    border-radius: 0.5rem;
     font-size: 2rem;
     text-decoration: none;
     color: #ffffff;
@@ -73,7 +73,7 @@
     margin: 2rem 0;
 }
 
-.nav-links li:hover {
+.nav-links a:hover {
     background-color: #0000004d;
 }
 
