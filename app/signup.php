@@ -1,5 +1,5 @@
 <?php
-require "private\classes\class.php";
+require "private\functions\function.php";
 require 'private\db\_dbconnect.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
@@ -12,21 +12,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (!$validate->checkUsername($username)) {
             if (!$validate->checkEmail($email)) {
                 $validate->createAccount($username, $email, $password);
-                // try {
-                //     $hash = password_hash($password, PASSWORD_DEFAULT);
-                //     $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
-                //     $stmt = $conn->prepare($sql);
-                //     $stmt->bind_param("sss", $username, $email, $hash);
-                //     $result = $stmt->execute();
-                //     if ($result) {
-                //         header("location: login");
-                //     }
-                // } catch (mysqli_sql_exception $e) {
-                //     $showAlert =
-                //         '<div class="notification alert">
-                //             <i class="fa-solid fa-triangle-exclamation"></i>' . 'MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
-                //         </div>';
-                // }
             } else {
                 $showAlert =
                     '<div class="notification alert">

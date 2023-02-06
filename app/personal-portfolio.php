@@ -5,7 +5,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    require "private\classes\class.php";
+    require "private\functions\function.php";
     require 'private\db\_dbconnect.php';
     $username = $_SESSION['username'];
     $firstName = $_POST['firstName'];

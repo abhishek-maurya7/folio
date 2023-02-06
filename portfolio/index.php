@@ -12,7 +12,6 @@
     $path = $_SERVER['REQUEST_URI'];
     $file = explode('/', $path);
     $file = $file[2];
-    echo basename(__DIR__);
     $sql = "SELECT * FROM personalportfolio WHERE username = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $file);

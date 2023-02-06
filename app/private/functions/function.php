@@ -1,7 +1,7 @@
 <?php
 class Validate
 {
-    public function checkUsername($validateUsername)
+    public function checkUsername($validateUsername) //Checks whether the username is available
     {
         require 'private\db\_dbconnect.php';
         $sql = "SELECT username FROM users WHERE username = ?";
@@ -15,7 +15,8 @@ class Validate
             return true;
         }
     }
-    public function checkEmail($validateEmail)
+
+    public function checkEmail($validateEmail) //Checks whether the email has already been used
     {
         require 'private\db\_dbconnect.php';
         $sql = "SELECT email FROM users WHERE email = ?";
@@ -30,7 +31,8 @@ class Validate
         }
     }
 
-    public function createAccount($username, $email, $password)
+
+    public function createAccount($username, $email, $password) //Creates an account
     {
         require 'private\db\_dbconnect.php';
         try {
@@ -49,7 +51,8 @@ class Validate
                         </div>';
         }
     }
-    public function checkPassword($username)
+
+    public function checkPassword($username, $password) //Checks whether the password is correct
     {
         require 'private\db\_dbconnect.php';
         try {
@@ -71,7 +74,8 @@ class Validate
                         </div>';
         }
     }
-    public function verifyUser($username)
+
+    public function loginUser($username) //Logs in the user and starts the session
     {
         require 'private\db\_dbconnect.php';
         try {
@@ -90,7 +94,10 @@ class Validate
                 '<div class="notification alert">
                         <i class="fa-solid fa-triangle-exclamation"></i>' . 'MySqlException: ' . $e->getMessage() . '<br/>' . $sql . '
                     </div>';
+
+            echo $showAlert;
         }
     }
 }
+
 $validate = new Validate();
