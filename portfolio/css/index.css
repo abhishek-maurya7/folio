@@ -85,17 +85,19 @@ i {
 }
 
 .arrow-container {
-    position: absolute;
     bottom: 0;
-    height: 8rem;
-    width: 8rem;
+    width: 5rem;
+    height: 5rem;
+    margin: 2rem;
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    background-color: #2b124A;
     border-radius: 50%;
+    position: absolute;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
     animation: jump 1s infinite;
+    border: 6px solid #4A1A8B;
+    box-shadow: 0 0 20px 6px rgba(0, 0, 0, 0.451);
 }
 
 @keyframes jump {
