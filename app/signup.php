@@ -1,13 +1,11 @@
 <?php
-require "private\functions\function.php";
 require 'private\db\_dbconnect.php';
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $cpassword = $_POST['cpassword'];
-    $email = $_POST['email'];
-    $username = strip_tags(htmlspecialchars(trim($_POST['username']), ENT_QUOTES, 'UTF-8'));
-    $password = strip_tags(htmlspecialchars(trim($_POST['password']), ENT_QUOTES, 'UTF-8'));
+require 'private\functions\function.php';
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Signup'])) {
+    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+    $cpassword = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
     if ($password == $cpassword) {
         if (!$validate->checkUsername($username)) {
             if (!$validate->checkEmail($email)) {
@@ -84,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                         <br>
                         <div class="form-control">
-                            <button class="button" href="">Sign Up</button>
+                            <button class="button" name="Signup">Sign Up</button>
                         </div>
                     </form>
                 </div>

@@ -5,13 +5,34 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    require "private\functions\function.php";
-    require 'private\db\_dbconnect.php';
+    require 'private/functions/function.php';
+    require 'private/db/_dbconnect.php';
     $username = $_SESSION['username'];
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
+    $profession = $_POST['profession'];
     $email = $_POST['email'];
-    $profileImg = $_POST['profileImg'];
+
+    $imgType = $_FILES['profileImg']['type'];
+    $allowedTypes = array('image/jpeg', 'image/png', 'image/jpg');
+    if (!in_array($imgType, $allowedTypes)) {
+        $showAlert =
+            '<div class="notification alert">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                Image type should be jpeg, jpg or png
+            </div>';
+    }
+    $imgSize = $_FILES['profileImg']['size'];
+    if ($imgSize > 5000000) {
+        $showAlert =
+            '<div class="notification alert">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                Image size should be less than 5MB
+            </div>';
+    }
+    $img = $_FILES['profileImg']['tmp_name'];
+    $imgContent = addslashes(file_get_contents($img));
+
     $about = $_POST['aboutMe'];
     $instagram = $_POST['instagram'];
     $yt = $_POST['yt'];
@@ -39,9 +60,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $certificateLink3 = $_POST['certificateLink3'];
     if ($validate->checkUsername($username)) {
         try {
-            $sql = "INSERT INTO personalportfolio (username, firstName, lastName, email, profileImg, aboutMe, instagram, yt, github, twitter, facebook, linkedIn, projectTitle, projectLink, projectDescription, projectTitle2, projectLink2, projectDescription2, projectTitle3, projectLink3, projectDescription3, certificateName, certificateClaimDate, certificateLink, certificateName2, certificateClaimDate2, certificateLink2, certificateName3, certificateClaimDate3, certificateLink3) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO personalPortfolio (username, firstName, lastName, profession, email, profileImg, aboutMe, instagram, yt, github, twitter, facebook, linkedIn, projectTitle, projectLink, projectDescription, projectTitle2, projectLink2, projectDescription2, projectTitle3, projectLink3, projectDescription3, certificateName, certificateClaimDate, certificateLink, certificateName2, certificateClaimDate2, certificateLink2, certificateName3, certificateClaimDate3, certificateLink3) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ssssssssssssssssssssssssssssss", $username, $firstName, $lastName, $email, $profileImg, $about, $instagram, $yt, $github, $twitter, $facebook, $linkedin, $projectTitle, $projectLink, $projectDescription, $projectTitle2, $projectLink2, $projectDescription2, $projectTitle3, $projectLink3, $projectDescription3, $certificateName, $certificateClaimDate, $certificateLink, $certificateName2, $certificateClaimDate2, $certificateLink2, $certificateName3, $certificateClaimDate3, $certificateLink3);
+            $stmt->bind_param("sssssssssssssssssssssssssssssss", $username, $firstName, $lastName, $profession, $email, $imgContent, $about, $instagram, $yt, $github, $twitter, $facebook, $linkedin, $projectTitle, $projectLink, $projectDescription, $projectTitle2, $projectLink2, $projectDescription2, $projectTitle3, $projectLink3, $projectDescription3, $certificateName, $certificateClaimDate, $certificateLink, $certificateName2, $certificateClaimDate2, $certificateLink2, $certificateName3, $certificateClaimDate3, $certificateLink3);
             $stmt->execute();
             header("location: dashboard");
         } catch (mysqli_sql_exception $e) {
@@ -92,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <div class="row main">
             <div class="form-field">
-                <form class="information-form" action="personal-portfolio" method="post" name="information-form" autocomplete="on">
+                <form class="information-form" action="personal-portfolio" method="post" name="information-form" enctype="multipart/form-data" autocomplete="on">
                     <div class="form-control">
                         <label for="Firstname"> Name </label><br /> <br />
                         <div class="name-area">
@@ -103,12 +124,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                     </div>
                     <div class="form-control">
+                        <label for="profession"> profession </label><br /> <br />
+                        <input type="text" name="profession" id="profession" placeholder="Enter your profession" required />
+                    </div>
+                    <div class="form-control">
                         <label for="email"> Email </label><br /> <br />
                         <input type="email" name="email" id="email" placeholder="Enter your email" required />
                     </div>
                     <div class="form-control">
                         <label for="profileImage">Profile Image</label> <br /> <br />
-                        <input type="file" accept="image/*" name="profileImg" id="profileImg" class="inputFile" required />
+                        <input type="file" name="profileImg" id="profileImg" class="inputFile" required />
                     </div>
                     <div class="form-control">
                         <label for="about"> About </label><br /> <br />
