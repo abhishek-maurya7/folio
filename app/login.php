@@ -2,9 +2,9 @@
 require 'private\functions\function.php';
 require 'private\db\_dbconnect.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
-    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['Login'])) {
+    $username = filter_input(INPUT_GET, 'username', FILTER_SANITIZE_STRING);
+    $password = filter_input(INPUT_GET, 'password', FILTER_SANITIZE_STRING);
     if ($validate->checkUsername($username)) {
         if ($validate->checkPassword($username, $password)) {
             // regenerate session ID after successful login
@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <h1>SIGN IN</h1>
                 </div>
                 <div class="login-signup-form">
-                    <form action="login" method="post" name="login-signup" autocomplete="on">
+                    <form action="login" method="GET" name="login-signup" autocomplete="on">
                         <div class="form-control">
                             <label for="username">Username</label><br><br>
                             <input type="text" name="username" id="username" placeholder="Enter your username" required>
@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                         <br>
                         <div class="form-control">
-                            <button class="button" href="">LOGIN</button>
+                            <button class="button" name="Login">LOGIN</button>
                         </div>
                     </form>
                 </div>
