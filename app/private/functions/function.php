@@ -47,8 +47,8 @@ class Validate
         } catch (mysqli_sql_exception $e) {
             $showAlert =
                 '<div class="notification alert">
-                            <i class="fa-solid fa-triangle-exclamation"></i>' . 'MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
-                        </div>';
+                    <i class="fa-solid fa-triangle-exclamation"></i>' . 'MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
+                </div>';
         }
     }
 
@@ -70,8 +70,8 @@ class Validate
         } catch (mysqli_sql_exception $e) {
             $showAlert =
                 '<div class="notification alert">
-                            <i class="fa-solid fa-triangle-exclamation"></i>' . 'MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
-                        </div>';
+                    <i class="fa-solid fa-triangle-exclamation"></i>' . 'MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
+                </div>';
         }
     }
 
@@ -92,12 +92,39 @@ class Validate
         } catch (mysqli_sql_exception $e) {
             $showAlert =
                 '<div class="notification alert">
-                        <i class="fa-solid fa-triangle-exclamation"></i>' . 'MySqlException: ' . $e->getMessage() . '<br/>' . $sql . '
-                    </div>';
+                    <i class="fa-solid fa-triangle-exclamation"></i>' . 'MySqlException: ' . $e->getMessage() . '<br/>' . $sql . '
+                </div>';
+
+            echo $showAlert;
+        }
+    }
+    public function incrementVisits($username)
+    {
+        require '..\app\private\db\_dbconnect.php';
+        try {
+            $sql = "Select visits from personalportfolio where username = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("s", $username);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+
+            $visits = unserialize($row['visits']);
+            $visits[0][date('M')] += 1;
+
+            $visits = serialize($visits);
+            $sql = "UPDATE personalportfolio SET visits = ? WHERE username = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("ss", $visits, $username);
+            $stmt->execute();
+        } catch (mysqli_sql_exception $e) {
+            $showAlert =
+                '<div class="notification alert">
+                    <i class="fa-solid fa-triangle-exclamation"></i>' . 'MySqlException: ' . $e->getMessage() . '<br/>' . $sql . '
+                </div>';
 
             echo $showAlert;
         }
     }
 }
-
 $validate = new Validate();

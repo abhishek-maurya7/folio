@@ -43,6 +43,7 @@
     height: 100%;
     object-fit: cover;
     border-radius: 100%;
+    pointer-events: none;
 }
 
 .profile-image-container>div {
@@ -95,7 +96,7 @@ i {
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    animation: jump 1s infinite;
+    animation: jump 3s infinite;
     border: 6px solid #4A1A8B;
     box-shadow: 0 0 20px 6px rgba(0, 0, 0, 0.451);
 }

@@ -19,7 +19,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
   <script src="https://kit.fontawesome.com/0fe3b336ed.js" media="screen"></script>
   <link rel="stylesheet" href="../app/private/css/base.css" />
   <link rel="stylesheet" href="../app/private/css/nav.css" />
-  <!-- <link rel="stylesheet" href="../app/private\css\index.css"> -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&display=swap" media="screen" />
   <link rel="icon" href="../app/private/images/logo.png" type="image/x-icon" />
   <style>
@@ -56,6 +55,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
       </div>
     </div>
   </div>
+
   <script src="script.js"></script>
 </body>
 

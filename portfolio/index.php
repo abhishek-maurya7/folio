@@ -1,15 +1,18 @@
 <?php
 
 require '..\app\private\db\_dbconnect.php';
-$username = explode('/', $_SERVER['REQUEST_URI'])[2];
-
+require '..\app\private\functions\function.php';
+$username = filter_var(explode('/', $_SERVER['REQUEST_URI'])[2], FILTER_SANITIZE_STRING);
 $sql = 'SELECT * FROM personalPortfolio WHERE username = ?';
 $stmt = $conn->prepare($sql);
 $stmt->bind_param('s', $username);
 $stmt->execute();
 $result = $stmt->get_result();
 $row = $result->fetch_assoc();
-$profileImage = $row['profileImg'];
+if (!$result->num_rows > 0) {
+    header('Location: 404');
+}
+$validate->incrementVisits($username);
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +29,15 @@ $profileImage = $row['profileImg'];
     <link rel="stylesheet" href="portfolio/css/index.css">
     <link rel="stylesheet" href="portfolio/css/base.css">
     <script src="https://kit.fontawesome.com/0fe3b336ed.js" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript">
+        (function() {
+            var css = document.createElement('link');
+            css.href = 'https://kit.fontawesome.com/0fe3b336ed.js';
+            css.rel = 'stylesheet';
+            css.type = 'text/css';
+            document.getElementsByTagName('head')[0].appendChild(css);
+        })();
     </script>
 </head>
 
@@ -55,28 +67,29 @@ $profileImage = $row['profileImg'];
     <hr />
     <main>
         <section class="name-image">
-            <!-- <div class="profile"><div class="profile-image-container"><img class="profile-image" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($profileImage) ?>" alt="<?php echo $row['firstName'] . ' ' . $row['lastName'] ?>'s Picture"></div> -->
-            <div class="container">
-                <div class="profile">
-                    <div class="profile-image-container">
-                        <img class="profile-image" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($profileImage) ?>" alt="<?php echo $row['firstName'] . ' ' . $row['lastName'] ?>'s Picture">
+            <div class="profile">
+                <!-- <div class="profile-image-container"><img class="profile-image" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($profileImage) ?>" alt="<?php echo $row['firstName'] . ' ' . $row['lastName'] ?>'s Picture"></div> -->
+                <div class="container">
+                    <div class="profile">
+                        <div class="profile-image-container">
+                            <img class="profile-image" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['profileImg']) ?>" alt="<?php echo $row['firstName'] . ' ' . $row['lastName'] ?>'s Picture">
+                        </div>
+                        <div class="profile-name">
+                            <h1><?php echo $row['firstName'] . ' ' . $row['lastName']; ?></h1>
+                        </div>
                     </div>
-                    <div class="profile-name">
-                        <h1><?php echo $row['firstName'] . ' ' . $row['lastName']; ?></h1>
+                    <div class="social-links">
+                        <a href="<?php echo $row['github']; ?>"><i class="fab fa-github"></i></a>
+                        <a href="<?php echo $row['twitter']; ?>"><i class="fab fa-twitter"></i></a>
+                        <a href="<?php echo $row['facebook']; ?>"><i class="fab fa-facebook"></i></a>
+                        <a href="<?php echo $row['yt']; ?>"><i class="fab fa-youtube"></i></a>
+                        <a href="<?php echo $row['LinkedIn']; ?>"><i class="fab fa-linkedin"></i></a>
+                        <a href="<?php echo $row['instagram']; ?>"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                <div class="social-links">
-                    <a href="<?php echo $row['github']; ?>"><i class="fab fa-github"></i></a>
-                    <a href="<?php echo $row['twitter']; ?>"><i class="fab fa-twitter"></i></a>
-                    <a href="<?php echo $row['facebook']; ?>"><i class="fab fa-facebook"></i></a>
-                    <a href="<?php echo $row['yt']; ?>"><i class="fab fa-youtube"></i></a>
-                    <a href="<?php echo $row['LinkedIn']; ?>"><i class="fab fa-linkedin"></i></a>
-                    <a href="<?php echo $row['instagram']; ?>"><i class="fab fa-instagram"></i></a>
+                <div class="arrow-container">
+                    <a href="#about"><i class="fa-solid fa-angles-down"></i></a>
                 </div>
-            </div>
-            <div class="arrow-container">
-                <a href="#about"><i class="fa-solid fa-angles-down"></i></a>
-            </div>
         </section>
         <section class="about" id="about">
             <div class="container">
