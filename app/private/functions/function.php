@@ -47,7 +47,7 @@ class Validate
         } catch (mysqli_sql_exception $e) {
             $showAlert =
                 '<div class="notification alert">
-                    <i class="fa-solid fa-triangle-exclamation"></i>' . 'MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
+                    <i class="fa-solid fa-triangle-exclamation"></i>MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
                 </div>';
         }
     }
@@ -70,7 +70,7 @@ class Validate
         } catch (mysqli_sql_exception $e) {
             $showAlert =
                 '<div class="notification alert">
-                    <i class="fa-solid fa-triangle-exclamation"></i>' . 'MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
+                    <i class="fa-solid fa-triangle-exclamation"></i>MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
                 </div>';
         }
     }
@@ -92,7 +92,7 @@ class Validate
         } catch (mysqli_sql_exception $e) {
             $showAlert =
                 '<div class="notification alert">
-                    <i class="fa-solid fa-triangle-exclamation"></i>' . 'MySqlException: ' . $e->getMessage() . '<br/>' . $sql . '
+                    <i class="fa-solid fa-triangle-exclamation"></i>MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
                 </div>';
 
             echo $showAlert;
@@ -120,7 +120,7 @@ class Validate
         } catch (mysqli_sql_exception $e) {
             $showAlert =
                 '<div class="notification alert">
-                    <i class="fa-solid fa-triangle-exclamation"></i>' . 'MySqlException: ' . $e->getMessage() . '<br/>' . $sql . '
+                    <i class="fa-solid fa-triangle-exclamation"></i>MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
                 </div>';
 
             echo $showAlert;
