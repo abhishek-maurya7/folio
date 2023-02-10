@@ -58,11 +58,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $certificateName3 = $_POST['certificateName3'];
     $certificateClaimDate3 = $_POST['certificateClaimDate3'];
     $certificateLink3 = $_POST['certificateLink3'];
+
+    $currentYear = 'year' . date('Y') . 'Visits';
+    echo $currentYear . '<br/>';
+    $visits = array();
+    $yearFormat = array(
+        'Jan' => 0,
+        'Feb' => 0,
+        'Mar' => 0,
+        'Apr' => 0,
+        'May' => 0,
+        'Jun' => 0,
+        'Jul' => 0,
+        'Aug' => 0,
+        'Sep' => 0,
+        'Oct' => 0,
+        'Nov' => 0,
+        'Dec' => 0
+    );
+    array_unshift($visits, $currentYear);
+    $visits[0] = $yearFormat;
+    $visits = serialize($visits);
+
     if ($validate->checkUsername($username)) {
         try {
-            $sql = "INSERT INTO personalPortfolio (username, firstName, lastName, profession, email, profileImg, aboutMe, instagram, yt, github, twitter, facebook, linkedIn, projectTitle, projectLink, projectDescription, projectTitle2, projectLink2, projectDescription2, projectTitle3, projectLink3, projectDescription3, certificateName, certificateClaimDate, certificateLink, certificateName2, certificateClaimDate2, certificateLink2, certificateName3, certificateClaimDate3, certificateLink3) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO personalPortfolio (username, firstName, lastName, profession, email, profileImg, aboutMe, instagram, yt, github, twitter, facebook, linkedIn, projectTitle, projectLink, projectDescription, projectTitle2, projectLink2, projectDescription2, projectTitle3, projectLink3, projectDescription3, certificateName, certificateClaimDate, certificateLink, certificateName2, certificateClaimDate2, certificateLink2, certificateName3, certificateClaimDate3, certificateLink3, visits) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sssssssssssssssssssssssssssssss", $username, $firstName, $lastName, $profession, $email, $imgContent, $about, $instagram, $yt, $github, $twitter, $facebook, $linkedin, $projectTitle, $projectLink, $projectDescription, $projectTitle2, $projectLink2, $projectDescription2, $projectTitle3, $projectLink3, $projectDescription3, $certificateName, $certificateClaimDate, $certificateLink, $certificateName2, $certificateClaimDate2, $certificateLink2, $certificateName3, $certificateClaimDate3, $certificateLink3);
+            $stmt->bind_param("ssssssssssssssssssssssssssssssss", $username, $firstName, $lastName, $profession, $email, $imgContent, $about, $instagram, $yt, $github, $twitter, $facebook, $linkedin, $projectTitle, $projectLink, $projectDescription, $projectTitle2, $projectLink2, $projectDescription2, $projectTitle3, $projectLink3, $projectDescription3, $certificateName, $certificateClaimDate, $certificateLink, $certificateName2, $certificateClaimDate2, $certificateLink2, $certificateName3, $certificateClaimDate3, $certificateLink3, $visits);
             $stmt->execute();
             header("location: dashboard");
         } catch (mysqli_sql_exception $e) {
