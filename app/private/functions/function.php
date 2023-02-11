@@ -47,8 +47,11 @@ class Validate
         } catch (mysqli_sql_exception $e) {
             $showAlert =
                 '<div class="notification alert">
-                    <i class="fa-solid fa-triangle-exclamation"></i>MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
                 </div>';
+
+            echo $showAlert;
         }
     }
 
@@ -62,16 +65,15 @@ class Validate
             $stmt->execute();
             $result = $stmt->get_result();
             $row = $result->fetch_assoc();
-            if (password_verify($password, $row['password'])) {
-                return true;
-            } else {
-                return false;
-            }
+            return password_verify($password, $row['password']);
         } catch (mysqli_sql_exception $e) {
             $showAlert =
                 '<div class="notification alert">
-                    <i class="fa-solid fa-triangle-exclamation"></i>MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
                 </div>';
+
+            echo $showAlert;
         }
     }
 
@@ -92,12 +94,14 @@ class Validate
         } catch (mysqli_sql_exception $e) {
             $showAlert =
                 '<div class="notification alert">
-                    <i class="fa-solid fa-triangle-exclamation"></i>MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
                 </div>';
 
             echo $showAlert;
         }
     }
+
     public function incrementVisits($username)
     {
         require '..\app\private\db\_dbconnect.php';
@@ -120,7 +124,8 @@ class Validate
         } catch (mysqli_sql_exception $e) {
             $showAlert =
                 '<div class="notification alert">
-                    <i class="fa-solid fa-triangle-exclamation"></i>MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
                 </div>';
 
             echo $showAlert;

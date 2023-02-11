@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
+if (!isset($_SESSION['loggedin']) || !($_SESSION['loggedin'])) {
     header("location: login");
 }
 ?>
@@ -19,7 +19,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
     <link rel="stylesheet" href="app\private\css\base.css" />
     <link rel="stylesheet" href="app\private\css\nav.css" />
     <link rel="stylesheet" href="app\private\css\choice.css" />
-    <script src="https://kit.fontawesome.com/0fe3b336ed.js" media="screen"></script>
+    <script src="https://kit.fontawesome.com/0fe3b336ed.js" integrity="sha384-dQXoip1UH2Gf76Rt/vZNDhej9dqGkaJQAXegWARNJT95sqvNHAuqn37K64TKaC4f" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -35,7 +35,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                         <a href="personal-portfolio">Portfolio for Person</a>
                     </div>
                     <div class="template-description">
-                        <p>Personal Portfolio is best to showcase one's skills, achievements and works. This is best option for Programmer, Designer, Teacher, Freelancer, Artist, Photographer, etc.</p>
+                        <p>Personal Portfolio is best to showcase one's skills, achievements and works. This is best option for Programmer,
+                            Designer, Teacher, Freelancer, Artist, Photographer, etc.
+                        </p>
                     </div>
                     <div class="template-image">
                         <a href="personal-portfolio">
@@ -49,7 +51,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                         <a href="">Portfolio for Business</a>
                     </div>
                     <div class="template-description">
-                        <p>Business Portfolio is best to showcase services, information, etc. This is best option for Small Businesses, Companies, NGO's, Projects, Shops etc.</p>
+                        <p>Business Portfolio is best to showcase services, information, etc. This is best option for Small Businesses,
+                            Companies, NGO's, Projects, Shops etc.
+                        </p>
                     </div>
                     <div class="template-image">
                         <a href="">

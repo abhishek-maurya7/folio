@@ -14,12 +14,12 @@
             <?php
             $url = $_SERVER['REQUEST_URI'];
             if (strpos($url, 'login') == false || strpos($url, 'signup') == false) {
-                if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+                if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
                     echo '<li><a href="http://localhost/folio/logout">Logout</a></li>';
                 } else {
-                    if (strpos($url, 'login') == true) {
+                    if (strpos($url, 'login')) {
                         echo '<li><a href="http://localhost/folio/signup">Signup</a></li>';
-                    } else if (strpos($url, 'signup') == true) {
+                    } elseif (strpos($url, 'signup')) {
                         echo '<li><a href="http://localhost/folio/login">Login</a></li>';
                     }
                 }

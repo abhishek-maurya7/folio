@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
+if (!isset($_SESSION['loggedin']) || !($_SESSION['loggedin'])) {
     header("location: login");
 }
 
@@ -62,20 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $currentYear = 'year' . date('Y') . 'Visits';
     echo $currentYear . '<br/>';
     $visits = array();
-    $yearFormat = array(
-        'Jan' => 0,
-        'Feb' => 0,
-        'Mar' => 0,
-        'Apr' => 0,
-        'May' => 0,
-        'Jun' => 0,
-        'Jul' => 0,
-        'Aug' => 0,
-        'Sep' => 0,
-        'Oct' => 0,
-        'Nov' => 0,
-        'Dec' => 0
-    );
+    $yearFormat = array('Jan' => 0, 'Feb' => 0, 'Mar' => 0, 'Apr' => 0, 'May' => 0, 'Jun' => 0, 'Jul' => 0, 'Aug' => 0, 'Sep' => 0, 'Oct' => 0, 'Nov' => 0, 'Dec' => 0);
     array_unshift($visits, $currentYear);
     $visits[0] = $yearFormat;
     $visits = serialize($visits);
@@ -118,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="app\private\css\nav.css">
     <link rel="stylesheet" href="app\private\css\personal-portfolio.css">
 
-    <script src="https://kit.fontawesome.com/0fe3b336ed.js" media="screen"></script>
+    <script src="https://kit.fontawesome.com/0fe3b336ed.js" integrity="sha384-dQXoip1UH2Gf76Rt/vZNDhej9dqGkaJQAXegWARNJT95sqvNHAuqn37K64TKaC4f" crossorigin="anonymous"></script>
 </head>
 
 <body>

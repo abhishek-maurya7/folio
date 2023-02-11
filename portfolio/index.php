@@ -28,7 +28,7 @@ $validate->incrementVisits($username);
     <link rel="stylesheet" href="portfolio/css/footer.css">
     <link rel="stylesheet" href="portfolio/css/index.css">
     <link rel="stylesheet" href="portfolio/css/base.css">
-    <script src="https://kit.fontawesome.com/0fe3b336ed.js" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/0fe3b336ed.js" integrity="sha384-dQXoip1UH2Gf76Rt/vZNDhej9dqGkaJQAXegWARNJT95sqvNHAuqn37K64TKaC4f" crossorigin="anonymous"></script>
     </script>
     <script type="text/javascript">
         (function() {
@@ -67,29 +67,27 @@ $validate->incrementVisits($username);
     <hr />
     <main>
         <section class="name-image">
-            <div class="profile">
-                <!-- <div class="profile-image-container"><img class="profile-image" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($profileImage) ?>" alt="<?php echo $row['firstName'] . ' ' . $row['lastName'] ?>'s Picture"></div> -->
-                <div class="container">
-                    <div class="profile">
-                        <div class="profile-image-container">
-                            <img class="profile-image" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['profileImg']) ?>" alt="<?php echo $row['firstName'] . ' ' . $row['lastName'] ?>'s Picture">
-                        </div>
-                        <div class="profile-name">
-                            <h1><?php echo $row['firstName'] . ' ' . $row['lastName']; ?></h1>
-                        </div>
+            <div class="container">
+                <div class="profile">
+                    <div class="profile-image-container">
+                        <img class="profile-image" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['profileImg']) ?>" alt="<?php echo $row['firstName'] . ' ' . $row['lastName'] ?>'s Picture" />
                     </div>
-                    <div class="social-links">
-                        <a href="<?php echo $row['github']; ?>"><i class="fab fa-github"></i></a>
-                        <a href="<?php echo $row['twitter']; ?>"><i class="fab fa-twitter"></i></a>
-                        <a href="<?php echo $row['facebook']; ?>"><i class="fab fa-facebook"></i></a>
-                        <a href="<?php echo $row['yt']; ?>"><i class="fab fa-youtube"></i></a>
-                        <a href="<?php echo $row['LinkedIn']; ?>"><i class="fab fa-linkedin"></i></a>
-                        <a href="<?php echo $row['instagram']; ?>"><i class="fab fa-instagram"></i></a>
+                    <div class="profile-name">
+                        <h1><?php echo $row['firstName'] . ' ' . $row['lastName']; ?></h1>
                     </div>
                 </div>
-                <div class="arrow-container">
-                    <a href="#about"><i class="fa-solid fa-angles-down"></i></a>
+                <div class="social-links">
+                    <a href="<?php echo $row['github']; ?>"><i class="fab fa-square-github "></i></a>
+                    <a href="<?php echo $row['twitter']; ?>"><i class="fa-brands fa-square-twitter"></i></a>
+                    <a href="<?php echo $row['facebook']; ?>"><i class="fab fa-square-facebook"></i></a>
+                    <a href="<?php echo $row['yt']; ?>"><i class="fa-brands fa-square-youtube"></i></a>
+                    <a href="<?php echo $row['LinkedIn']; ?>"><i class="fab fa-linkedin"></i></a>
+                    <a href="<?php echo $row['instagram']; ?>"><i class="fa-brands fa-square-instagram"></i></a>
                 </div>
+            </div>
+            <div class="arrow-container">
+                <a href="#about"><i class="fa-solid fa-angles-down"></i></a>
+            </div>
         </section>
         <section class="about" id="about">
             <div class="container">
