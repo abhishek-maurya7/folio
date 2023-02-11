@@ -29,7 +29,6 @@ $validate->incrementVisits($username);
     <link rel="stylesheet" href="portfolio/css/index.css">
     <link rel="stylesheet" href="portfolio/css/base.css">
     <script src="https://kit.fontawesome.com/0fe3b336ed.js" integrity="sha384-dQXoip1UH2Gf76Rt/vZNDhej9dqGkaJQAXegWARNJT95sqvNHAuqn37K64TKaC4f" crossorigin="anonymous"></script>
-    </script>
     <script type="text/javascript">
         (function() {
             var css = document.createElement('link');
