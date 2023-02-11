@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
+if (!isset($_SESSION['loggedin']) || !($_SESSION['loggedin'])) {
   header("location: ../login");
 }
 
@@ -16,7 +16,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
   <meta name="description" content="An amazing portfolio generator" />
   <meta name="author" content="Abhishek Maurya, Shashank Patil" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://kit.fontawesome.com/0fe3b336ed.js" media="screen"></script>
+  <script src="https://kit.fontawesome.com/0fe3b336ed.js" integrity="sha384-dQXoip1UH2Gf76Rt/vZNDhej9dqGkaJQAXegWARNJT95sqvNHAuqn37K64TKaC4f" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../app/private/css/base.css" />
   <link rel="stylesheet" href="../app/private/css/nav.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&display=swap" media="screen" />
