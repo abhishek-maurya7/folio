@@ -1,10 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sofia&display=swap');
+
 :root {
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
     --color: #fff;
-    --font-family: 'Open Sans', sans-serif;
-    --bg-color: #4A1A8B;
+    --font-family: Rubik, 'Open Sans', sans-serif;
+    /* --bg-color: #4A1A8B; */
+    --bg-color: #0b0f17;
 }
 
 * {
@@ -22,7 +26,6 @@ body {
     background-color: var(--bg-color);
     color: var(--color);
     font-family: var(--font-family);
-    padding: 0.5rem;
 }
 
 .notification {
@@ -73,7 +76,8 @@ a {
     float: left;
 }
 
-@media screen and (min-width: 600px) {
+/* for laptop */
+@media screen and (min-width: 768px) {
     .col-1 {
         width: 8.33%;
     }

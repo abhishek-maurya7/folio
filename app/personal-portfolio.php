@@ -13,25 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $profession = $_POST['profession'];
     $email = $_POST['email'];
 
-    $imgType = $_FILES['profileImg']['type'];
-    $allowedTypes = array('image/jpeg', 'image/png', 'image/jpg');
-    if (!in_array($imgType, $allowedTypes)) {
-        $showAlert =
-            '<div class="notification alert">
-                <i class="fa-solid fa-triangle-exclamation"></i>
-                Image type should be jpeg, jpg or png
-            </div>';
-    }
-    $imgSize = $_FILES['profileImg']['size'];
-    if ($imgSize > 5000000) {
-        $showAlert =
-            '<div class="notification alert">
-                <i class="fa-solid fa-triangle-exclamation"></i>
-                Image size should be less than 5MB
-            </div>';
-    }
-    $img = $_FILES['profileImg']['tmp_name'];
-    $imgContent = addslashes(file_get_contents($img));
+    // $img = $_FILES['profileImg']['tmp_name'];
+    $profileImg = file_get_contents($_FILES['profileImg']['tmp_name']);
 
     $about = $_POST['aboutMe'];
     $instagram = $_POST['instagram'];
@@ -40,18 +23,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $twitter = $_POST['twitter'];
     $facebook = $_POST['facebook'];
     $linkedin = $_POST['linkedIn'];
-    $projectTitle = $_POST['projectTitle'];
-    $projectLink = $_POST['projectLink'];
-    $projectDescription = $_POST['projectDescription'];
+    $projectTitle1 = $_POST['projectTitle1'];
+    $projectLink1 = $_POST['projectLink1'];
+    $projectCodeLink1 = $_POST['projectCodeLink1'];
+    $projectDescription1 = $_POST['projectDescription1'];
     $projectTitle2 = $_POST['projectTitle2'];
     $projectLink2 = $_POST['projectLink2'];
+    $projectCodeLink2 = $_POST['projectCodeLink2'];
     $projectDescription2 = $_POST['projectDescription2'];
     $projectTitle3 = $_POST['projectTitle3'];
     $projectLink3 = $_POST['projectLink3'];
+    $projectCodeLink3 = $_POST['projectCodeLink3'];
     $projectDescription3 = $_POST['projectDescription3'];
-    $certificateName = $_POST['certificateName'];
-    $certificateClaimDate = $_POST['certificateClaimDate'];
-    $certificateLink = $_POST['certificateLink'];
+    $certificateName1 = $_POST['certificateName1'];
+    $certificateClaimDate1 = $_POST['certificateClaimDate1'];
+    $certificateLink1 = $_POST['certificateLink1'];
     $certificateName2 = $_POST['certificateName2'];
     $certificateClaimDate2 = $_POST['certificateClaimDate2'];
     $certificateLink2 = $_POST['certificateLink2'];
@@ -60,7 +46,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $certificateLink3 = $_POST['certificateLink3'];
 
     $currentYear = 'year' . date('Y') . 'Visits';
-    echo $currentYear . '<br/>';
     $visits = array();
     $yearFormat = array('Jan' => 0, 'Feb' => 0, 'Mar' => 0, 'Apr' => 0, 'May' => 0, 'Jun' => 0, 'Jul' => 0, 'Aug' => 0, 'Sep' => 0, 'Oct' => 0, 'Nov' => 0, 'Dec' => 0);
     array_unshift($visits, $currentYear);
@@ -69,9 +54,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($validate->checkUsername($username)) {
         try {
-            $sql = "INSERT INTO personalPortfolio (username, firstName, lastName, profession, email, profileImg, aboutMe, instagram, yt, github, twitter, facebook, linkedIn, projectTitle, projectLink, projectDescription, projectTitle2, projectLink2, projectDescription2, projectTitle3, projectLink3, projectDescription3, certificateName, certificateClaimDate, certificateLink, certificateName2, certificateClaimDate2, certificateLink2, certificateName3, certificateClaimDate3, certificateLink3, visits) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO personalPortfolio (username, firstName, lastName, profession, email, profileImg, aboutMe, instagram, yt, github, twitter, facebook, linkedIn, projectTitle1, projectLink1, projectCodeLink1, projectDescription1, projectTitle2, projectLink2, projectCodeLink2, projectDescription2, projectTitle3, projectLink3, projectCodeLink3, projectDescription3, certificateName1, certificateClaimDate1, certificateLink1, certificateName2, certificateClaimDate2, certificateLink2, certificateName3, certificateClaimDate3, certificateLink3, visits) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ssssssssssssssssssssssssssssssss", $username, $firstName, $lastName, $profession, $email, $imgContent, $about, $instagram, $yt, $github, $twitter, $facebook, $linkedin, $projectTitle, $projectLink, $projectDescription, $projectTitle2, $projectLink2, $projectDescription2, $projectTitle3, $projectLink3, $projectDescription3, $certificateName, $certificateClaimDate, $certificateLink, $certificateName2, $certificateClaimDate2, $certificateLink2, $certificateName3, $certificateClaimDate3, $certificateLink3, $visits);
+            $stmt->bind_param("sssssssssssssssssssssssssssssssssss", $username, $firstName, $lastName, $profession, $email, $profileImg, $about, $instagram, $yt, $github, $twitter, $facebook, $linkedin, $projectTitle1, $projectLink1, $projectCodeLink1, $projectDescription1, $projectTitle2, $projectLink2, $projectCodeLink2, $projectDescription2, $projectTitle3, $projectLink3, $projectCodeLink3, $projectDescription3, $certificateName1, $certificateClaimDate1, $certificateLink1, $certificateName2, $certificateClaimDate2, $certificateLink2, $certificateName3, $certificateClaimDate3, $certificateLink3, $visits);
             $stmt->execute();
             header("location: dashboard");
         } catch (mysqli_sql_exception $e) {
@@ -79,6 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 '<div class="notification alert">
                     <i class="fa-solid fa-triangle-exclamation"></i>' . 'MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
                 </div>';
+            echo $showAlert;
         }
     } else {
         $showAlert =
@@ -86,6 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <i class="fa-solid fa-triangle-exclamation"></i>
                 User does not exist
             </div>';
+        echo $showAlert;
     }
 }
 ?>
@@ -187,13 +174,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <label for="project"> Projects </label>
                         <hr />
                         <div class="project">
-                            <label for="projectTitle"> Project 1 </label> <br /> <br />
-                            <input type="text" name="projectTitle" id="projectTitle" placeholder="Project Title" />
+                            <label for="projectTitle1"> Project 1 </label> <br /> <br />
+                            <input type="text" name="projectTitle1" id="projectTitle1" placeholder="Project Title" />
                             <br />
                             <br />
-                            <input type="url" name="projectLink" id="projectLink" placeholder="Project Link" />
+                            <input type="url" name="projectLink1" id="projectLink1" placeholder="Project Link" />
                             <br /> <br />
-                            <textarea class="form-control" maxlength="300" rows="5" name="projectDescription" id="projectDescription" placeholder="Project Description"></textarea>
+                            <input type="url" name="projectCodeLink1" id="projectCodeLink1" placeholder="Project Source Code Link" />
+                            <br /> <br />
+                            <textarea class="form-control" maxlength="500" rows="5" name="projectDescription1" id="projectDescription1" placeholder="Project Description"></textarea>
                         </div>
                         <br />
                         <div class="project">
@@ -203,7 +192,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <br />
                             <input type="url" name="projectLink2" id="projectLink2" placeholder="Project Link" />
                             <br /> <br />
-                            <textarea class="form-control" maxlength="300" rows="5" name="projectDescription2" id="projectDescription2" placeholder="Project Description"></textarea>
+                            <input type="url" name="projectCodeLink2" id="projectCodeLink2" placeholder="Project Source Code Link" />
+                            <br /> <br />
+                            <textarea class="form-control" maxlength="500" rows="5" name="projectDescription2" id="projectDescription2" placeholder="Project Description"></textarea>
                         </div>
                         <br />
                         <div class="project">
@@ -213,7 +204,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <br />
                             <input type="url" name="projectLink3" id="projectLink3" placeholder="Project Link" />
                             <br /> <br />
-                            <textarea class="form-control" maxlength="300" rows="5" name="projectDescription3" id="projectDescription3" placeholder="Project Description"></textarea>
+                            <input type="url" name="projectCodeLink3" id="projectCodeLink3" placeholder="Project Source Code Link" />
+                            <br /> <br />
+                            <textarea class="form-control" maxlength="500" rows="5" name="projectDescription3" id="projectDescription3" placeholder="Project Description"></textarea>
                         </div>
                     </div>
                     <br />
@@ -222,11 +215,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </label>
                         <hr />
                         <div class="certificate">
-                            <label for="certificateName"> Certificate 1 </label> <br /> <br />
-                            <input type="text" name="certificateName" id="certificateName" placeholder="Certificate Name" />
+                            <label for="certificateName1"> Certificate 1 </label> <br /> <br />
+                            <input type="text" name="certificateName1" id="certificateName1" placeholder="Certificate Name" />
                             <br /> <br />
-                            <input type="url" name="certificateLink" id="certificateLink" placeholder="Certificate Link" /> <br /> <br />
-                            <input type="date" name="certificateClaimDate" id="certificateClaimDate" /> <br /> <br />
+                            <input type="url" name="certificateLink1" id="certificateLink1" placeholder="Certificate Link" /> <br /> <br />
+                            <input type="date" name="certificateClaimDate1" id="certificateClaimDate1" /> <br /> <br />
                         </div>
                         <br />
                         <div class="certificate">
@@ -247,6 +240,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="form-control">
                             <button class="button" href="">Submit</button>
                         </div>
+                    </div>
                 </form>
             </div>
         </div>
