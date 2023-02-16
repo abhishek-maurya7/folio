@@ -81,8 +81,7 @@ $validate->incrementVisits($username);
             </div>
             <div class="social-links">
                 <div class="link-container">
-                    <a href="<?php echo $row['github']; ?>" target="_blank">
-                        <i class="fab fa-github"></i>
+                    <a href="<?php echo $row['github']; ?>" target="_blank" rel="noopener"><i class="fab fa-github"></i>
                         <span class="alt-text">Github</span>
                     </a>
                 </div>
