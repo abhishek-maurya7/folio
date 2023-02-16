@@ -142,7 +142,7 @@ $validate->incrementVisits($username);
                             <div class="certificate-name">' . $row[$certificateName] . '</div>
                             <div class=""> Date Obtained: ' . $row[$certificateClaimDate] . '</div>
                         </div>
-                        <div class="certificate-link"><button onclick="window.location.href=\'' . $row[$certificateLink] . '\'" class="link-btn">View</button></div>
+                        <div class="certificate-link"><button onclick="window.open(\'' . $row[$certificateLink] . '\', \'_blank\', \'noopener\')" class="link-btn">View</button></div>
                     </div>';
                     }
                 }
@@ -164,8 +164,8 @@ $validate->incrementVisits($username);
                         <div class="project-name">' . $row[$projectTitle] . '</div>
                         <div class="project-description">' . $row[$projectDescription] . '</div>
                         <div class="project-link">
-                            <button onclick="window.location.href=\'' . $row[$projectLink] . '\'" class="link-btn">View Project</button>
-                            <button onclick="window.location.href=\'' . $row[$projectCodeLink] . '\'" class="link-btn">View Code</button>
+                            <button onclick="window.open(\'' . $row[$projectLink] . '\', \'_blank\', \'noopener\')" class="link-btn">View Project</button>
+                            <button onclick="window.open(\'' . $row[$projectCodeLink] . '\', \'_blank\', \'noopener\')" class="link-btn">View Code</button>
                         </div>
                     </div>';
                 }
