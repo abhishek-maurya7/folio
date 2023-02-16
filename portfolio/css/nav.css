@@ -76,7 +76,7 @@
 }
 
 .nav-links a:hover {
-    background-color: #0000004d;
+    background: linear-gradient(45deg, #4A1A8B, #340fac, #4A1A8B);
 }
 
 #nav-check:not(:checked)~.nav-links {
