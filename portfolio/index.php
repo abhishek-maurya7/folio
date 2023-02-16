@@ -46,11 +46,10 @@ $validate->incrementVisits($username);
         <nav class="nav">
             <input type="checkbox" id="nav-check">
             <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
+                <li><a href="#profile-info">About</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="">Certificates</a></li>
-                <li><a href="#contactMe">Contact</a></li>
+                <li><a href="#certificate">Certificates</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
         <div class="hamburger-container">
@@ -120,7 +119,7 @@ $validate->incrementVisits($username);
                 </div>
             </div>
             <div class="arrow-container">
-                <a href="#about"><i class="fa-solid fa-angles-down arrow"></i></a>
+                <a href="#profile-info"><i class="fa-solid fa-angles-down arrow"></i></a>
             </div>
         </section>
         <section class="profile-info" id="profile-info">
@@ -130,7 +129,7 @@ $validate->incrementVisits($username);
                     <?php echo $row['aboutMe']; ?>
                 </div>
             </div>
-            <div class="field-title">Certificates</div>
+            <div class="field-title" id="certificate">Certificates</div>
             <div class="certificate-container">
                 <?php
                 for ($i = 1; $i <= 3; $i++) {
@@ -139,35 +138,97 @@ $validate->incrementVisits($username);
                     $certificateClaimDate = 'certificateClaimDate' . $i;
                     if ($row[$certificateName] != '') {
                         echo '<div class="certificate">
-                                <div class="certificate-info">
-                                    <div class="certificate-name">' . $row[$certificateName] . '</div>
-                                    <div class=""> Date Obtained: ' . $row[$certificateClaimDate] . '</div>
-                                </div>
-                                <div class="certificate-link"><button onclick="' . $row[$certificateLink] . '" class="link-btn">View</button></div>
-                            </div>';
+                        <div class="certificate-info">
+                            <div class="certificate-name">' . $row[$certificateName] . '</div>
+                            <div class=""> Date Obtained: ' . $row[$certificateClaimDate] . '</div>
+                        </div>
+                        <div class="certificate-link"><button onclick="window.location.href=\'' . $row[$certificateLink] . '\'" class="link-btn">View</button></div>
+                    </div>';
                     }
                 }
                 ?>
             </div>
         </section>
     </main>
-    <script type="text/javascript">
-        function myFunction() {
-            var dots = document.getElementById("dots");
-            var moreText = document.getElementById("more");
-            var btnText = document.getElementById("myBtn");
-
-            if (dots.style.display === "none") {
-                dots.style.display = "inline";
-                btnText.innerHTML = "Read more";
-                moreText.style.display = "none";
-            } else {
-                dots.style.display = "none";
-                btnText.innerHTML = "Read less";
-                moreText.style.display = "inline";
-            }
-        }
-    </script>
+    <main>
+        <section id="projects" class="projects">
+            <div class="field-title">Projects</div>
+            <div class="project-container">
+                <?php
+                for ($i = 1; $i <= 3; $i++) {
+                    $projectTitle = 'projectTitle' . $i;
+                    $projectDescription = 'projectDescription' . $i;
+                    $projectLink = 'projectLink' . $i;
+                    $projectCodeLink = 'projectCodeLink' . $i;
+                    echo '<div class="project">
+                        <div class="project-name">' . $row[$projectTitle] . '</div>
+                        <div class="project-description">' . $row[$projectDescription] . '</div>
+                        <div class="project-link">
+                            <button onclick="window.location.href=\'' . $row[$projectLink] . '\'" class="link-btn">View Project</button>
+                            <button onclick="window.location.href=\'' . $row[$projectCodeLink] . '\'" class="link-btn">View Code</button>
+                        </div>
+                    </div>';
+                }
+                ?>
+            </div>
+        </section>
+        <section class="contact" id="contact">
+            <div class="field-title">Get in touch</div>
+            <div class="contact-container">
+                <form action="index" class="contact-form">
+                    <div class="form-control">
+                        <label for="req-name">Full Name</label><br><br>
+                        <input type="text" name="req-name" id="req-name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="req-email">Email</label><br><br>
+                        <input type="email" name="req-email" id="req-email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="req-subject">Subject</label><br><br>
+                        <input type="text" name="req-subject" id="req-subject" placeholder="Enter subject" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="req-message">Message</label><br><br>
+                        <textarea name="req-message" id="req-message" cols="30" rows="10" placeholder="Enter your message" required></textarea>
+                    </div>
+                    <div class="form-control">
+                        <button type="submit" class="submit-btn">Send</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <!-- <section id="contact" class="contact">
+            <div class="field-title">Get in touch</div>
+            <div class="contact-container">
+                <form action="index" class="contact-form">
+                    <div class="form-control">
+                        <label for="req-name">Full Name</label><br><br>
+                        <input type="text" name="req-name" id="req-name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="req-email">Email</label><br><br>
+                        <input type="email" name="req-email" id="req-email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="req-subject">Subject</label><br><br>
+                        <input type="text" name="req-subject" id="req-subject" placeholder="Enter subject" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="req-message">Message</label><br><br>
+                        <textarea name="req-message" id="req-message" cols="30" rows="10" placeholder="Enter your message" required></textarea>
+                    </div>
+                </form>
+            </div>
+        </section> -->
+    </main>
+    <!-- <footer>
+        <div class="footer-container">
+            <div class="footer-text">
+                <div class="footer-name">Hosted with <i class="fas fa-heart"></i> by Folio</div>
+            </div>
+        </div>
+    </footer> -->
 </body>
 
 </html>
