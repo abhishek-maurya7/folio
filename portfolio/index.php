@@ -87,28 +87,28 @@ $validate->incrementVisits($username);
                     </a>
                 </div>
                 <div class="link-container">
-                    <a href="<?php echo $row['LinkedIn']; ?>" target="_blank"><i class="fab fa-linkedin"></i>
-                        <span class="alt-text">LinkedIN</span>
+                    <a href="<?php echo $row['LinkedIn']; ?>" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+                    <span class="alt-text">LinkedIN</span>
                     </a>
                 </div>
                 <div class="link-container">
-                    <a href="<?php echo $row['twitter']; ?>" target="_blank"><i class="fab fa-twitter"></i>
+                    <a href="<?php echo $row['twitter']; ?>" target="_blank" rel="noopener"><i class="fab fa-twitter"></i>
                         <span class="alt-text">Twitter</span>
                     </a>
                     </a>
                 </div>
                 <div class="link-container">
-                    <a href="<?php echo $row['instagram']; ?>" target="_blank"><i class="fab fa-instagram"></i>
+                    <a href="<?php echo $row['instagram']; ?>" target="_blank" rel="noopener"><i class="fab fa-instagram"></i>
                         <span class="alt-text">Instagram</span>
                     </a>
                 </div>
                 <div class="link-container">
-                    <a href="<?php echo $row['facebook']; ?>" target="_blank"><i class="fab fa-facebook"></i>
+                    <a href="<?php echo $row['facebook']; ?>" target="_blank" rel="noopener"><i class="fab fa-facebook"></i>
                         <span class="alt-text">Facebook</span>
                     </a>
                 </div>
                 <div class="link-container">
-                    <a href="<?php echo $row['yt']; ?>" target="_blank"><i class="fab fa-youtube"></i>
+                    <a href="<?php echo $row['yt']; ?>" target="_blank" rel="noopener"><i class="fab fa-youtube"></i>
                         <span class="alt-text">Youtube</span>
                     </a>
                 </div>
