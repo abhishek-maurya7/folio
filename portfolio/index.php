@@ -154,7 +154,7 @@ $validate->incrementVisits($username);
             <div class="field-title">Projects</div>
             <div class="project-container">
                 <?php
-                for ($i = 1; $i <= 1; $i++) {
+                for ($i = 1; $i <= 3; $i++) {
                     $projectTitle = 'projectTitle' . $i;
                     $projectDescription = 'projectDescription' . $i;
                     $projectLink = 'projectLink' . $i;
