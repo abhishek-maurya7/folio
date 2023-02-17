@@ -146,7 +146,8 @@ i {
 }
 
 .profile-info,
-.projects {
+.projects,
+.contact {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -170,7 +171,8 @@ i {
 }
 
 .certificate-container,
-.project-container {
+.project-container,
+.contact-container {
     margin: 3rem 0;
 }
 
@@ -180,6 +182,10 @@ i {
     background-color: #4A1A8B;
     margin: 1rem 0;
     padding: 1rem;
+}
+
+.contact-form {
+    border-radius: 8px;
 }
 
 .certificate,
@@ -236,6 +242,12 @@ i {
     padding: 1rem;
 }
 
+.contact-form {
+    border-radius: 8px;
+    margin: 1rem 0;
+    padding: 1rem;
+}
+
 .project-description {
     font-size: 1.2rem;
     font-weight: 400;
@@ -250,10 +262,47 @@ i {
     flex-wrap: wrap;
 }
 
-.contact {}
+.form-control {
+    margin: 1rem 0;
+    text-align: left;
+}
 
-.contact-container {
-    margin: 3rem 0;
+.form-control label {
+    font-size: 1.8rem;
+    text-decoration: underline #3d4043 1.5px;
+    text-underline-offset: 1rem;
+}
+
+input {
+    width: 100%;
+    border: none;
+    padding: 1rem;
+    outline: none;
+    border-radius: 0.5rem;
+    position: relative;
+}
+
+input:focus {
+    outline: none;
+    border: 0.3rem solid #1974c8;
+}
+
+textarea {
+    width: 100%;
+    min-width: 100%;
+    max-height: 15rem;
+    resize: vertical;
+    border-radius: 0.5rem;
+}
+
+.button {
+    width: 100%;
+    border: none;
+    color: #ffffff;
+    padding: 0.8rem;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    background-color: #5B4AA1;
 }
 
 @media screen and (min-width: 786px) {
@@ -297,7 +346,17 @@ i {
         width: 40%;
     }
 
-    .project-container {
+    .contact {
+        width: 100vw;
+    }
+
+    .contact-form {
+        width: 100%;
+        margin: 0 30%;
+    }
+
+    .project-container,
+    .contact-container {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;

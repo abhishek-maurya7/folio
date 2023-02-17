@@ -154,7 +154,7 @@ $validate->incrementVisits($username);
             <div class="field-title">Projects</div>
             <div class="project-container">
                 <?php
-                for ($i = 1; $i <= 3; $i++) {
+                for ($i = 1; $i <= 1; $i++) {
                     $projectTitle = 'projectTitle' . $i;
                     $projectDescription = 'projectDescription' . $i;
                     $projectLink = 'projectLink' . $i;
@@ -171,63 +171,32 @@ $validate->incrementVisits($username);
                 ?>
             </div>
         </section>
-        <section class="contact" id="contact">
-            <div class="field-title">Get in touch</div>
+        <section id="contact" class="contact">
+            <div class="field-title">Let's get in touch</div>
             <div class="contact-container">
                 <form action="index" class="contact-form">
                     <div class="form-control">
-                        <label for="req-name">Full Name</label><br><br>
-                        <input type="text" name="req-name" id="req-name" placeholder="Enter your full name" required>
+                        <label for="name">Name</label><br><br>
+                        <input type="text" name="name" id="name" placeholder="Enter your name" required>
                     </div>
                     <div class="form-control">
-                        <label for="req-email">Email</label><br><br>
-                        <input type="email" name="req-email" id="req-email" placeholder="Enter your email" required>
+                        <label for="email">Email</label><br><br>
+                        <input type="email" name="email" id="email" placeholder="Enter your email" required>
                     </div>
                     <div class="form-control">
-                        <label for="req-subject">Subject</label><br><br>
-                        <input type="text" name="req-subject" id="req-subject" placeholder="Enter subject" required>
+                        <label for="message">Message</label><br><br>
+                        <textarea name="message" id="message" cols="30" rows="10" placeholder="Enter your message" required></textarea>
                     </div>
                     <div class="form-control">
-                        <label for="req-message">Message</label><br><br>
-                        <textarea name="req-message" id="req-message" cols="30" rows="10" placeholder="Enter your message" required></textarea>
-                    </div>
-                    <div class="form-control">
-                        <button type="submit" class="submit-btn">Send</button>
+                        <button class="button">
+                            <span>SEND</span>
+                            <i class="fa fa-paper-plane fa-lg"></i>
+                        </button>
                     </div>
                 </form>
             </div>
         </section>
-        <!-- <section id="contact" class="contact">
-            <div class="field-title">Get in touch</div>
-            <div class="contact-container">
-                <form action="index" class="contact-form">
-                    <div class="form-control">
-                        <label for="req-name">Full Name</label><br><br>
-                        <input type="text" name="req-name" id="req-name" placeholder="Enter your full name" required>
-                    </div>
-                    <div class="form-control">
-                        <label for="req-email">Email</label><br><br>
-                        <input type="email" name="req-email" id="req-email" placeholder="Enter your email" required>
-                    </div>
-                    <div class="form-control">
-                        <label for="req-subject">Subject</label><br><br>
-                        <input type="text" name="req-subject" id="req-subject" placeholder="Enter subject" required>
-                    </div>
-                    <div class="form-control">
-                        <label for="req-message">Message</label><br><br>
-                        <textarea name="req-message" id="req-message" cols="30" rows="10" placeholder="Enter your message" required></textarea>
-                    </div>
-                </form>
-            </div>
-        </section> -->
     </main>
-    <!-- <footer>
-        <div class="footer-container">
-            <div class="footer-text">
-                <div class="footer-name">Hosted with <i class="fas fa-heart"></i> by Folio</div>
-            </div>
-        </div>
-    </footer> -->
 </body>
 
 </html>
