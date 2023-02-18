@@ -12,6 +12,14 @@ if (!$result->num_rows > 0) {
     header('Location: 404');
 }
 $validate->incrementVisits($username);
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    $subject = filter_var($_POST['subject'], FILTER_SANITIZE_STRING);
+    $message = filter_var($_POST['message'], FILTER_SANITIZE_STRING);
+    $showAlert = $validate->contact($username, $name, $email, $subject, $message);
+}
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +70,7 @@ $validate->incrementVisits($username);
     </header>
     <hr />
     <main>
-        <section class="profile" id="profile">
+        <section id="profile" class="profile">
             <div class="profile-container">
                 <div class="profile-image-container">
                     <img class="profile-image" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['profileImg']) ?>" alt="<?php echo $row['firstName'] . ' ' . $row['lastName'] ?>'s Picture" />
@@ -78,78 +86,76 @@ $validate->incrementVisits($username);
                         <div>and I'm a <?php echo $row['profession']; ?></div>
                     </div>
                 </div>
-            </div>
-            <div class="social-links">
-                <div class="link-container">
-                    <a href="<?php echo $row['github']; ?>" target="_blank" rel="noopener"><i class="fab fa-github"></i>
-                        <span class="alt-text">Github</span>
-                    </a>
+                <div class="social-links">
+                    <div class="link-container">
+                        <a href="<?php echo $row['github']; ?>" target="_blank" rel="noopener"><i class="fab fa-github link-icon"></i>
+                            <span class="alt-text">Github</span>
+                        </a>
+                    </div>
+                    <div class="link-container">
+                        <a href="<?php echo $row['LinkedIn']; ?>" target="_blank" rel="noopener"><i class="fab fa-linkedin link-icon"></i></a>
+                        <span class="alt-text">LinkedIN</span>
+                        </a>
+                    </div>
+                    <div class="link-container">
+                        <a href="<?php echo $row['twitter']; ?>" target="_blank" rel="noopener"><i class="fab fa-twitter link-icon "></i>
+                            <span class="alt-text">Twitter</span>
+                        </a>
+                        </a>
+                    </div>
+                    <div class="link-container">
+                        <a href="<?php echo $row['instagram']; ?>" target="_blank" rel="noopener"><i class="fab fa-instagram link-icon"></i>
+                            <span class="alt-text">Instagram</span>
+                        </a>
+                    </div>
+                    <div class="link-container">
+                        <a href="<?php echo $row['facebook']; ?>" target="_blank" rel="noopener"><i class="fab fa-facebook link-icon"></i>
+                            <span class="alt-text">Facebook</span>
+                        </a>
+                    </div>
+                    <div class="link-container">
+                        <a href="<?php echo $row['yt']; ?>" target="_blank" rel="noopener"><i class="fab fa-youtube link-icon"></i>
+                            <span class="alt-text">Youtube</span>
+                        </a>
+                    </div>
+                    <div class="link-container">
+                        <a href="mailto:<?php echo $row['email']; ?>"><i class="fas fa-envelope link-icon"></i>
+                            <span class="alt-text">Email</span>
+                        </a>
+                    </div>
                 </div>
-                <div class="link-container">
-                    <a href="<?php echo $row['LinkedIn']; ?>" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
-                    <span class="alt-text">LinkedIN</span>
-                    </a>
-                </div>
-                <div class="link-container">
-                    <a href="<?php echo $row['twitter']; ?>" target="_blank" rel="noopener"><i class="fab fa-twitter"></i>
-                        <span class="alt-text">Twitter</span>
-                    </a>
-                    </a>
-                </div>
-                <div class="link-container">
-                    <a href="<?php echo $row['instagram']; ?>" target="_blank" rel="noopener"><i class="fab fa-instagram"></i>
-                        <span class="alt-text">Instagram</span>
-                    </a>
-                </div>
-                <div class="link-container">
-                    <a href="<?php echo $row['facebook']; ?>" target="_blank" rel="noopener"><i class="fab fa-facebook"></i>
-                        <span class="alt-text">Facebook</span>
-                    </a>
-                </div>
-                <div class="link-container">
-                    <a href="<?php echo $row['yt']; ?>" target="_blank" rel="noopener"><i class="fab fa-youtube"></i>
-                        <span class="alt-text">Youtube</span>
-                    </a>
-                </div>
-                <div class="link-container">
-                    <a href="mailto:<?php echo $row['email']; ?>"><i class="fas fa-envelope"></i>
-                        <span class="alt-text">Email</span>
-                    </a>
-                </div>
-            </div>
-            <div class="arrow-container">
-                <a href="#profile-info"><i class="fa-solid fa-angles-down arrow"></i></a>
-            </div>
-        </section>
-        <section class="profile-info" id="profile-info">
-            <div class="field-title">About Me</div>
-            <div class="about-container">
-                <div class="about-text">
-                    <?php echo $row['aboutMe']; ?>
+                <div class="arrow-container">
+                    <a href="#profile-info"><i class="fa-solid fa-angles-down arrow"></i></a>
                 </div>
             </div>
-            <div class="field-title" id="certificate">Certificates</div>
-            <div class="certificate-container">
-                <?php
-                for ($i = 1; $i <= 3; $i++) {
-                    $certificateName = 'certificateName' . $i;
-                    $certificateLink = 'certificateLink' . $i;
-                    $certificateClaimDate = 'certificateClaimDate' . $i;
-                    if ($row[$certificateName] != '') {
-                        echo '<div class="certificate">
-                        <div class="certificate-info">
-                            <div class="certificate-name">' . $row[$certificateName] . '</div>
-                            <div class=""> Date Obtained: ' . $row[$certificateClaimDate] . '</div>
-                        </div>
-                        <div class="certificate-link"><button onclick="window.open(\'' . $row[$certificateLink] . '\', \'_blank\', \'noopener\')" class="link-btn">View</button></div>
-                    </div>';
+            <div class="profile-info" id="profile-info">
+                <div class="field-title">About Me</div>
+                <div class="about-container">
+                    <div class="about-text">
+                        <?php echo $row['aboutMe']; ?>
+                    </div>
+                </div>
+                <div class="field-title" id="certificate">Certificates</div>
+                <div class="certificate-container">
+                    <?php
+                    for ($i = 1; $i <= 3; $i++) {
+                        $certificateName = 'certificateName' . $i;
+                        $certificateLink = 'certificateLink' . $i;
+                        $certificateClaimDate = 'certificateClaimDate' . $i;
+                        if ($row[$certificateName] != '') {
+                            echo '<div class="certificate">
+                                    <div class="certificate-info">
+                                        <div class="certificate-name">' . $row[$certificateName] . '</div>
+                                        <div class="certificate-date"> Date Obtained: ' . $row[$certificateClaimDate] . '</div>
+                                    </div>
+                                <div class="certificate-links"><button onclick="window.open(\'' . $row[$certificateLink] . '\', \'_blank\', \'noopener\')" class="link-btn">View</button></div>
+                            </div>';
+                        }
                     }
-                }
-                ?>
+                    ?>
+                </div>
             </div>
         </section>
-    </main>
-    <main>
         <section id="projects" class="projects">
             <div class="field-title">Projects</div>
             <div class="project-container">
@@ -162,7 +168,7 @@ $validate->incrementVisits($username);
                     echo '<div class="project">
                         <div class="project-name">' . $row[$projectTitle] . '</div>
                         <div class="project-description">' . $row[$projectDescription] . '</div>
-                        <div class="project-link">
+                        <div class="project-links">
                             <button onclick="window.open(\'' . $row[$projectLink] . '\', \'_blank\', \'noopener\')" class="link-btn">View Project</button>
                             <button onclick="window.open(\'' . $row[$projectCodeLink] . '\', \'_blank\', \'noopener\')" class="link-btn">View Code</button>
                         </div>
@@ -171,32 +177,39 @@ $validate->incrementVisits($username);
                 ?>
             </div>
         </section>
-        <section id="contact" class="contact">
-            <div class="field-title">Let's get in touch</div>
-            <div class="contact-container">
-                <form action="index" class="contact-form">
-                    <div class="form-control">
-                        <label for="name">Name</label><br><br>
-                        <input type="text" name="name" id="name" placeholder="Enter your name" required>
-                    </div>
-                    <div class="form-control">
-                        <label for="email">Email</label><br><br>
-                        <input type="email" name="email" id="email" placeholder="Enter your email" required>
-                    </div>
-                    <div class="form-control">
-                        <label for="message">Message</label><br><br>
-                        <textarea name="message" id="message" cols="30" rows="10" placeholder="Enter your message" required></textarea>
-                    </div>
-                    <div class="form-control">
-                        <button class="button">
-                            <span>SEND</span>
-                            <i class="fa fa-paper-plane fa-lg"></i>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </section>
     </main>
+    <footer class="contact" id="contact">
+        <div class="field-title">Let's get in touch</div>
+        <div class="contact-container">
+            <form action="<?php echo $username . '#contact'; ?>" class="contact-form" name="contact-form" method="post" autocomplete="on">
+                <div class="form-control">
+                    <label for="name">Name</label><br><br>
+                    <input type="text" name="name" id="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-control">
+                    <label for="email">Email</label><br><br>
+                    <input type="email" name="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-control">
+                    <label for="subject">Subject</label><br><br>
+                    <input type="text" name="subject" id="subject" placeholder="Enter your subject" required>
+                </div>
+                <div class="form-control">
+                    <label for="message">Message</label><br><br>
+                    <textarea name="message" id="message" cols="30" rows="10" placeholder="Enter your message" required></textarea>
+                </div>
+                <div class="form-control">
+                    <button type="submit" class="bn39">
+                        Send Message <span><i class="fas fa-paper-plane send-message"></i></span>
+                    </button>
+                </div>
+                <?php
+                global $showAlert;
+                echo  $showAlert;
+                ?>
+            </form>
+        </div>
+    </footer>
 </body>
 
 </html>

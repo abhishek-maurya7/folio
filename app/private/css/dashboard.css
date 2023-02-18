@@ -1,0 +1,60 @@
+.title {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.update {
+    background-color: #2b124A;
+    border-radius: 1rem;
+    padding: 2rem;
+}
+
+.form-control {
+    padding: 1rem;
+    text-align: left;
+}
+
+.name-area {
+    display: block;
+}
+
+input {
+    width: 100%;
+    padding: 1rem;
+    outline: none;
+    border-radius: 0.5rem;
+}
+
+input:focus {
+    border: 2px solid #1974c8;
+}
+
+textarea {
+    width: 100%;
+    min-width: 100%;
+    max-height: 15rem;
+    resize: vertical;
+    border-radius: 0.5rem;
+}
+
+button {
+    width: 100%;
+    border: none;
+    padding: 0.8rem;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    background-color: #5B4AA1;
+}
+
+@media screen and (min-width: 614px) {
+    .update {
+        margin: 0 10%;
+    }
+}
+
+@media screen and (min-width: 786px) {
+    .update {
+        margin: 0 20%;
+    }
+}
