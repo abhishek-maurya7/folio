@@ -1,11 +1,16 @@
 .profile {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.profile-container {
     height: 90vh;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-content: space-around;
-    justify-content: space-around;
-    border-bottom: 1px solid #6d6565;
+    justify-content: space-between;
 }
 
 .profile-image-container {
@@ -39,7 +44,6 @@
 
 .profile-intro {
     padding: 0 3rem;
-    margin: 5rem 0 2.5rem 0;
 }
 
 .wave {
@@ -85,26 +89,22 @@
     }
 }
 
-i {
+i.link-icon {
     font-size: 3rem;
     color: #ffffff;
 }
 
 .social-links {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    align-content: center;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .link-container {
     display: inline-block;
     padding: 0.8rem;
     text-align: center;
-    align-items: center;
-    margin: 0 0.6rem;
     border-radius: 5px;
 }
 
@@ -122,7 +122,7 @@ i {
     align-self: center;
     flex-direction: column;
     justify-content: center;
-    border: 6px solid #241f1f;
+    border: 1px solid #241f1f;
     box-shadow: 0 0 20px 2px rgb(255, 255, 255);
     animation: bounce 2s infinite;
 }
@@ -145,67 +145,61 @@ i {
     }
 }
 
-.profile-info,
-.projects,
-.contact {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    padding: 1rem
-}
-
 .field-title {
     font-size: 3rem;
     text-decoration: underline #0073ff 3px;
     text-underline-offset: 1.5rem;
 }
 
-.about-text,
-.project-description {
-    text-align: justify;
-}
-
-.about-text {
-    margin: 3rem 0 2rem 0;
-    font-size: 1.8rem;
-}
-
+.about-container,
 .certificate-container,
 .project-container,
 .contact-container {
     margin: 3rem 0;
 }
 
-.certificate,
-.project {
+.about-text {
+    text-align: justify;
+}
+
+.certificate {
     border-radius: 8px;
     background-color: #4A1A8B;
     margin: 1rem 0;
     padding: 1rem;
-}
-
-.contact-form {
-    border-radius: 8px;
-}
-
-.certificate,
-.certificate-info {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid #908888;
 }
 
-.certificate {
-    flex-direction: row;
-    justify-content: space-between;
-    align-content: center;
-    height: 8rem;
-}
+.certificate {}
 
 .certificate-info {
-    flex-direction: column;
-    align-content: space-between;
     width: 70%;
-    justify-content: center;
+}
+
+.certificate-links {
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.link-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(45deg, #a448ff, #340fac, #8b08a5);
+    margin: 0 0.5rem;
+}
+
+.link-btn:hover {
+    border: 1px solid #000000;
 }
 
 .certificate-name,
@@ -214,25 +208,15 @@ i {
     font-weight: 600;
 }
 
-.certificate-link {
+.certificate-date {
+    font-size: 1.2rem;
+    margin-top: 3rem;
+}
+
+.projects {
     display: flex;
     flex-direction: column;
-    width: 30%;
-    justify-content: center;
-}
-
-.link-btn {
-    padding: 0.8rem 1.2rem;
-    border-radius: 5px;
-    border: none;
-    font-size: 1.2rem;
-    font-weight: 600;
-    background-color: #00000058;
-    color: #ffffff;
-}
-
-.link-btn:hover {
-    background: linear-gradient(45deg, #4A1A8B, #340fac, #4A1A8B);
+    flex-wrap: wrap;
 }
 
 .project {
@@ -240,12 +224,7 @@ i {
     background-color: #4A1A8B;
     margin: 1rem 0;
     padding: 1rem;
-}
-
-.contact-form {
-    border-radius: 8px;
-    margin: 1rem 0;
-    padding: 1rem;
+    border: 1px solid #908888;
 }
 
 .project-description {
@@ -255,11 +234,26 @@ i {
     margin: 1rem 0;
 }
 
-.project-link {
+.project-links {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     flex-wrap: wrap;
+}
+
+.profile-info,
+.projects,
+.contact {
+    padding: 1rem
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.contact-container {
+    text-align: center;
 }
 
 .form-control {
@@ -295,71 +289,92 @@ textarea {
     border-radius: 0.5rem;
 }
 
-.button {
-    width: 100%;
-    border: none;
+i.send-message {
+    display: inline-block;
+}
+
+.bn39 {
+    background-image: linear-gradient(135deg, #008aff, #86d472);
+    border-radius: 6px;
+    box-sizing: border-box;
     color: #ffffff;
-    padding: 0.8rem;
-    font-weight: bold;
-    border-radius: 0.5rem;
-    background-color: #5B4AA1;
+    display: block;
+    height: 50px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    position: relative;
+    text-decoration: none;
+    z-index: 2;
+}
+
+.bn39:hover {
+    color: #fff;
+}
+
+.bn39 .bn39span {
+    align-items: center;
+    background: #0e0e10;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    transition: background 0.5s ease;
+    width: 100%;
+}
+
+.bn39:hover .bn39span {
+    background: transparent;
+}
+
+@media (min-width: 768px) {
+    .button-63 {
+        font-size: 24px;
+        min-width: 196px;
+    }
 }
 
 @media screen and (min-width: 786px) {
-    main {
-        border-bottom: 1px solid #6d6565;
+    .profile {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        border-bottom: 1px solid #908888;
     }
 
-    main,
+    .profile-container {
+        width: 40%;
+        float: left;
+        border-right: 1px solid #908888;
+
+    }
+
+    .profile-info {
+        width: 60%;
+        float: right;
+    }
+
     .certificate-container {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-    }
-
-    .profile {
-        width: 45%;
-        justify-content: center;
-        border: none;
-        border-right: 1px solid #6d6565;
-    }
-
-    .arrow-container {
-        display: none;
-    }
-
-    .profile-info {
-        height: 90vh;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        width: 55%;
-        justify-content: space-between;
-    }
-
-    .certificate-container {
         justify-content: space-around;
     }
 
     .certificate,
     .project {
-        width: 40%;
+        width: 45%;
     }
 
-    .contact {
-        width: 100vw;
-    }
-
-    .contact-form {
-        width: 100%;
-        margin: 0 30%;
-    }
-
-    .project-container,
-    .contact-container {
+    .project-container {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-around;
+    }
+
+    .contact-form {
+        margin: 0 30%;
     }
 }

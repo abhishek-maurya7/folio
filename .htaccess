@@ -28,4 +28,4 @@ RewriteRule ^dashboard/my-profile dashboard/my-profile.php [L]
 #Rewrriting URLs for portfolio folder and it's files
 RewriteRule ^([a-zA-Z0-9_]+)$ portfolio/ [NC]
 RewriteRule ^([a-zA-Z0-9_]+)/$ portfolio/ [NC]
-RewriteRule ^([a-zA-Z0-9_]+)/about$ portfolio/about.php [NC]
+RewriteRule ^([a-zA-Z0-9_]+)?name=([a-zA-Z0-9_]+)&email=([a-zA-Z0-9_]+)@([a-zA-Z0-9_]+)\.([a-zA-Z0-9_]+)&subject=([a-zA-Z0-9_]+)&message=([a-zA-Z0-9_]+)$ portfolio/ [NC]
