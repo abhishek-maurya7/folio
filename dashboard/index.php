@@ -22,40 +22,44 @@ if (!isset($_SESSION['loggedin']) || !($_SESSION['loggedin'])) {
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&display=swap" media="screen" />
   <link rel="icon" href="../app/private/images/logo.png" type="image/x-icon" />
   <style>
-    .main {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .card {
-      background: #0000005d;
-      backdrop-filter: blur(10px);
-      padding: 1rem;
+    .dashboard {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 2rem;
       border-radius: 1rem;
-      text-transform: uppercase;
-      z-index: -1;
+      color: #fff;
+      font-family: 'Sofia', cursive;
+      font-size: 2rem;
+      text-align: center;
     }
 
-    @media screen and (min-width: 988px) {
-      .main {
-        flex-direction: row;
-        justify-content: space-between;
+    @media screen and (min-width: 768px) {
+      .greeting {
+        width: 30%;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <?php include '../app/private/includes/nav.php' ?>
-    <div class="main">
-      <div class="card">
-        <h4 class="greeting"></h4>
-        <h4><?php echo $_SESSION['username']; ?></h4>
+  <?php include '../app/private/includes/nav.php'; ?>
+  <main>
+    <section class="landing" id="landing">
+      <div class="dashboard">
+        <div class="greeting">
+          <?php
+          $currentHour = date("H");
+          if ($currentHour >= 0 && $currentHour < 12) {
+            echo "Good Morning, " . $_SESSION['username'];
+          } else if ($currentHour >= 12 && $currentHour < 17) {
+            echo "Good Afternoon, " . $_SESSION['username'];
+          } else if ($currentHour >= 17 && $currentHour < 24) {
+            echo "Good Evening, " . $_SESSION['username'];
+          }
+          ?>
+        </div>
       </div>
-    </div>
-  </div>
-
+    </section>
+  </main>
   <script src="script.js"></script>
 </body>
 
