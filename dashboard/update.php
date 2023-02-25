@@ -6,70 +6,12 @@ if (!isset($_SESSION['loggedin']) || !($_SESSION['loggedin'])) {
 require '..\app\private\db\_dbconnect.php';
 require '..\app\private\functions\function.php';
 $username = $_SESSION['username'];
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    $newUsername = $_GET['username'];
-    $firstName = $_GET['firstName'];
-    $lastName = $_GET['lastName'];
-    $profession = $_GET['profession'];
-    $email = $_GET['email'];
-    $profileImg = file_get_contents($_FILES['profileImg']['tmp_name']);
-    $aboutMe = $_GET['aboutMe'];
-    $instagram = $_GET['instagram'];
-    $yt = $_GET['yt'];
-    $github = $_GET['github'];
-    $twitter = $_GET['twitter'];
-    $facebook = $_GET['facebook'];
-    $linkedIn = $_GET['linkedIn'];
-    $projectTitle1 = $_GET['projectTitle1'];
-    $projectLink1 = $_GET['projectLink1'];
-    $projectCodeLink1 = $_GET['projectCodeLink1'];
-    $projectDescription1 = $_GET['projectDescription1'];
-    $projectTitle2 = $_GET['projectTitle2'];
-    $projectLink2 = $_GET['projectLink2'];
-    $projectCodeLink2 = $_GET['projectCodeLink2'];
-    $projectDescription2 = $_GET['projectDescription2'];
-    $projectTitle3 = $_GET['projectTitle3'];
-    $projectLink3 = $_GET['projectLink3'];
-    $projectCodeLink3 = $_GET['projectCodeLink3'];
-    $projectDescription3 = $_GET['projectDescription3'];
-    $certificateName1 = $_GET['certificateName1'];
-    $certificateClaimDate1 = $_GET['certificateClaimDate1'];
-    $certificateLink1 = $_GET['certificateLink1'];
-    $certificateName2 = $_GET['certificateName2'];
-    $certificateClaimDate2 = $_GET['certificateClaimDate2'];
-    $certificateLink2 = $_GET['certificateLink2'];
-    $certificateName3 = $_GET['certificateName3'];
-    $certificateClaimDate3 = $_GET['certificateClaimDate3'];
-    $certificateLink3 = $_GET['certificateLink3'];
-    $showAlert = updatePortfolio($username, $firstName, $lastName, $profession, $email, $profileImg, $aboutMe, $instagram, $yt, $github, $twitter, $facebook, $linkedIn, $projectTitle1, $projectLink1, $projectCodeLink1, $projectDescription1, $projectTitle2, $projectLink2, $projectCodeLink2, $projectDescription2, $projectTitle3, $projectLink3, $projectCodeLink3, $projectDescription3, $certificateName1, $certificateClaimDate1, $certificateLink1, $certificateName2, $certificateClaimDate2, $certificateLink2, $certificateName3, $certificateClaimDate3, $certificateLink3, $contacts, $visits);
-}
-
-$sql = "SELECT * FROM personalPortfolio WHERE username = ?";
+$sql = "SELECT * from personalPortfolio where username = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $username);
+$stmt->bind_param('s', $username);
 $stmt->execute();
 $result = $stmt->get_result();
 $row = $result->fetch_assoc();
-
-
-function updatePortfolio($username, $firstName, $lastName, $profession, $email, $profileImg, $aboutMe, $instagram, $yt, $github, $twitter, $facebook, $linkedIn, $projectTitle1, $projectLink1, $projectCodeLink1, $projectDescription1, $projectTitle2, $projectLink2, $projectCodeLink2, $projectDescription2, $projectTitle3, $projectLink3, $projectCodeLink3, $projectDescription3, $certificateName1, $certificateClaimDate1, $certificateLink1, $certificateName2, $certificateClaimDate2, $certificateLink2, $certificateName3, $certificateClaimDate3, $certificateLink3, $contacts, $visits)
-{
-    require '..\app\private\db\_dbconnect.php';
-    require '..\app\private\functions\function.php';
-    $sql = "UPDATE personalPortfolio SET firstName = ?, lastName = ?, profession = ?, email = ?, profileImg = ?, aboutMe = ?, instagram = ?, yt = ?, github = ?, twitter = ?, facebook = ?, linkedIn = ?, projectTitle1 = ?, projectLink1 = ?, projectCodeLink1 = ?, projectDescription1 = ?, projectTitle2 = ?, projectLink2 = ?, projectCodeLink2 = ?, projectDescription2 = ?, projectTitle3 = ?, projectLink3 = ?, projectCodeLink3 = ?, projectDescription3 = ?, certificateName1 = ?, certificateClaimDate1 = ?, certificateLink1 = ?, certificateName2 = ?, certificateClaimDate2 = ?, certificateLink2 = ?, certificateName3 = ?, certificateClaimDate3 = ?, certificateLink3 = ?, contacts = ? WHERE username = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssssssssssssssssssssssssssssssssss", $username, $firstName, $lastName, $profession, $email, $profileImg, $aboutMe, $instagram, $yt, $github, $twitter, $facebook, $linkedIn, $projectTitle1, $projectLink1, $projectCodeLink1, $projectDescription1, $projectTitle2, $projectLink2, $projectCodeLink2, $projectDescription2, $projectTitle3, $projectLink3, $projectCodeLink3, $projectDescription3, $certificateName1, $certificateClaimDate1, $certificateLink1, $certificateName2, $certificateClaimDate2, $certificateLink2, $certificateName3, $certificateClaimDate3, $certificateLink3, $contacts);
-    $stmt->execute();
-    if ($stmt->affected_rows == 1) {
-        $showAlert =
-            '<div class="notification success">
-                        <i class="fa-solid fa-check-circle"></i>
-                        Message sent successfully!
-                    </div>';
-        return $showAlert;
-    }
-}
-
 
 ?>
 
@@ -86,142 +28,251 @@ function updatePortfolio($username, $firstName, $lastName, $profession, $email, 
     <script src="https://kit.fontawesome.com/0fe3b336ed.js" integrity="sha384-dQXoip1UH2Gf76Rt/vZNDhej9dqGkaJQAXegWARNJT95sqvNHAuqn37K64TKaC4f" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../app/private/css/base.css" />
     <link rel="stylesheet" href="../app/private/css/nav.css" />
-    <link rel="stylesheet" href="../app/private/css/dashboard.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&display=swap" media="screen" />
     <link rel="icon" href="../app/private/images/logo.png" type="image/x-icon" />
+    <style type="text/css">
+        .update {
+            text-align: center;
+        }
+
+        .title {
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .update-form {
+            background-color: #2b124A;
+            padding: 2rem;
+            border-radius: 1rem;
+        }
+
+        .form-control {
+            text-align: left;
+            /* margin: 1rem 0 0 0; */
+        }
+
+        .form-control label {
+            font-size: 1.8rem;
+        }
+
+        .update-field {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        input {
+            width: 70%;
+            border: none;
+            padding: 1rem;
+            outline: none;
+            border-radius: 0.5rem;
+            position: relative;
+        }
+
+        i {
+            font-size: 2rem;
+        }
+
+        textarea {
+            width: 70%;
+            min-width: 70%;
+            max-height: 15rem;
+            resize: vertical;
+            border-radius: 0.5rem;
+        }
+
+        .update-button {
+            background-color: #1974c8;
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        @media screen and (min-width: 768px) {
+            .update {
+                margin: 0 20%;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <?php include '..\app\private\includes\nav.php'; ?>
     <main>
         <section class="update">
+            <?php
+            global $showAlert;
+            echo  $showAlert;
+            ?>
             <div class="row title">
                 <h1> Update your portfolio </h1>
             </div>
-            <form action="update.php" name="update-form" autocomplete="on">
+            <form class="update-form" action="update" method="POST" name="update-form" autocomplete="on">
                 <div class="form-control">
-                    <label for="username">Username</label>
-                    <input type="text" name="username" id="username" value="<?php echo $row['username']; ?>" required />
-                </div>
-                <div class="form-control">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email" value="<?php echo $row['email']; ?>" required />
-                </div>
-                <!-- username, firstName, lastName, profession, email, profileImg, aboutMe, instagram, yt, github, twitter, facebook, linkedIn, projectTitle1, projectLink1, projectCodeLink1, projectDescription1, projectTitle2, projectLink2, projectCodeLink2, projectDescription2, projectTitle3, projectLink3, projectCodeLink3, projectDescription3, certificateName1, certificateClaimDate1, certificateLink1, certificateName2, certificateClaimDate2, certificateLink2, certificateName3, certificateClaimDate3, certificateLink3, contacts, visits -->
-                <div class="form-control">
-                    <label for="firstName">First Name</label>
-                    <input type="text" name="firstName" id="firstName" value="<?php echo $row['firstName']; ?>" required />
+                    <label for="username">Username</label> <br />
+                    <div class="update-field">
+                        <input type="text" name="username" id="username" value="<?php echo $row['username']; ?>" />
+                        <button class="update-button">Update</button>
+                    </div>
                 </div>
                 <div class="form-control">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" name="lastName" id="lastName" value="<?php echo $row['lastName']; ?>" required />
+                    <label for="Firstname"> Name </label><br /> <br />
+                    <div class="name-area">
+                        <div class="update-field">
+                            <input type="text" name="firstName" id="firstName" value="<?php echo $row['firstName']; ?>" />
+                            <button class="update-button">Update</button>
+                        </div>
+                        <br />
+                        <br />
+                        <div class="update-field">
+                            <input type="text" name="lastName" id="lastName" value="<?php echo $row['lastName']; ?>" />
+                            <button class="update-button">Update</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-control">
-                    <label for="profession">Profession</label>
-                    <input type="text" name="profession" id="profession" value="<?php echo $row['profession']; ?>" required />
+                    <label for="profession">Profession</label> <br />
+                    <div class="update-field">
+                        <input type="text" name="profession" id="profession" value="<?php echo $row['profession']; ?>" />
+                        <button class="update-button">Update</button>
+                    </div>
                 </div>
                 <div class="form-control">
-                    <label for="aboutMe">About Me</label>
-                    <textarea name="aboutMe" id="aboutMe" cols="30" rows="10" required><?php echo $row['aboutMe']; ?></textarea>
+                    <label for="email">Email</label> <br />
+                    <div class="update-field">
+                        <input type="email" name="email" id="email" value="<?php echo $row['email']; ?>" />
+                        <button class="update-button">Update</button>
+                    </div>
                 </div>
                 <div class="form-control">
-                    <label for="instagram">Instagram</label>
-                    <input type="text" name="instagram" id="instagram" value="<?php echo $row['instagram']; ?>" required />
+                    <label for="profileImg">Profile Image</label> <br />
+                    <div class="update-field">
+                        <input type="file" name="profileImg" id="profileImg" />
+                        <button class="update-button">Update</button>
+                    </div>
                 </div>
                 <div class="form-control">
-                    <label for="yt">YouTube</label>
-                    <input type="text" name="yt" id="yt" value="<?php echo $row['yt']; ?>" required />
+                    <label for="about">About</label> <br />
+                    <div class="update-field">
+                        <textarea name="aboutMe" id="about" cols="30" rows="10"><?php echo $row['aboutMe']; ?></textarea>
+                        <button class="update-button">Update</button>
+                    </div>
                 </div>
                 <div class="form-control">
-                    <label for="github">GitHub</label>
-                    <input type="text" name="github" id="github" value="<?php echo $row['github']; ?>" required />
+                    <label for="socialLinks"> Social Links </label>
+                    <hr />
+                    <div class="social-links">
+                        <div class="update-field">
+                            <i class="fab fa-instagram"></i>
+                            <input type="url" name="instagram" id="instagram" value="<?php echo $row['instagram']; ?>" />
+                            <button class="update-button">Update</button>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="social-links">
+                        <div class="update-field">
+                            <i class="fab fa-youtube"></i>
+                            <input type="url" name="yt" id="youtube" value="<?php echo $row['yt']; ?>" />
+                            <button class="update-button">Update</button>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="social-links">
+                        <div class="update-field">
+                            <i class="fab fa-github"></i>
+                            <input type="url" name="github" id="github" value="<?php echo $row['github']; ?>" />
+                            <button class="update-button">Update</button>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="social-links">
+                        <div class="update-field">
+                            <i class="fab fa-twitter"></i>
+                            <input type="url" name="twitter" id="twitter" value="<?php echo $row['twitter']; ?>" />
+                            <button class="update-button">Update</button>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="social-links">
+                        <div class="update-field">
+                            <i class="fab fa-facebook"></i>
+                            <input type="url" name="facebook" id="facebook" value="<?php echo $row['facebook']; ?>" />
+                            <button class="update-button">Update</button>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="social-links">
+                        <div class="update-field">
+                            <i class="fab fa-linkedin"></i>
+                            <input type="url" name="linkedIn" id="linkedIn" value="<?php echo $row['LinkedIn']; ?>" />
+                            <button class="update-button">Update</button>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="form-control">
+                    <label for="project"> Projects </label>
+                    <hr />
+                    <?php
+                    for ($i = 1; $i <= 3; $i++) {
+                        echo '<div class="project">
+                        <label for="projectTitle' . $i . '"> Project ' . $i . ' </label> <br /> <br />
+                        <div class="update-field">
+                            <input type="text" name="projectTitle' . $i . '" id="projectTitle' . $i . '" value="' . $row['projectTitle' . $i] . '" />
+                            <button class="update-button">Update</button>
+                        </div>
+                        <br />
+                        <br />
+                        <div class="update-field">
+                            <input type="url" name="projectLink' . $i . '" id="projectLink' . $i . '" value="' . $row['projectLink' . $i] . '" />
+                            <button class="update-button">Update</button>
+                        </div>
+                        <br /> <br />
+                        <div class="update-field">
+                            <input type="url" name="projectCodeLink' . $i . '" id="projectCodeLink' . $i . '" value="' . $row['projectCodeLink' . $i] . '" />
+                            <button class="update-button">Update</button>
+                        </div>
+                        <br /> <br />
+                        <div class="update-field">
+                            <textarea class="form-control" maxlength="500" rows="5" name="projectDescription' . $i . '" id="projectDescription' . $i . '">' . $row['projectDescription' . $i] . '</textarea>
+                            <button class="update-button">Update</button>
+                        </div>              
+                    </div>
+                    <br />';
+                    }
+                    ?>
                 </div>
                 <div class="form-control">
-                    <label for="twitter">Twitter</label>
-                    <input type="text" name="twitter" id="twitter" value="<?php echo $row['twitter']; ?>" required />
-                </div>
-                <div class="form-control">
-                    <label for="facebook">Facebook</label>
-                    <input type="text" name="facebook" id="facebook" value="<?php echo $row['facebook']; ?>" required />
-                </div>
-                <div class="form-control">
-                    <label for="linkedIn">LinkedIn</label>
-                    <input type="text" name="linkedIn" id="linkedIn" value="<?php echo $row['LinkedIn']; ?>" required />
-                </div>
-                <div class="form-control">
-                    <label for="projectTitle1">Project Title 1</label>
-                    <input type="text" name="projectTitle1" id="projectTitle1" value="<?php echo $row['projectTitle1']; ?>" required />
-                </div>
-                <div class="form-control">
-                    <label for="projectLink1">Project Link 1</label>
-                    <input type="text" name="projectLink1" id="projectLink1" value="<?php echo $row['projectLink1']; ?>" required />
-                </div>
-                <div class="form-control">
-                    <label for="projectCodeLink1">Project Code Link 1</label>
-                    <input type="text" name="projectCodeLink1" id="projectCodeLink1" value="<?php echo $row['projectCodeLink1']; ?>" required />
-                </div>
-                <div class="form-control">
-                    <label for="projectDescription1">Project Description 1</label>
-                    <textarea name="projectDescription1" id="projectDescription1" cols="30" rows="10" required><?php echo $row['projectDescription1']; ?></textarea>
-                </div>
-                <div class="form-control">
-                    <label for="projectTitle2">Project Title 2</label>
-                    <input type="text" name="projectTitle2" id="projectTitle2" value="<?php echo $row['projectTitle2']; ?>" required />
-                </div>
-                <div class="form-control">
-                    <label for="projectLink2">Project Link 2</label>
-                    <input type="text" name="projectLink2" id="projectLink2" value="<?php echo $row['projectLink2']; ?>" required />
-                </div>
-                <div class="form-control">
-                    <label for="projectCodeLink2">Project Code Link 2</label>
-                    <input type="text" name="projectCodeLink2" id="projectCodeLink2" value="<?php echo $row['projectCodeLink2']; ?>" required />
-                </div>
-                <div class="form-control">
-                    <label for="projectDescription2">Project Description 2</label>
-                    <textarea name="projectDescription2" id="projectDescription2" cols="30" rows="10" required><?php echo $row['projectDescription2']; ?></textarea>
-                </div>
-                <div class="form-control">
-                    <label for="projectTitle3">Project Title 3</label>
-                    <input type="text" name="projectTitle3" id="projectTitle3" value="<?php echo $row['projectTitle3']; ?>" required />
-                </div>
-                <div class="form-control">
-                    <label for="projectLink3">Project Link 3</label>
-                    <input type="text" name="projectLink3" id="projectLink3" value="<?php echo $row['projectLink3']; ?>" required />
-                </div>
-                <div class="form-control">
-                    <label for="projectCodeLink3">Project Code Link 3</label>
-                    <input type="text" name="projectCodeLink3" id="projectCodeLink3" value="<?php echo $row['projectCodeLink3']; ?>" required />
-                </div>
-                <div class="form-control">
-                    <label for="projectDescription3">Project Description 3</label>
-                    <textarea name="projectDescription3" id="projectDescription3" cols="30" rows="10" required><?php echo $row['projectDescription3']; ?></textarea>
-                </div>
-                <div class="certificate">
-                    <label for="certificateName1"> Certificate 1 </label> <br /> <br />
-                    <input type="text" name="certificateName1" id="certificateName1" value="<?php echo $row['certificateName1']; ?>" />
-                    <br /> <br />
-                    <input type=" url" name="certificateLink1" id="certificateLink1" value="<?php echo $row['certificateLink1']; ?>" /> <br /> <br />
-                    <input type=" date" name="certificateClaimDate1" id="certificateClaimDate1" value="<?php echo $row['certificateClaimDate1']; ?>" /> <br /> <br />
-                </div>
-                <br />
-                <div class="certificate">
-                    <label for="certificateName2"> Certificate 2 </label> <br /> <br />
-                    <input type="text" name="certificateName2" id="certificateName2" value="<?php echo $row['certificateName2']; ?>" />
-                    <br /> <br />
-                    <input type=" url" name="certificateLink2" id="certificateLink2" value="<?php echo $row['certificateLink2']; ?>" /> <br /> <br />
-                    <input type=" date" name="certificateClaimDate2" id="certificateClaimDate2" value="<?php echo $row['certificateClaimDate2']; ?>" /> <br /> <br />
-                </div>
-                <br />
-                <div class="certificate">
-                    <label for="certificateName3"> Certificate 3 </label> <br /> <br />
-                    <input type="text" name="certificateName3" id="certificateName3" value="<?php echo $row['certificateName3']; ?>" />
-                    <br /> <br />
-                    <input type=" url" name="certificateLink3" id="certificateLink3" value="<?php echo $row['certificateLink3']; ?>" /> <br /> <br />
-                    <input type=" date" name="certificateClaimDate3" id="certificateClaimDate3" value="<?php echo $row['certificateClaimDate3']; ?>" /> <br /> <br />
-                </div>
-                <br />
-                <div class=" form-control">
-                    <button class="button" href="">Submit</button>
+                    <label for="certificates"> Certificates <i class="fa-solid fa-question fa-shake" onclick="alert('Enter Certificate Name, Certificate Link and Data of Issue')"></i>
+                    </label>
+                    <hr />
+                    <?php
+                    for ($i = 1; $i <= 3; $i++) {
+                        echo '<div class="certificate">
+                        <label for="certificateName' . $i . '"> Certificate ' . $i . ' </label> <br /> <br />
+                        <div class="update-field">
+                            <input type="text" name="certificateName' . $i . '" id="certificateName' . $i . '" value="' . $row['certificateName' . $i] . '" />
+                            <button class="update-button">Update</button>
+                        </div>
+                        <br /> <br />
+                        <div class="update-field">
+                            <input type="url" name="certificateLink' . $i . '" id="certificateLink' . $i . '" value="' . $row['certificateLink' . $i] . '" />
+                            <button class="update-button">Update</button>
+                        </div>
+                        <br /> <br />
+                        <div class="update-field">
+                            <input type="date" name="certificateClaimDate' . $i . '" id="certificateClaimDate' . $i . '" value="' . $row['certificateClaimDate' . $i] . '" /> <br /> <br />
+                            <button class="update-button">Update</button>
+                        </div>
+                        <br />
+                    </div>
+                    <br />';
+                    }
+                    ?>
                 </div>
             </form>
         </section>
