@@ -4,6 +4,16 @@ if (!isset($_SESSION['loggedin']) || !($_SESSION['loggedin'])) {
   header("location: ../login");
 }
 
+require '..\app\private\db\_dbconnect.php';
+require '..\app\private\functions\function.php';
+$username = $_SESSION['username'];
+$sql = 'SELECT * FROM personalPortfolio WHERE username = ?';
+$stmt = $conn->prepare($sql);
+$stmt->bind_param('s', $username);
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
+
 ?>
 
 <!DOCTYPE html>
@@ -23,18 +33,79 @@ if (!isset($_SESSION['loggedin']) || !($_SESSION['loggedin'])) {
   <link rel="icon" href="../app/private/images/logo.png" type="image/x-icon" />
   <style>
     .dashboard {
-      background: rgba(0, 0, 0, 0.5);
-      padding: 2rem;
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
       border-radius: 1rem;
-      color: #fff;
-      font-family: 'Sofia', cursive;
       font-size: 2rem;
       text-align: center;
+      justify-content: space-around;
+    }
+
+    .card {
+      border-radius: 1rem;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+
+    .greeting {
+      font-family: 'Sofia', cursive;
+      padding: 1rem;
+    }
+
+    .website-link {
+      padding: 1rem;
+      display: inline;
+    }
+
+    .website-link a {
+      text-decoration: underline;
+    }
+
+    .visits {
+      border-radius: 1rem;
+      background-color: #333333;
+      padding: 1rem;
+    }
+
+    .img {
+      width: 100%;
+      height: 300px;
+      border-radius: 1rem;
+    }
+
+    .bn39 {
+      background-color: greenyellow;
+      border-radius: 6px;
+      height: 50px;
+      font-size: 1.4rem;
+      padding: 0.5rem 1rem;
+      position: relative;
+      font-weight: 700;
+      z-index: 0;
     }
 
     @media screen and (min-width: 768px) {
-      .greeting {
+      .dashboard {
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+      }
+
+      .card {
         width: 30%;
+
+      }
+
+      .visits {
+        width: 50%;
+      }
+
+      .img {
+        width: 100%;
+        height: 300px;
       }
     }
   </style>
@@ -45,16 +116,35 @@ if (!isset($_SESSION['loggedin']) || !($_SESSION['loggedin'])) {
   <main>
     <section class="landing" id="landing">
       <div class="dashboard">
-        <div class="greeting">
+        <div class="card">
+          <div class="greeting">
+            <?php
+            $currentHour = date("H");
+            if ($currentHour >= 0 && $currentHour < 12) {
+              echo "Good Morning, " . $row['firstName'];
+            } else if ($currentHour >= 12 && $currentHour < 17) {
+              echo "Good Afternoon, " . $row['firstName'];
+            } else if ($currentHour >= 17 && $currentHour < 24) {
+              echo "Good Evening, " . $row['firstName'];
+            }
+            ?>
+          </div>
+          <div class="website-link">
+            Your website is live at: <a target="_blank" href='http://localhost/folio/<?php echo $_SESSION['username']; ?>'>http://localhost/folio/<?php echo $_SESSION['username']; ?></a>
+          </div>
+          <div class="update">
+            <button class="bn39" onclick="window.location.href = 'update'">Update Your Portfolio</button>
+          </div>
+        </div>
+        <div class="visits">
+          <h4>Visits in current year</h4>
           <?php
-          $currentHour = date("H");
-          if ($currentHour >= 0 && $currentHour < 12) {
-            echo "Good Morning, " . $_SESSION['username'];
-          } else if ($currentHour >= 12 && $currentHour < 17) {
-            echo "Good Afternoon, " . $_SESSION['username'];
-          } else if ($currentHour >= 17 && $currentHour < 24) {
-            echo "Good Evening, " . $_SESSION['username'];
-          }
+          $visits = $row['visits'];
+          $visits = unserialize($visits);
+          $visits = $visits[0];
+          $visits = array_values($visits);
+          $visits = implode(',', $visits);
+          echo "<img src='https://quickchart.io/chart?c={type:\"bar\",data:{labels:[\"Jan\",\"Feb\",\"Mar\",\"Apr\",\"May\",\"Jun\",\"Jul\",\"Aug\",\"Sep\",\"Oct\",\"Nov\",\"Dec\"],datasets:[{label:\"Visits\",data:[" . $visits . "],backgroundColor:\"rgba(255, 99, 132, 0.2)\",borderColor:\"rgba(255, 99, 132, 1)\",borderWidth:1},{label:\"Visits\",data:[" . $visits . "],type:\"line\",fill:false,borderColor:\"rgba(54, 162, 235, 1)\",borderWidth:1}]},options:{scales:{yAxes:[{ticks:{beginAtZero:true}}]}}}' class='img' />";
           ?>
         </div>
       </div>

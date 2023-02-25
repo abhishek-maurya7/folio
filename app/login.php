@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['Login'])) {
         </section>
         <section class="account-status">
             <div class="container">
-                <p>Don't Have an Account? <a href="signup">&nbsp; <u>Sign Up</u></a> </p>
+                <p>Don't Have an Account? <a href="signup">&nbsp; <u>Sign Up</u></a></p>
             </div>
         </section>
     </main>

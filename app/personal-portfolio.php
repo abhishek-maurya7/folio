@@ -13,7 +13,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $profession = $_POST['profession'];
     $email = $_POST['email'];
 
-    // $img = $_FILES['profileImg']['tmp_name'];
     $profileImg = file_get_contents($_FILES['profileImg']['tmp_name']);
 
     $about = $_POST['aboutMe'];
@@ -238,7 +237,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <input type="date" name="certificateClaimDate3" id="certificateClaimDate3" /> <br /> <br />
                         </div>
                         <div class="form-control">
-                            <button class="button" href="">Submit</button>
+                            <button class="button">Submit</button>
                         </div>
                     </div>
                 </form>
