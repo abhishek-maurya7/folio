@@ -120,6 +120,14 @@ $row = $result->fetch_assoc();
                     </div>
                 </div>
                 <div class="form-control">
+                    <label for="password">Password</label> <br />
+                    <div class="update-field">
+                        <input type="password" name="password" id="password" />
+                        <input type="cpassword" name="cpassword" id="cpassword" />
+                        <button class="update-button">Update</button>
+                    </div>
+                </div>
+                <div class="form-control">
                     <label for="Firstname"> Name </label><br /> <br />
                     <div class="name-area">
                         <div class="update-field">
