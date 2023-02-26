@@ -66,7 +66,7 @@ $row = $result->fetch_assoc();
 
     .visits {
       border-radius: 1rem;
-      background-color: #333333;
+      background-color: #ffffff;
       padding: 1rem;
     }
 

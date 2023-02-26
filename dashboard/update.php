@@ -48,7 +48,7 @@ $row = $result->fetch_assoc();
 
         .form-control {
             text-align: left;
-            /* margin: 1rem 0 0 0; */
+            margin: 1.8rem 0 0 0;
         }
 
         .form-control label {
@@ -126,7 +126,6 @@ $row = $result->fetch_assoc();
                             <input type="text" name="firstName" id="firstName" value="<?php echo $row['firstName']; ?>" />
                             <button class="update-button">Update</button>
                         </div>
-                        <br />
                         <br />
                         <div class="update-field">
                             <input type="text" name="lastName" id="lastName" value="<?php echo $row['lastName']; ?>" />
@@ -222,23 +221,21 @@ $row = $result->fetch_assoc();
                         echo '<div class="project">
                         <label for="projectTitle' . $i . '"> Project ' . $i . ' </label> <br /> <br />
                         <div class="update-field">
-                            <input type="text" name="projectTitle' . $i . '" id="projectTitle' . $i . '" value="' . $row['projectTitle' . $i] . '" />
+                            <input type="text" name="projectTitle' . $i . '" id="projectTitle' . $i . '" value="' . $row['projectTitle' . $i] . '" placeholder="Project name" />
                             <button class="update-button">Update</button>
                         </div>
                         <br />
+                        <div class="update-field">
+                            <input type="url" name="projectLink' . $i . '" id="projectLink' . $i . '" value="' . $row['projectLink' . $i] . '" placeholder="Link to project" />
+                            <button class="update-button">Update</button>
+                        </div>
                         <br />
                         <div class="update-field">
-                            <input type="url" name="projectLink' . $i . '" id="projectLink' . $i . '" value="' . $row['projectLink' . $i] . '" />
+                            <input type="url" name="projectCodeLink' . $i . '" id="projectCodeLink' . $i . '" value="' . $row['projectCodeLink' . $i] . '" placeholder="Link to project source code" />
                             <button class="update-button">Update</button>
                         </div>
-                        <br /> <br />
                         <div class="update-field">
-                            <input type="url" name="projectCodeLink' . $i . '" id="projectCodeLink' . $i . '" value="' . $row['projectCodeLink' . $i] . '" />
-                            <button class="update-button">Update</button>
-                        </div>
-                        <br /> <br />
-                        <div class="update-field">
-                            <textarea class="form-control" maxlength="500" rows="5" name="projectDescription' . $i . '" id="projectDescription' . $i . '">' . $row['projectDescription' . $i] . '</textarea>
+                            <textarea class="form-control" maxlength="500" rows="5" name="projectDescription' . $i . '" id="projectDescription' . $i . '" placeholder="Describe the project">' . $row['projectDescription' . $i] . '</textarea>
                             <button class="update-button">Update</button>
                         </div>              
                     </div>
@@ -255,17 +252,17 @@ $row = $result->fetch_assoc();
                         echo '<div class="certificate">
                         <label for="certificateName' . $i . '"> Certificate ' . $i . ' </label> <br /> <br />
                         <div class="update-field">
-                            <input type="text" name="certificateName' . $i . '" id="certificateName' . $i . '" value="' . $row['certificateName' . $i] . '" />
+                            <input type="text" name="certificateName' . $i . '" id="certificateName' . $i . '" value="' . $row['certificateName' . $i] . '" placeholder="Certificate name" />
                             <button class="update-button">Update</button>
                         </div>
                         <br /> <br />
                         <div class="update-field">
-                            <input type="url" name="certificateLink' . $i . '" id="certificateLink' . $i . '" value="' . $row['certificateLink' . $i] . '" />
+                            <input type="url" name="certificateLink' . $i . '" id="certificateLink' . $i . '" value="' . $row['certificateLink' . $i] . '" placeholder="Link to certificate" />
                             <button class="update-button">Update</button>
                         </div>
                         <br /> <br />
                         <div class="update-field">
-                            <input type="date" name="certificateClaimDate' . $i . '" id="certificateClaimDate' . $i . '" value="' . $row['certificateClaimDate' . $i] . '" /> <br /> <br />
+                            <input type="date" name="certificateClaimDate' . $i . '" id="certificateClaimDate' . $i . '" value="' . $row['certificateClaimDate' . $i] . '"/> <br /> <br />
                             <button class="update-button">Update</button>
                         </div>
                         <br />
