@@ -148,7 +148,9 @@ $row = $result->fetch_assoc();
       </div>
     </section>
     <section id="contact-requests" class="contact-requests">
+      <div class="contact-request">
 
+      </div>
     </section>
   </main>
   <script src="script.js"></script>

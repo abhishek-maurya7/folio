@@ -1,7 +1,7 @@
 <?php
 require '../app/private/db/_dbconnect.php';
 require '../app/private/functions/function.php';
-$username = filter_var(explode('/', $_SERVER['REQUEST_URI'])[2], FILTER_SANITIZE_STRING);
+$username = filter_var(explode('/', $_SERVER['REQUEST_URI'])[1], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $sql = 'SELECT * FROM personalPortfolio WHERE username = ?';
 $stmt = $conn->prepare($sql);
 $stmt->bind_param('s', $username);
@@ -14,11 +14,11 @@ if (!$result->num_rows > 0) {
 $validate->incrementVisits($username);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+    $name = filter_var($_POST['name'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-    $subject = filter_var($_POST['subject'], FILTER_SANITIZE_STRING);
-    $message = filter_var($_POST['message'], FILTER_SANITIZE_STRING);
-    $showAlert = $validate->contact($username, $name, $email, $subject, $message);
+    $subject = filter_var($_POST['subject'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $message = filter_var($_POST['message'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $validate->contact($username, $name, $email, $subject, $message);
 }
 ?>
 

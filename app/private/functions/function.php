@@ -71,7 +71,6 @@ class Validate
                     <i class="fa-solid fa-triangle-exclamation"></i>
                     MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
                 </div>';
-
             echo $showAlert;
         }
     }
@@ -111,10 +110,8 @@ class Validate
             $stmt->execute();
             $result = $stmt->get_result();
             $row = $result->fetch_assoc();
-
             $visits = unserialize($row['visits']);
             $visits[0][date('M')] += 1;
-
             $visits = serialize($visits);
             $sql = "UPDATE personalportfolio SET visits = ? WHERE username = ?";
             $stmt = $conn->prepare($sql);
@@ -134,49 +131,6 @@ class Validate
     public function contact($username, $name, $email, $subject, $message)
     {
         require '../app/private/db/_dbconnect.php';
-        try {
-            $sql = "SELECT contacts FROM personalPortfolio WHERE username = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("s", $username);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            $row = $result->fetch_assoc();
-
-            $contact = unserialize($row['contacts']);
-            $messageRequest = array(
-                'name' => $name,
-                'email' => $email,
-                'subject' => $subject,
-                'message' => $message
-            );
-
-            array_push($contact, $messageRequest);
-            $contact = serialize($contact);
-
-            $sql = "UPDATE personalPortfolio SET contacts = ? WHERE username = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ss", $contact, $username);
-            $stmt->execute();
-
-            if ($stmt->affected_rows > 0) {
-                $showAlert =
-                    '<div class="notification success">
-                        <i class="fa-solid fa-check-circle"></i>
-                        Message sent successfully!
-                    </div>';
-                return $showAlert;
-            } else {
-                throw new mysqli_sql_exception("No rows affected");
-            }
-        } catch (mysqli_sql_exception $e) {
-            $showAlert =
-                '<div class="notification alert">
-                    <i class="fa-solid fa-triangle-exclamation"></i>
-                    MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
-                </div>';
-
-            echo $showAlert;
-        }
     }
 }
 $validate = new Validate();
