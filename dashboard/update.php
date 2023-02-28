@@ -3,8 +3,8 @@ session_start();
 if (!isset($_SESSION['loggedin']) || !($_SESSION['loggedin'])) {
     header("location: ../login");
 }
-require '..\app\private\db\_dbconnect.php';
-require '..\app\private\functions\function.php';
+require '../app/private/db/_dbconnect.php';
+require '../app/private/functions/function.php';
 $username = $_SESSION['username'];
 $sql = "SELECT * from personalPortfolio where username = ?";
 $stmt = $conn->prepare($sql);
@@ -101,7 +101,7 @@ $row = $result->fetch_assoc();
 </head>
 
 <body>
-    <?php include '..\app\private\includes\nav.php'; ?>
+    <?php include '../app/private/includes/nav.php'; ?>
     <main>
         <section class="update">
             <?php
@@ -122,8 +122,8 @@ $row = $result->fetch_assoc();
                 <div class="form-control">
                     <label for="password">Password</label> <br />
                     <div class="update-field">
-                        <input type="password" name="password" id="password" />
-                        <input type="cpassword" name="cpassword" id="cpassword" />
+                        <input type="password" name="password" id="password" placeholder="Enter password" /> &nbsp;
+                        <input type="cpassword" name="cpassword" id="cpassword" placeholder="Enter password again" /> &nbsp;
                         <button class="update-button">Update</button>
                     </div>
                 </div>

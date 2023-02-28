@@ -1,3 +1,7 @@
+
+# HTID:21307565: DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES BELOW
+#php_value display_errors 1
+# DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES ABOVE HTID:21307565:
 RewriteEngine On
 
 #If the file exists, don't rewrite

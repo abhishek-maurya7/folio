@@ -1,23 +1,19 @@
 <?php
-require 'private\functions\function.php';
-require 'private\db\_dbconnect.php';
+require 'private/functions/function.php';
+require 'private/db/_dbconnect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['Login'])) {
     $username = filter_input(INPUT_GET, 'username', FILTER_SANITIZE_STRING);
     $password = filter_input(INPUT_GET, 'password', FILTER_SANITIZE_STRING);
     if ($validate->checkUsername($username)) {
         if ($validate->checkPassword($username, $password)) {
-            // regenerate session ID after successful login
-            session_regenerate_id(true);
-
-            // set session cookie options
-            $secure = true; // only set secure flag if using HTTPS
+            $secure = true;
             $httponly = true;
             session_set_cookie_params(0, '/', '', $secure, $httponly);
-
             session_start();
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $username;
+            session_regenerate_id(true);
             $validate->loginUser($username);
         } else {
             $showAlert =
@@ -53,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['Login'])) {
 </head>
 
 <body>
-    <?php include 'private\includes\nav.php'; ?>
+    <?php include 'private/includes/nav.php'; ?>
     <main>
         <section class="login-signup">
             <div class="container">

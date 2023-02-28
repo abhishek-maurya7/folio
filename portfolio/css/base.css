@@ -5,10 +5,10 @@
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    --color: #fff;
+    --color: #EEEEEE;
     --font-family: Rubik, 'Open Sans', sans-serif;
     /* --bg-color: #4A1A8B; */
-    --bg-color: #0b0f17;
+    --bg-color: #222831;
 }
 
 * {

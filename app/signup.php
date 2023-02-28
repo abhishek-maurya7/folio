@@ -1,6 +1,6 @@
 <?php
-require 'private\db\_dbconnect.php';
-require 'private\functions\function.php';
+require 'private/db/_dbconnect.php';
+require 'private/functions/function.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Signup'])) {
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
@@ -45,9 +45,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Signup'])) {
     <link rel="preload" as="font">
     <script src="https://kit.fontawesome.com/0fe3b336ed.js"></script>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Sofia&display=swap'>
-    <link rel="stylesheet" href='app\private\css\base.css' />
-    <link rel="stylesheet" href='app\private\css\nav.css' />
-    <link rel="stylesheet" href='app\private\css\login-register.css' />
+    <link rel="stylesheet" href='app/private/css/base.css' />
+    <link rel="stylesheet" href='app/private/css/nav.css' />
+    <link rel="stylesheet" href='app/private/css/login-register.css' />
 </head>
 
 <body>

@@ -3,7 +3,7 @@ class Validate
 {
     public function checkUsername($validateUsername) //Checks whether the username is available
     {
-        require 'private\db\_dbconnect.php';
+        require 'private/db/_dbconnect.php';
         $sql = "SELECT username FROM users WHERE username = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $validateUsername);
@@ -18,7 +18,7 @@ class Validate
 
     public function checkEmail($validateEmail) //Checks whether the email has already been used
     {
-        require 'private\db\_dbconnect.php';
+        require 'private/db/_dbconnect.php';
         $sql = "SELECT email FROM users WHERE email = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $validateEmail);
@@ -34,7 +34,7 @@ class Validate
 
     public function createAccount($username, $email, $password) //Creates an account
     {
-        require 'private\db\_dbconnect.php';
+        require 'private/db/_dbconnect.php';
         try {
             $hash = password_hash($password, PASSWORD_DEFAULT);
             $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
@@ -56,7 +56,7 @@ class Validate
 
     public function checkPassword($username, $password) //Checks whether the password is correct
     {
-        require 'private\db\_dbconnect.php';
+        require 'private/db/_dbconnect.php';
         try {
             $sql = "SELECT password FROM users WHERE username = ?";
             $stmt = $conn->prepare($sql);
@@ -71,16 +71,15 @@ class Validate
                     <i class="fa-solid fa-triangle-exclamation"></i>
                     MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
                 </div>';
-
             echo $showAlert;
         }
     }
 
     public function loginUser($username) //Logs in the user and starts the session
     {
-        require 'private\db\_dbconnect.php';
+        require 'private/db/_dbconnect.php';
         try {
-            $sql = "SELECT username FROM personalportfolio where username = ?";
+            $sql = "SELECT username FROM personalPortfolio where username = ?";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("s", $username);
             $stmt->execute();
@@ -103,18 +102,16 @@ class Validate
 
     public function incrementVisits($username)
     {
-        require '..\app\private\db\_dbconnect.php';
+        require '../app/private/db/_dbconnect.php';
         try {
-            $sql = "Select visits from personalportfolio where username = ?";
+            $sql = "Select visits from personalPortfolio where username = ?";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("s", $username);
             $stmt->execute();
             $result = $stmt->get_result();
             $row = $result->fetch_assoc();
-
             $visits = unserialize($row['visits']);
             $visits[0][date('M')] += 1;
-
             $visits = serialize($visits);
             $sql = "UPDATE personalportfolio SET visits = ? WHERE username = ?";
             $stmt = $conn->prepare($sql);
@@ -133,50 +130,7 @@ class Validate
 
     public function contact($username, $name, $email, $subject, $message)
     {
-        require '..\app\private\db\_dbconnect.php';
-        try {
-            $sql = "SELECT contacts FROM personalportfolio WHERE username = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("s", $username);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            $row = $result->fetch_assoc();
-
-            $contact = unserialize($row['contacts']);
-            $messageRequest = array(
-                'name' => $name,
-                'email' => $email,
-                'subject' => $subject,
-                'message' => $message
-            );
-
-            array_push($contact, $messageRequest);
-            $contact = serialize($contact);
-
-            $sql = "UPDATE personalportfolio SET contacts = ? WHERE username = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ss", $contact, $username);
-            $stmt->execute();
-
-            if ($stmt->affected_rows > 0) {
-                $showAlert =
-                    '<div class="notification success">
-                        <i class="fa-solid fa-check-circle"></i>
-                        Message sent successfully!
-                    </div>';
-                return $showAlert;
-            } else {
-                throw new mysqli_sql_exception("No rows affected");
-            }
-        } catch (mysqli_sql_exception $e) {
-            $showAlert =
-                '<div class="notification alert">
-                    <i class="fa-solid fa-triangle-exclamation"></i>
-                    MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
-                </div>';
-
-            echo $showAlert;
-        }
+        require '../app/private/db/_dbconnect.php';
     }
 }
 $validate = new Validate();

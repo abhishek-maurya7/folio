@@ -34,15 +34,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $projectLink3 = $_POST['projectLink3'];
     $projectCodeLink3 = $_POST['projectCodeLink3'];
     $projectDescription3 = $_POST['projectDescription3'];
+
     $certificateName1 = $_POST['certificateName1'];
     $certificateClaimDate1 = $_POST['certificateClaimDate1'];
+    if ($certificateClaimDate1 == '') {
+        $certificateClaimDate1 = '0000-00-00';
+    }
     $certificateLink1 = $_POST['certificateLink1'];
+
     $certificateName2 = $_POST['certificateName2'];
     $certificateClaimDate2 = $_POST['certificateClaimDate2'];
+    if ($certificateClaimDate2 == '') {
+        $certificateClaimDate2 = '0000-00-00';
+    }
     $certificateLink2 = $_POST['certificateLink2'];
+
     $certificateName3 = $_POST['certificateName3'];
     $certificateClaimDate3 = $_POST['certificateClaimDate3'];
     $certificateLink3 = $_POST['certificateLink3'];
+    if ($certificateClaimDate3 == '') {
+        $certificateClaimDate3 = '0000-00-00';
+    }
+
+    $contacts = array();
+    $contacts = serialize($contacts);
+
+    $currentYear = 'year' . date('Y') . 'Visits';
+    $visits = array();
+    $yearFormat = array('Jan' => 0, 'Feb' => 0, 'Mar' => 0, 'Apr' => 0, 'May' => 0, 'Jun' => 0, 'Jul' => 0, 'Aug' => 0, 'Sep' => 0, 'Oct' => 0, 'Nov' => 0, 'Dec' => 0);
+    array_unshift($visits, $currentYear);
+    $visits[0] = $yearFormat;
+    $visits = serialize($visits);
 
     $contacts = array();
     $contacts = serialize($contacts);
@@ -60,6 +82,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("ssssssssssssssssssssssssssssssssssss", $username, $firstName, $lastName, $profession, $email, $profileImg, $about, $instagram, $yt, $github, $twitter, $facebook, $linkedin, $projectTitle1, $projectLink1, $projectCodeLink1, $projectDescription1, $projectTitle2, $projectLink2, $projectCodeLink2, $projectDescription2, $projectTitle3, $projectLink3, $projectCodeLink3, $projectDescription3, $certificateName1, $certificateClaimDate1, $certificateLink1, $certificateName2, $certificateClaimDate2, $certificateLink2, $certificateName3, $certificateClaimDate3, $certificateLink3, $contacts, $visits);
             $stmt->execute();
+            if ($stmt->affected_rows > 0) {
+                echo '<script>alert("Data inserted successfully")</script>';
+            } else {
+                $showAlert =
+                    '<div class="notification alert">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        Error: ' . $stmt->error . '
+                    </div>';
+            }
             header("location: dashboard");
         } catch (mysqli_sql_exception $e) {
             $showAlert =
@@ -96,9 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <div class="container">
-        <?php
-        include 'private\includes\nav.php';
-        ?>
+        <?php include 'private/includes/nav.php'; ?>
         <?php
         global $showAlert;
         echo  $showAlert;
