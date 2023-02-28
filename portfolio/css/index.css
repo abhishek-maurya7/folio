@@ -160,11 +160,12 @@ i.link-icon {
 
 .about-text {
     text-align: justify;
+    font-size: 2rem;
 }
 
 .certificate {
     border-radius: 8px;
-    background-color: #4A1A8B;
+    background-color: #00ADB5;
     margin: 1rem 0;
     padding: 1rem;
     display: flex;
@@ -194,7 +195,7 @@ i.link-icon {
     border-radius: 5px;
     font-weight: 600;
     color: #ffffff;
-    background: linear-gradient(45deg, #a448ff, #340fac, #8b08a5);
+    background: linear-gradient(45deg, #72cfd4, #00ADB5, #51f0f8);
     margin: 0 0.5rem;
 }
 
@@ -221,7 +222,7 @@ i.link-icon {
 
 .project {
     border-radius: 8px;
-    background-color: #4A1A8B;
+    background-color: #00ADB5;
     margin: 1rem 0;
     padding: 1rem;
     border: 1px solid #908888;
@@ -327,13 +328,6 @@ i.send-message {
     background: transparent;
 }
 
-@media (min-width: 768px) {
-    .button-63 {
-        font-size: 24px;
-        min-width: 196px;
-    }
-}
-
 @media screen and (min-width: 786px) {
     .profile {
         display: flex;
@@ -353,6 +347,10 @@ i.send-message {
     .profile-info {
         width: 60%;
         float: right;
+    }
+
+    .about-text {
+        font-size: 3rem;
     }
 
     .certificate-container {
@@ -376,5 +374,14 @@ i.send-message {
 
     .contact-form {
         margin: 0 30%;
+    }
+
+    .arrow-container {
+        display: none;
+    }
+
+    .button-63 {
+        font-size: 24px;
+        min-width: 196px;
     }
 }

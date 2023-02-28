@@ -22,6 +22,10 @@
     text-align: left;
 }
 
+.form-control label {
+    font-size: 1.5rem;
+}
+
 .name-area {
     display: block;
 }

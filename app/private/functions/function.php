@@ -3,7 +3,7 @@ class Validate
 {
     public function checkUsername($validateUsername) //Checks whether the username is available
     {
-        require 'private\db\_dbconnect.php';
+        require 'private/db/_dbconnect.php';
         $sql = "SELECT username FROM users WHERE username = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $validateUsername);
@@ -18,7 +18,7 @@ class Validate
 
     public function checkEmail($validateEmail) //Checks whether the email has already been used
     {
-        require 'private\db\_dbconnect.php';
+        require 'private/db/_dbconnect.php';
         $sql = "SELECT email FROM users WHERE email = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $validateEmail);
@@ -34,7 +34,7 @@ class Validate
 
     public function createAccount($username, $email, $password) //Creates an account
     {
-        require 'private\db\_dbconnect.php';
+        require 'private/db/_dbconnect.php';
         try {
             $hash = password_hash($password, PASSWORD_DEFAULT);
             $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
@@ -56,7 +56,7 @@ class Validate
 
     public function checkPassword($username, $password) //Checks whether the password is correct
     {
-        require 'private\db\_dbconnect.php';
+        require 'private/db/_dbconnect.php';
         try {
             $sql = "SELECT password FROM users WHERE username = ?";
             $stmt = $conn->prepare($sql);
@@ -78,9 +78,9 @@ class Validate
 
     public function loginUser($username) //Logs in the user and starts the session
     {
-        require 'private\db\_dbconnect.php';
+        require 'private/db/_dbconnect.php';
         try {
-            $sql = "SELECT username FROM personalportfolio where username = ?";
+            $sql = "SELECT username FROM personalPortfolio where username = ?";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("s", $username);
             $stmt->execute();
@@ -103,9 +103,9 @@ class Validate
 
     public function incrementVisits($username)
     {
-        require '..\app\private\db\_dbconnect.php';
+        require '../app/private/db/_dbconnect.php';
         try {
-            $sql = "Select visits from personalportfolio where username = ?";
+            $sql = "Select visits from personalPortfolio where username = ?";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("s", $username);
             $stmt->execute();
@@ -133,9 +133,9 @@ class Validate
 
     public function contact($username, $name, $email, $subject, $message)
     {
-        require '..\app\private\db\_dbconnect.php';
+        require '../app/private/db/_dbconnect.php';
         try {
-            $sql = "SELECT contacts FROM personalportfolio WHERE username = ?";
+            $sql = "SELECT contacts FROM personalPortfolio WHERE username = ?";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("s", $username);
             $stmt->execute();
@@ -153,7 +153,7 @@ class Validate
             array_push($contact, $messageRequest);
             $contact = serialize($contact);
 
-            $sql = "UPDATE personalportfolio SET contacts = ? WHERE username = ?";
+            $sql = "UPDATE personalPortfolio SET contacts = ? WHERE username = ?";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("ss", $contact, $username);
             $stmt->execute();

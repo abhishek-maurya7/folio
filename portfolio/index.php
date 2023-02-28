@@ -1,6 +1,6 @@
 <?php
-require '..\app\private\db\_dbconnect.php';
-require '..\app\private\functions\function.php';
+require '../app/private/db/_dbconnect.php';
+require '../app/private/functions/function.php';
 $username = filter_var(explode('/', $_SERVER['REQUEST_URI'])[2], FILTER_SANITIZE_STRING);
 $sql = 'SELECT * FROM personalPortfolio WHERE username = ?';
 $stmt = $conn->prepare($sql);

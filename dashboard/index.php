@@ -4,8 +4,8 @@ if (!isset($_SESSION['loggedin']) || !($_SESSION['loggedin'])) {
   header("location: ../login");
 }
 
-require '..\app\private\db\_dbconnect.php';
-require '..\app\private\functions\function.php';
+require '../app/private/db/_dbconnect.php';
+require '../app/private/functions/function.php';
 $username = $_SESSION['username'];
 $sql = 'SELECT * FROM personalPortfolio WHERE username = ?';
 $stmt = $conn->prepare($sql);
@@ -13,7 +13,6 @@ $stmt->bind_param('s', $username);
 $stmt->execute();
 $result = $stmt->get_result();
 $row = $result->fetch_assoc();
-
 ?>
 
 <!DOCTYPE html>
@@ -129,7 +128,7 @@ $row = $result->fetch_assoc();
             ?>
           </div>
           <div class="website-link">
-            Your website is live at: <a target="_blank" href='http://localhost/folio/<?php echo $_SESSION['username']; ?>'>http://localhost/folio/<?php echo $_SESSION['username']; ?></a>
+            Your website is live at: <a target="_blank" href='<?php echo $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/' . $_SESSION['username'] ?>'><?php echo $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/' . $_SESSION['username']; ?></a>
           </div>
           <div class="update">
             <button class="bn39" onclick="window.location.href = 'update'">Update Your Portfolio</button>
