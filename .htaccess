@@ -28,7 +28,7 @@ RewriteRule ^404$ app/404.php [L]
 #Rewriting URls for dashboard directory
 RewriteRule ^dashboard$ dashboard/ [L]
 RewriteRule ^dashboard/$ dashboard/ [L]
-RewriteRule ^dashboard/update$ dashboard/update.php [L]
+RewriteRule ^dashboard/p-update$ dashboard/p-update.php [L]
 
 #Rewrriting URLs for portfolio folder and it's files
 RewriteRule ^([a-zA-Z0-9_]+)$ portfolio/ [NC]
