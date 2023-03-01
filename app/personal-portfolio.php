@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bind_param("ssssssssssssssssssssssssssssssssssss", $username, $firstName, $lastName, $profession, $email, $profileImg, $about, $instagram, $yt, $github, $twitter, $facebook, $linkedin, $projectTitle1, $projectLink1, $projectCodeLink1, $projectDescription1, $projectTitle2, $projectLink2, $projectCodeLink2, $projectDescription2, $projectTitle3, $projectLink3, $projectCodeLink3, $projectDescription3, $certificateName1, $certificateClaimDate1, $certificateLink1, $certificateName2, $certificateClaimDate2, $certificateLink2, $certificateName3, $certificateClaimDate3, $certificateLink3, $contacts, $visits);
             $stmt->execute();
             if ($stmt->affected_rows > 0) {
-                echo '<script>alert("Data inserted successfully")</script>';
+                header("location: dashboard");
             } else {
                 $showAlert =
                     '<div class="notification alert">
@@ -91,7 +91,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         Error: ' . $stmt->error . '
                     </div>';
             }
-            header("location: dashboard");
         } catch (mysqli_sql_exception $e) {
             $showAlert =
                 '<div class="notification alert">
