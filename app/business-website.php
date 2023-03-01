@@ -1,3 +1,74 @@
+<?php
+session_start();
+if (!isset($_SESSION['loggedin']) || !($_SESSION['loggedin'])) {
+    header("location: login");
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    require 'private/functions/function.php';
+    require 'private/db/_dbconnect.php';
+    $username = $_SESSION['username'];
+    $companyName = $_POST['companyName'];
+    $companySlogan = $_POST['companySlogan'];
+
+    $companyPfp = file_get_contents($_FILES['companyPfp']['tmp_name']);
+
+    $aboutCompany = $_POST['aboutCompany'];
+    $email = $_POST['email'];
+    $instagram = $_POST['instagram'];
+    $yt = $_POST['yt'];
+    $github = $_POST['github'];
+    $twitter = $_POST['twitter'];
+    $facebook = $_POST['facebook'];
+    $linkedin = $_POST['linkedIn'];
+    $companyImg1 = file_get_contents($_FILES['companyImg1']['tmp_name']);
+    $companyImg2 = file_get_contents($_FILES['companyImg2']['tmp_name']);
+    $companyImg3 = file_get_contents($_FILES['companyImg3']['tmp_name']);
+    $companyImg4 = file_get_contents($_FILES['companyImg4']['tmp_name']);
+    $companyImg5 = file_get_contents($_FILES['companyImg5']['tmp_name']);
+
+    $productName1 = $_POST['productName1'];
+    $productAbout1 = $_POST['productAbout1'];
+    $productImg1 = file_get_contents($_FILES['productImg1']['tmp_name']);
+    $productName2 = $_POST['productName2'];
+    $productAbout2 = $_POST['productAbout2'];
+    $productImg2 = file_get_contents($_FILES['productImg2']['tmp_name']);
+    $productName3 = $_POST['productName3'];
+    $productAbout3 = $_POST['productAbout3'];
+    $productImg3 = file_get_contents($_FILES['productImg3']['tmp_name']);
+    $companyLocation = $_POST['companyLocation'];
+
+    if ($validate->checkUsername($username)) {
+        try {
+            $sql = "INSERT INTO businessportfolio (username, companyName, companySlogan, companyPfp, aboutCompany, email, yt, instagram, github, twitter, facebook, linkedin, companyImg1, companyImg2, companyImg3, companyImg4, companyImg5, productName1, productAbout1, productImg1, productName2, productAbout2, productImg2, productName3, productAbout3, productImg3, companyLocation) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("sssssssssssssssssssssssssss", $username, $companyName, $companySlogan, $companyPfp, $aboutCompany, $email, $instagram, $yt, $github, $twitter, $facebook, $linkedin, $companyImg1, $companyImg2, $companyImg3, $companyImg4, $companyImg5, $productName1, $productAbout1, $productImg1, $productName2, $productAbout2, $productImg2, $productName3, $productAbout3, $productImg3, $companyLocation);
+            $stmt->execute();
+            if ($stmt->affected_rows > 0) {
+                echo '<script>alert("Data inserted successfully")</script>';
+            } else {
+                $showAlert =
+                    '<div class="notification alert">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        Error: ' . $stmt->error . '
+                    </div>';
+            }
+            header("location: dashboard");
+        } catch (mysqli_sql_exception $e) {
+            $showAlert =
+                '<div class="notification alert">
+                    <i class="fa-solid fa-triangle-exclamation"></i>' . 'MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
+                </div>';
+        }
+    } else {
+        $showAlert =
+            '<div class="notification alert">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                User does not exist
+            </div>';
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
