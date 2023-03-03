@@ -31,7 +31,6 @@ class Validate
         }
     }
 
-
     public function createAccount($username, $email, $password) //Creates an account
     {
         require 'private/db/_dbconnect.php';
@@ -80,11 +79,17 @@ class Validate
         require 'private/db/_dbconnect.php';
         try {
             $sql = "SELECT username FROM personalPortfolio where username = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("s", $username);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            if ($result->num_rows > 0) {
+            $pstmt = $conn->prepare($sql);
+            $pstmt->bind_param("s", $username);
+            $pstmt->execute();
+            $presult = $pstmt->get_result();
+
+            $sql = "SELECT username FROM businessPortfolio where username = ?";
+            $bstmt = $conn->prepare($sql);
+            $bstmt->bind_param("s", $username);
+            $bstmt->execute();
+            $bresult = $bstmt->get_result();
+            if ($presult->num_rows > 0 || $bresult->num_rows > 0) {
                 header("location: dashboard");
             } else {
                 header("location: choice");
@@ -95,16 +100,20 @@ class Validate
                     <i class="fa-solid fa-triangle-exclamation"></i>
                     MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
                 </div>';
-
             echo $showAlert;
         }
     }
 
-    public function incrementVisits($username)
+    public function incrementVisits($username, $type)
     {
         require '../app/private/db/_dbconnect.php';
         try {
-            $sql = "Select visits from personalPortfolio where username = ?";
+            if ($type == 'portfolio') {
+                $sql = "Select visits from personalPortfolio where username = ?";
+            }
+            if ($type == 'website') {
+                $sql = "Select visits from businessPortfolio where username = ?";
+            }
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("s", $username);
             $stmt->execute();
@@ -113,7 +122,12 @@ class Validate
             $visits = unserialize($row['visits']);
             $visits[0][date('M')] += 1;
             $visits = serialize($visits);
-            $sql = "UPDATE personalportfolio SET visits = ? WHERE username = ?";
+            if ($type == 'portfolio') {
+                $sql = "UPDATE personalPortfolio SET visits = ? WHERE username = ?";
+            }
+            if ($type == 'website') {
+                $sql = "UPDATE businessPortfolio SET visits = ? WHERE username = ?";
+            }
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("ss", $visits, $username);
             $stmt->execute();
@@ -123,14 +137,22 @@ class Validate
                     <i class="fa-solid fa-triangle-exclamation"></i>
                     MySqlException: ' . $e->getMessage() . '<br />' . $sql . '
                 </div>';
-
             echo $showAlert;
         }
     }
 
-    public function contact($username, $name, $email, $subject, $message)
+    public function contact($username, $name, $email, $subject, $message, $type)
     {
         require '../app/private/db/_dbconnect.php';
+        $sql = "INSERT INTO contact (username, name, email, subject, message, type) VALUES (?, ?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssssss", $username, $name, $email, $subject, $message, $type);
+        $result = $stmt->execute();
+        if ($stmt->affected_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 $validate = new Validate();

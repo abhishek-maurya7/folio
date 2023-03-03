@@ -1,24 +1,37 @@
 <?php
 require '../app/private/db/_dbconnect.php';
 require '../app/private/functions/function.php';
-$username = filter_var(explode('/', $_SERVER['REQUEST_URI'])[1], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+$username = filter_var(explode('/', $_SERVER['REQUEST_URI'])[2], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $sql = 'SELECT * FROM personalPortfolio WHERE username = ?';
 $stmt = $conn->prepare($sql);
 $stmt->bind_param('s', $username);
 $stmt->execute();
 $result = $stmt->get_result();
 $row = $result->fetch_assoc();
+$type = 'portfolio';
 if (!$result->num_rows > 0) {
     header('Location: 404');
 }
-$validate->incrementVisits($username);
+$validate->incrementVisits($username, $type);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = filter_var($_POST['name'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $subject = filter_var($_POST['subject'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $message = filter_var($_POST['message'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $validate->contact($username, $name, $email, $subject, $message);
+    if ($validate->contact($username, $name, $email, $subject, $message, $type)) {
+        $showAlert =
+            '<div class="notification success">
+                <i class="fa-solid fa-check-circle"></i>
+                Message sent successfully!
+            </div>';
+    } else {
+        $showAlert =
+            '<div class="notification alert">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                Message could not be sent!
+            </div>';
+    }
 }
 ?>
 
@@ -31,10 +44,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $row['firstName'] . ' ' . $row['lastName']; ?></title>
     <meta name="description" content="<?php echo $row['aboutMe']; ?>" />
-    <link rel="stylesheet" href="portfolio/css/nav.css">
-    <link rel="stylesheet" href="portfolio/css/footer.css">
-    <link rel="stylesheet" href="portfolio/css/index.css">
-    <link rel="stylesheet" href="portfolio/css/base.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/base.css">
     <script src="https://kit.fontawesome.com/0fe3b336ed.js" integrity="sha384-dQXoip1UH2Gf76Rt/vZNDhej9dqGkaJQAXegWARNJT95sqvNHAuqn37K64TKaC4f" crossorigin="anonymous"></script>
     <script type="text/javascript">
         window.addEventListener('load', function() {
@@ -73,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <section id="profile" class="profile">
             <div class="profile-container">
                 <div class="profile-image-container">
-                    <img class="profile-image" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['profileImg']) ?>" alt="<?php echo $row['firstName'] . ' ' . $row['lastName'] ?>'s Picture" />
+                    <img class="profile-image" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['profileImg']); ?>" alt="<?php echo $row['firstName'] . ' ' . $row['lastName'] ?>'s Picture" />
                 </div>
                 <div class="profile-intro">
                     <div class="profile-greeting">

@@ -48,10 +48,10 @@ if (!isset($_SESSION['loggedin']) || !($_SESSION['loggedin'])) {
                 <br />
                 <div class="template">
                     <div class="template-title">
-                        <a href="">Portfolio for Business</a>
+                        <a href="business-website">Business website</a>
                     </div>
                     <div class="template-description">
-                        <p>Business Portfolio is best to showcase services, information, etc. This is best option for Small Businesses,
+                        <p>Business website is best to showcase services, information, etc. This is best option for Small Businesses,
                             Companies, NGO's, Projects, Shops etc.
                         </p>
                     </div>

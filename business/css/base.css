@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sofia&display=swap');
+
+:root {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    --color: #EEEEEE;
+    --font-family: Rubik, 'Open Sans', sans-serif;
+    /* --bg-color: #4A1A8B; */
+    /* --bg-color: #222831; */
+    --bg-color: #53628b;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 62.5%;
+    /* 16px * 0.625 = 10px, Hence 1rem = 10px */
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--color);
+    font-family: var(--font-family);
+}
+
+.notification {
+    transition: cubic-bezier(0.215, 0.610, 0.355, 1);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.alert,
+.success {
+    font-weight: bold;
+}
+
+.alert {
+    background-color: #f8d7da;
+    color: #ff0019ad;
+}
+
+.success {
+    background-color: #9ae9af;
+    color: #155724;
+}
+
+.alert>i {
+    color: #ff0000;
+}
+
+.success>i {
+    color: #000000;
+}
+
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color);
+}
+
+[class*="col-"] {
+    width: 100%;
+    float: left;
+}
+
+/* for laptop */
+@media screen and (min-width: 768px) {
+    .col-1 {
+        width: 8.33%;
+    }
+
+    .col-2 {
+        width: 16.66%;
+    }
+
+    .col-3 {
+        width: 25%;
+    }
+
+    .col-4 {
+        width: 33.33%;
+    }
+
+    .col-5 {
+        width: 41.66%;
+    }
+
+    .col-6 {
+        width: 50%;
+    }
+
+    .col-7 {
+        width: 58.33%;
+    }
+
+    .col-8 {
+        width: 66.66%;
+    }
+
+    .col-9 {
+        width: 75%;
+    }
+
+    .col-10 {
+        width: 83.33%;
+    }
+
+    .col-11 {
+        width: 91.66%;
+    }
+
+    .col-12 {
+        width: 100%;
+    }
+}

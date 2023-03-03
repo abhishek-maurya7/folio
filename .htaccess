@@ -29,8 +29,14 @@ RewriteRule ^404$ app/404.php [L]
 RewriteRule ^dashboard$ dashboard/ [L]
 RewriteRule ^dashboard/$ dashboard/ [L]
 RewriteRule ^dashboard/p-update$ dashboard/p-update.php [L]
+RewriteRule ^dashboard/b-update$ dashboard/b-update.php [L]
 
 #Rewrriting URLs for portfolio folder and it's files
-RewriteRule ^([a-zA-Z0-9_]+)$ portfolio/ [NC]
-RewriteRule ^([a-zA-Z0-9_]+)/$ portfolio/ [NC]
-RewriteRule ^([a-zA-Z0-9_]+)?name=([a-zA-Z0-9_]+)&email=([a-zA-Z0-9_]+)@([a-zA-Z0-9_]+)\.([a-zA-Z0-9_]+)&subject=([a-zA-Z0-9_]+)&message=([a-zA-Z0-9_]+)$ portfolio/ [NC]
+RewriteRule ^portfolio/([a-zA-Z0-9_]+)$ portfolio/ [NC]
+RewriteRule ^portfolio/([a-zA-Z0-9_]+)/$ portfolio/ [NC]
+RewriteRule ^portfolio/([a-zA-Z0-9_]+)?name=([a-zA-Z0-9_]+)&email=([a-zA-Z0-9_]+)@([a-zA-Z0-9_]+)\.([a-zA-Z0-9_]+)&subject=([a-zA-Z0-9_]+)&message=([a-zA-Z0-9_]+)$ portfolio/ [NC]
+
+#Rewrriting URLs for business folder and it's files
+RewriteRule ^business/([a-zA-Z0-9_]+)$ business/ [NC]
+RewriteRule ^business/([a-zA-Z0-9_]+)/$ business/ [NC]
+RewriteRule ^business/([a-zA-Z0-9_]+)?name=([a-zA-Z0-9_]+)&email=([a-zA-Z0-9_]+)@([a-zA-Z0-9_]+)\.([a-zA-Z0-9_]+)&subject=([a-zA-Z0-9_]+)&message=([a-zA-Z0-9_]+)$ business/ [NC]

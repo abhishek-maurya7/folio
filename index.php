@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Folio | Home</title>
+  <meta name="description" content="Folio is your easy-to-use website for creating attractive portfolios">
   <link rel="stylesheet" href="app/private/css/base.css" />
   <link rel="stylesheet" href="app/private/css/nav.css" />
   <link rel="stylesheet" href="app/private/css/index.css" />

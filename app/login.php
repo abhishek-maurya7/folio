@@ -3,8 +3,8 @@ require 'private/functions/function.php';
 require 'private/db/_dbconnect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['Login'])) {
-    $username = filter_input(INPUT_GET, 'username', FILTER_SANITIZE_STRING);
-    $password = filter_input(INPUT_GET, 'password', FILTER_SANITIZE_STRING);
+    $username = filter_input(INPUT_GET, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $password = filter_input(INPUT_GET, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     if ($validate->checkUsername($username)) {
         if ($validate->checkPassword($username, $password)) {
             $secure = true;
