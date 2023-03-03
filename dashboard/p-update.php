@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         $profileImg = $row['profileImg'];
     }
-    $about = $_POST['aboutMe'];
+    $aboutMe = $_POST['aboutMe'];
     $facebook = $_POST['facebook'];
     $instagram = $_POST['instagram'];
     $twitter = $_POST['twitter'];
@@ -51,21 +51,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $certificateName3 = $_POST['certificateName3'];
     $certificateLink3 = $_POST['certificateLink3'];
     $certificateClaimDate3 = $_POST['certificateClaimDate3'];
-    $sql = "UPDATE personalPortfolio SET firstName = ?, lastName = ?, profession = ?, email = ?, profileImg = ?, aboutMe = ?, facebook = ?, instagram = ?, twitter = ?, linkedIn = ?, github = ?, yt = ?, projectTitle1 = ?, projectLink1 = ?, projectCodeLink1 = ?, projectDescription1 = ?, projectTitle2 = ?, projectLink2 = ?, projectCodeLink2 = ?, projectDescription2 = ?, projectTitle3 = ?, projectLink3 = ?, projectCodeLink3 = ?, projectDescription3 = ?, certificateName1 = ?, certificateLink1 = ?, certificateClaimDate1 = ?, certificateName2 = ?, certificateLink2 = ?, certificateClaimDate2 = ?, certificateName3 = ?, certificateLink3 = ?, certificateClaimDate3 = ? WHERE username = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param('ssssssssssssssssssssssssssssssssss', $firstName, $lastName, $profession, $email, $profileImg, $aboutMe, $facebook, $instagram, $twitter, $linkedin, $github, $yt, $projectTitle1, $projectLink1, $projectCodeLink1, $projectDescription1, $projectTitle2, $projectLink2, $projectCodeLink2, $projectDescription2, $projectTitle3, $projectLink3, $projectCodeLink3, $projectDescription3, $certificateName1, $certificateLink1, $certificateClaimDate1, $certificateName2, $certificateLink2, $certificateClaimDate2, $certificateName3, $certificateLink3, $certificateClaimDate3, $username);
-    $stmt->execute();
-    if ($stmt->affected_rows > 0) {
-        $showAlert =
-            '<div class="notification success">
-                <i class="fa-solid fa-check-circle"></i>
-                Portfolio Updated Successfully
-            </div>';
-    } else {
+    try {
+        $sql = "UPDATE personalPortfolio SET firstName = ?, lastName = ?, profession = ?, email = ?, profileImg = ?, aboutMe = ?, facebook = ?, instagram = ?, twitter = ?, linkedIn = ?, github = ?, yt = ?, projectTitle1 = ?, projectLink1 = ?, projectCodeLink1 = ?, projectDescription1 = ?, projectTitle2 = ?, projectLink2 = ?, projectCodeLink2 = ?, projectDescription2 = ?, projectTitle3 = ?, projectLink3 = ?, projectCodeLink3 = ?, projectDescription3 = ?, certificateName1 = ?, certificateLink1 = ?, certificateClaimDate1 = ?, certificateName2 = ?, certificateLink2 = ?, certificateClaimDate2 = ?, certificateName3 = ?, certificateLink3 = ?, certificateClaimDate3 = ? WHERE username = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('ssssssssssssssssssssssssssssssssss', $firstName, $lastName, $profession, $email, $profileImg, $aboutMe, $facebook, $instagram, $twitter, $linkedin, $github, $yt, $projectTitle1, $projectLink1, $projectCodeLink1, $projectDescription1, $projectTitle2, $projectLink2, $projectCodeLink2, $projectDescription2, $projectTitle3, $projectLink3, $projectCodeLink3, $projectDescription3, $certificateName1, $certificateLink1, $certificateClaimDate1, $certificateName2, $certificateLink2, $certificateClaimDate2, $certificateName3, $certificateLink3, $certificateClaimDate3, $username);
+        $stmt->execute();
+        if ($stmt->affected_rows > 0) {
+            $showAlert =
+                '<div class="notification success">
+                    <i class="fa-solid fa-check-circle"></i>
+                    Portfolio Updated Successfully
+                </div>';
+        } else {
+            $showAlert =
+                '<div class="notification alert">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    Something went wrong. Please contact our team.
+                </div>';
+        }
+    } catch (Exception $e) {
         $showAlert =
             '<div class="notification alert">
                 <i class="fa-solid fa-triangle-exclamation"></i>
-                Error: ' . $sql . '<br />' . $conn->error . '
+                Error: ' . $e->getMessage() . '
             </div>';
     }
 }
@@ -83,7 +91,7 @@ $row = $result->fetch_assoc();
 <html lang="en">
 
 <head>
-    <title>Folio | Dashboard</title>
+    <title>Folio | Update</title>
     <meta charset="utf-8" />
     <meta name="keywords" content="Folio, Portfolio, Portfolio Generator, Folio Dashboard" />
     <meta name="description" content="An amazing portfolio generator" />
@@ -175,7 +183,7 @@ $row = $result->fetch_assoc();
             <div class="row title">
                 <h1> Update your portfolio </h1>
             </div>
-            <form class="update-form" action="update" method="POST" name="update-form" autocomplete="on">
+            <form class="update-form" action="p-update" method="POST" name="update-form" enctype="multipart/form-data" autocomplete=" on">
                 <div class="form-control">
                     <label for="Firstname"> Name </label><br /> <br />
                     <div class="name-area">

@@ -3,18 +3,41 @@ session_start();
 if (!isset($_SESSION['loggedin']) || !($_SESSION['loggedin'])) {
   header("location: ../login");
 }
-
 require '../app/private/db/_dbconnect.php';
 require '../app/private/functions/function.php';
 $username = $_SESSION['username'];
 $sql = 'SELECT * FROM personalPortfolio WHERE username = ?';
-$stmt = $conn->prepare($sql);
-$stmt->bind_param('s', $username);
-$stmt->execute();
-$result = $stmt->get_result();
-$row = $result->fetch_assoc();
-?>
+$pstmt = $conn->prepare($sql);
+$pstmt->bind_param('s', $username);
+$pstmt->execute();
+$presult = $pstmt->get_result();
 
+$sql = 'SELECT * FROM businessPortfolio WHERE username = ?';
+$bstmt = $conn->prepare($sql);
+$bstmt->bind_param('s', $username);
+$bstmt->execute();
+$bresult = $bstmt->get_result();
+
+if ($presult->num_rows > 0) {
+  $row = $presult->fetch_assoc();
+  $name = $row['firstName'] . ' ' . $row['lastName'];
+  $type = 'portfolio';
+  $update = 'p-update';
+} else if ($bresult->num_rows > 0) {
+  $row = $bresult->fetch_assoc();
+  $name = $row['companyName'];
+  $type = 'business';
+  $update = 'b-update';
+} else {
+  header("location: ../choice");
+}
+
+$contactSql = 'SELECT * FROM contact WHERE username = ?';
+$contactStmt = $conn->prepare($contactSql);
+$contactStmt->bind_param('s', $username);
+$contactStmt->execute();
+$contactResult = $contactStmt->get_result();;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,6 +61,12 @@ $row = $result->fetch_assoc();
       font-size: 2rem;
       text-align: center;
       justify-content: space-around;
+    }
+
+    .field-title {
+      font-size: 3rem;
+      text-decoration: underline #0073ff 3px;
+      text-underline-offset: 1.5rem;
     }
 
     .card {
@@ -85,6 +114,23 @@ $row = $result->fetch_assoc();
       z-index: 0;
     }
 
+    .contact-request-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      margin-top: 2rem;
+    }
+
+    .contact-request {
+      width: 100%;
+      background-color: #2b124A;
+      padding: 1rem;
+      border-radius: 1rem;
+      margin: 1rem;
+      font-size: 1.5rem;
+    }
+
     @media screen and (min-width: 768px) {
       .dashboard {
         height: 100%;
@@ -105,6 +151,21 @@ $row = $result->fetch_assoc();
         width: 100%;
         height: 300px;
       }
+
+      .contact-requests {
+        padding: 0 10%;
+      }
+
+      .contact-request-container {
+        flex-direction: row;
+        width: 100%;
+        flex-wrap: wrap;
+      }
+
+      .contact-request {
+        width: 30%;
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -119,19 +180,19 @@ $row = $result->fetch_assoc();
             <?php
             $currentHour = date("H");
             if ($currentHour >= 0 && $currentHour < 12) {
-              echo "Good Morning, " . $row['firstName'];
+              echo "Good Morning, " . $name;
             } else if ($currentHour >= 12 && $currentHour < 17) {
-              echo "Good Afternoon, " . $row['firstName'];
+              echo "Good Afternoon, " . $name;
             } else if ($currentHour >= 17 && $currentHour < 24) {
-              echo "Good Evening, " . $row['firstName'];
+              echo "Good Evening, " . $name;
             }
             ?>
           </div>
           <div class="website-link">
-            Your website is live at: <a target="_blank" href='<?php echo $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/' . $_SESSION['username'] ?>'><?php echo $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/' . $_SESSION['username']; ?></a>
+            Your website is live at: <a target="_blank" href='<?php echo $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/' . $type . '/' . $_SESSION['username'] ?>'><?php echo $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/' . $type . '/' . $_SESSION['username']; ?></a>
           </div>
           <div class="update">
-            <button class="bn39" onclick="window.location.href = 'update'">Update Your Portfolio</button>
+            <button class="bn39" onclick="window.location.href = '<?php echo $update; ?>'">Update Your Portfolio</button>
           </div>
         </div>
         <div class="visits">
@@ -148,8 +209,23 @@ $row = $result->fetch_assoc();
       </div>
     </section>
     <section id="contact-requests" class="contact-requests">
-      <div class="contact-request">
-
+      <div class="field-title">Contact Requests</div>
+      <div class="contact-request-container">
+        <?php
+        if ($contactResult->num_rows > 0) {
+          while ($contactRequets = $contactResult->fetch_assoc()) {
+            echo "<div class='contact-request'>";
+            echo "<div class='name'>Name: " . $contactRequets['name'] . "</div>";
+            echo "<div class='email'>Email: " . $contactRequets['email'] . "</div>";
+            echo "<div class='message'>Message: " . $contactRequets['message'] . "</div>";
+            echo "</div>";
+          }
+        } else {
+          echo "<div class='contact-request'>";
+          echo "<div class='name'>No contact requests yet</div>";
+          echo "</div>";
+        }
+        ?>
       </div>
     </section>
   </main>

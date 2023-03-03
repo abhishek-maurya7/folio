@@ -65,17 +65,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     array_unshift($visits, $currentYear);
     $visits[0] = $yearFormat;
     $visits = serialize($visits);
-
-    $contacts = array();
-    $contacts = serialize($contacts);
-
-    $currentYear = 'year' . date('Y') . 'Visits';
-    $visits = array();
-    $yearFormat = array('Jan' => 0, 'Feb' => 0, 'Mar' => 0, 'Apr' => 0, 'May' => 0, 'Jun' => 0, 'Jul' => 0, 'Aug' => 0, 'Sep' => 0, 'Oct' => 0, 'Nov' => 0, 'Dec' => 0);
-    array_unshift($visits, $currentYear);
-    $visits[0] = $yearFormat;
-    $visits = serialize($visits);
-
     if ($validate->checkUsername($username)) {
         try {
             $sql = "INSERT INTO personalPortfolio (username, firstName, lastName, profession, email, profileImg, aboutMe, instagram, yt, github, twitter, facebook, linkedIn, projectTitle1, projectLink1, projectCodeLink1, projectDescription1, projectTitle2, projectLink2, projectCodeLink2, projectDescription2, projectTitle3, projectLink3, projectCodeLink3, projectDescription3, certificateName1, certificateClaimDate1, certificateLink1, certificateName2, certificateClaimDate2, certificateLink2, certificateName3, certificateClaimDate3, certificateLink3, contacts, visits) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -120,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="icon" href="private\images\logo.png" type="image/x-icon">
     <link rel="stylesheet" href="app\private\css\base.css">
     <link rel="stylesheet" href="app\private\css\nav.css">
-    <link rel="stylesheet" href="app\private\css\personal-portfolio.css">
+    <link rel="stylesheet" href="app\private\css\information-form.css">
     <script src="https://kit.fontawesome.com/0fe3b336ed.js" integrity="sha384-dQXoip1UH2Gf76Rt/vZNDhej9dqGkaJQAXegWARNJT95sqvNHAuqn37K64TKaC4f" crossorigin="anonymous"></script>
 </head>
 

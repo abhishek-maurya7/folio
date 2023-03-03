@@ -1,6 +1,6 @@
 <header class="header">
     <div class="logo">
-        <a href="index.php">Folio</a>
+        <a href="index">Folio</a>
     </div>
     <nav class="nav">
         <input type="checkbox" id="nav-check">
@@ -15,12 +15,12 @@
             $url = $_SERVER['REQUEST_URI'];
             if (strpos($url, 'login') == false || strpos($url, 'signup') == false) {
                 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
-                    echo '<li><a href="http://localhost/folio/logout">Logout</a></li>';
+                    echo '<li><a href="' . $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/' . 'logout' . '">Logout</a></li>';
                 } else {
                     if (strpos($url, 'login')) {
-                        echo '<li><a href="http://localhost/folio/signup">Signup</a></li>';
+                        echo '<li><a href="' . $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/' . 'signup' . '">Signup</a></li>';
                     } elseif (strpos($url, 'signup')) {
-                        echo '<li><a href="http://localhost/folio/login">Login</a></li>';
+                        echo '<li><a href="' . $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/' . 'login' . '">Login</a></li>';
                     }
                 }
             }

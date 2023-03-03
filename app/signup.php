@@ -2,10 +2,10 @@
 require 'private/db/_dbconnect.php';
 require 'private/functions/function.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Signup'])) {
-    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
-    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
-    $cpassword = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
-    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
+    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $cpassword = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     if ($password == $cpassword) {
         if (!$validate->checkUsername($username)) {
             if (!$validate->checkEmail($email)) {
