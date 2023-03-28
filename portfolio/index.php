@@ -1,8 +1,8 @@
 <?php
 require '../app/private/db/_dbconnect.php';
 require '../app/private/functions/function.php';
-$username = filter_var(explode('/', $_SERVER['REQUEST_URI'])[2], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-$sql = 'SELECT * FROM personalPortfolio WHERE username = ?';
+$username = filter_var(explode('/', $_SERVER['REQUEST_URI'])[3], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+$sql = 'SELECT * FROM personalportfolio WHERE username = ?';
 $stmt = $conn->prepare($sql);
 $stmt->bind_param('s', $username);
 $stmt->execute();
@@ -10,7 +10,7 @@ $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 $type = 'portfolio';
 if (!$result->num_rows > 0) {
-    header('Location: 404');
+    header('Location: https://foliodesign.live/404');
 }
 $validate->incrementVisits($username, $type);
 
@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/base.css">
-    <script src="https://kit.fontawesome.com/0fe3b336ed.js" integrity="sha384-dQXoip1UH2Gf76Rt/vZNDhej9dqGkaJQAXegWARNJT95sqvNHAuqn37K64TKaC4f" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/0fe3b336ed.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
         window.addEventListener('load', function() {
             const altTexts = document.querySelectorAll('.alt-text');

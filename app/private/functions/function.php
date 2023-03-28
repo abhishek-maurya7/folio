@@ -78,13 +78,13 @@ class Validate
     {
         require 'private/db/_dbconnect.php';
         try {
-            $sql = "SELECT username FROM personalPortfolio where username = ?";
+            $sql = "SELECT username FROM personalportfolio where username = ?";
             $pstmt = $conn->prepare($sql);
             $pstmt->bind_param("s", $username);
             $pstmt->execute();
             $presult = $pstmt->get_result();
 
-            $sql = "SELECT username FROM businessPortfolio where username = ?";
+            $sql = "SELECT username FROM businessportfolio where username = ?";
             $bstmt = $conn->prepare($sql);
             $bstmt->bind_param("s", $username);
             $bstmt->execute();
@@ -109,10 +109,10 @@ class Validate
         require '../app/private/db/_dbconnect.php';
         try {
             if ($type == 'portfolio') {
-                $sql = "Select visits from personalPortfolio where username = ?";
+                $sql = "Select visits from personalportfolio where username = ?";
             }
             if ($type == 'website') {
-                $sql = "Select visits from businessPortfolio where username = ?";
+                $sql = "Select visits from businessportfolio where username = ?";
             }
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("s", $username);
@@ -123,10 +123,10 @@ class Validate
             $visits[0][date('M')] += 1;
             $visits = serialize($visits);
             if ($type == 'portfolio') {
-                $sql = "UPDATE personalPortfolio SET visits = ? WHERE username = ?";
+                $sql = "UPDATE personalportfolio SET visits = ? WHERE username = ?";
             }
             if ($type == 'website') {
-                $sql = "UPDATE businessPortfolio SET visits = ? WHERE username = ?";
+                $sql = "UPDATE businessportfolio SET visits = ? WHERE username = ?";
             }
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("ss", $visits, $username);

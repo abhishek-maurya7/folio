@@ -1,8 +1,8 @@
 <?php
 require '../app/private/db/_dbconnect.php';
 require '../app/private/functions/function.php';
-$username = filter_var(explode('/', $_SERVER['REQUEST_URI'])[2], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-$sql = 'SELECT * FROM businessPortfolio WHERE username = ?';
+$username = filter_var(explode('/', $_SERVER['REQUEST_URI'])[3], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+$sql = 'SELECT * FROM businessportfolio WHERE username = ?';
 $stmt = $conn->prepare($sql);
 $stmt->bind_param('s', $username);
 $stmt->execute();
@@ -10,7 +10,7 @@ $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 $type = 'website';
 if (!$result->num_rows > 0) {
-    header('Location: 404');
+    header('Location: https://foliodesign.live/404');
 }
 $validate->incrementVisits($username, $type);
 
@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/index.css">
-    <script src="https://kit.fontawesome.com/0fe3b336ed.js" integrity="sha384-dQXoip1UH2Gf76Rt/vZNDhej9dqGkaJQAXegWARNJT95sqvNHAuqn37K64TKaC4f" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/0fe3b336ed.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
         window.addEventListener('load', function() {
             const altTexts = document.querySelectorAll('.alt-text');
@@ -67,6 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="checkbox" id="nav-check">
             <ul class="nav-links">
                 <li><a href="#landing">Home</a></li>
+                <li><a href="#about">About US</a></li>
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -94,6 +95,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <a href="#profile-info"><i class="fa-solid fa-angles-down arrow"></i></a>
             </div>
         </section>
+        <section class="about" id="about">
+            <div class="field-title">About Us</div>
+            <div class="about-container">
+                <div class="about-text">
+                    <?php echo $row['aboutCompany']; ?>
+                </div>
+            </div>
+        </section>
         <section id="gallery" class="gallery">
             <div class="field-title">Gallery</div>
             <div class="gallery-container">
@@ -102,8 +111,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     for ($i = 1; $i <= 5; $i++) {
                         if ($row['companyImg' . $i] != '') {
                             echo '<span style="--i:' . $i . '">
-                            <img src="data:image/jpeg;base64,' . base64_encode($row['companyImg' . $i]) . '" alt="not found">
-                        </span>';
+                                    <img src="data:image/jpeg;base64,' . base64_encode($row['companyImg' . $i]) . '" alt="not found">
+                                </span>';
                         }
                     }
                     ?>
@@ -117,12 +126,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 for ($i = 1; $i <= 3; $i++) {
                     if ($row['productName' . $i] != '') {
                         echo '<div class="service">
-                                    <div class="service-image-container">
-                                        <img src="data:image/jpeg;base64,' . base64_encode($row['productImg' . $i]) . '" alt="Service ' . $i . '" class="service-image" />
-                                    </div>
-                                    <div class="service-title">' . $row['productName' . $i] . '</div>
-                                    <div class="service-description">' . $row['productAbout' . $i] . '</div>
-                                </div>';
+                                <div class="service-image-container">
+                                    <img src="data:image/jpeg;base64,' . base64_encode($row['productImg' . $i]) . '" alt="Service ' . $i . '" class="service-image" />
+                                </div>
+                                <div class="service-title">' . $row['productName' . $i] . '</div>
+                                <div class="service-description">' . $row['productAbout' . $i] . '</div>
+                            </div>';
                     }
                 }
                 ?>
@@ -158,6 +167,51 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 global $showAlert;
                 echo  $showAlert;
                 ?>
+                <div class="form-control">
+                    <div class="social-links">
+                        <div class="link-container">
+                            <a href="<?php echo $row['companyLocation']; ?>" target="_blank" rel="noopener"><i class="fa-solid fa-location-dot link-icon"></i>
+                                <span class="alt-text">Github</span>
+                            </a>
+                        </div>
+                        <div class="link-container">
+                            <a href="<?php echo $row['github']; ?>" target="_blank" rel="noopener"><i class="fab fa-github link-icon"></i>
+                                <span class="alt-text">Github</span>
+                            </a>
+                        </div>
+                        <div class="link-container">
+                            <a href="<?php echo $row['linkedin']; ?>" target="_blank" rel="noopener"><i class="fab fa-linkedin link-icon"></i></a>
+                            <span class="alt-text">LinkedIN</span>
+                            </a>
+                        </div>
+                        <div class="link-container">
+                            <a href="<?php echo $row['twitter']; ?>" target="_blank" rel="noopener"><i class="fab fa-twitter link-icon "></i>
+                                <span class="alt-text">Twitter</span>
+                            </a>
+                            </a>
+                        </div>
+                        <div class="link-container">
+                            <a href="<?php echo $row['instagram']; ?>" target="_blank" rel="noopener"><i class="fab fa-instagram link-icon"></i>
+                                <span class="alt-text">Instagram</span>
+                            </a>
+                        </div>
+                        <div class="link-container">
+                            <a href="<?php echo $row['facebook']; ?>" target="_blank" rel="noopener"><i class="fab fa-facebook link-icon"></i>
+                                <span class="alt-text">Facebook</span>
+                            </a>
+                        </div>
+                        <div class="link-container">
+                            <a href="<?php echo $row['yt']; ?>" target="_blank" rel="noopener"><i class="fab fa-youtube link-icon"></i>
+                                <span class="alt-text">Youtube</span>
+                            </a>
+                        </div>
+                        <div class="link-container">
+                            <a href="mailto:<?php echo $row['email']; ?>"><i class="fas fa-envelope link-icon"></i>
+                                <span class="alt-text">Email</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
     </footer>
