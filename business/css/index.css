@@ -81,6 +81,15 @@ main {
     text-underline-offset: 1.5rem;
 }
 
+.about-container {
+    margin: 3rem 0;
+}
+
+.about-text {
+    text-align: justify;
+    font-size: 2rem;
+}
+
 .services-container {
     padding: 1rem;
     display: flex;
@@ -166,7 +175,7 @@ main {
 }
 
 .contact-container {
-    margin: 3rem 0;
+    margin: 3rem 0 0 0;
 }
 
 .contact {
@@ -252,6 +261,29 @@ i.send-message {
 
 .bn39:hover .bn39span {
     background: transparent;
+}
+
+i.link-icon {
+    font-size: 3rem;
+    color: #ffffff;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.link-container {
+    display: inline-block;
+    padding: 0.8rem;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.link-container:hover {
+    background: linear-gradient(45deg, #4A1A8B, #340fac, #4A1A8B);
 }
 
 @media screen and (min-width: 614px) {

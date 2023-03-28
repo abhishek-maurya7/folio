@@ -127,13 +127,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="app\private\css\base.css">
     <link rel="stylesheet" href="app\private\css\nav.css">
     <link rel="stylesheet" href="app\private\css\information-form.css">
-    <script src="https://kit.fontawesome.com/0fe3b336ed.js" integrity="sha384-dQXoip1UH2Gf76Rt/vZNDhej9dqGkaJQAXegWARNJT95sqvNHAuqn37K64TKaC4f" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/0fe3b336ed.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div class="container">
         <?php
-        include 'private\includes\nav.php';
+        include 'private/includes/nav.php';
         ?>
         <?php
         global $showAlert;

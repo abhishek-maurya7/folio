@@ -6,7 +6,7 @@ if (!isset($_SESSION['loggedin']) || !($_SESSION['loggedin'])) {
 require '../app/private/db/_dbconnect.php';
 require '../app/private/functions/function.php';
 $username = $_SESSION['username'];
-$sql = "SELECT * from businessPortfolio where username = ?";
+$sql = "SELECT * from businessportfolio where username = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param('s', $username);
 $stmt->execute();
@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $companyLocation = $_POST['companyLocation'];
 
     try {
-        $sql = "UPDATE businessPortfolio SET companyName = ?, companySlogan = ?, companyCover = ?, aboutCompany = ?, email = ?, instagram = ?, yt = ?, github = ?, twitter = ?, facebook = ?, 
+        $sql = "UPDATE businessportfolio SET companyName = ?, companySlogan = ?, companyCover = ?, aboutCompany = ?, email = ?, instagram = ?, yt = ?, github = ?, twitter = ?, facebook = ?, 
         linkedin = ?, companyImg1 = ?, companyImg2 = ?, companyImg3 = ?, companyImg4 = ?, companyImg5 = ?, productName1 = ?, productAbout1 = ?, productImg1 = ?, productName2 = ?, 
         productAbout2 = ?, productImg2 = ?, productName3 = ?, productAbout3 = ?, productImg3 = ?, companyLocation = ? WHERE username = ?";
         $stmt = $conn->prepare($sql);
@@ -112,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 $username = $_SESSION['username'];
-$sql = "SELECT * from businessPortfolio where username = ?";
+$sql = "SELECT * from businessportfolio where username = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param('s', $username);
 $stmt->execute();
@@ -129,7 +129,7 @@ $row = $result->fetch_assoc();
     <meta name="description" content="An amazing portfolio generator" />
     <meta name="author" content="Abhishek Maurya, Shashank Patil" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://kit.fontawesome.com/0fe3b336ed.js" integrity="sha384-dQXoip1UH2Gf76Rt/vZNDhej9dqGkaJQAXegWARNJT95sqvNHAuqn37K64TKaC4f" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/0fe3b336ed.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../app/private/css/base.css" />
     <link rel="stylesheet" href="../app/private/css/nav.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&display=swap" media="screen" />

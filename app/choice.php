@@ -19,7 +19,7 @@ if (!isset($_SESSION['loggedin']) || !($_SESSION['loggedin'])) {
     <link rel="stylesheet" href="app\private\css\base.css" />
     <link rel="stylesheet" href="app\private\css\nav.css" />
     <link rel="stylesheet" href="app\private\css\choice.css" />
-    <script src="https://kit.fontawesome.com/0fe3b336ed.js" integrity="sha384-dQXoip1UH2Gf76Rt/vZNDhej9dqGkaJQAXegWARNJT95sqvNHAuqn37K64TKaC4f" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/0fe3b336ed.js" crossorigin="anonymous"></script>
 </head>
 
 <body>

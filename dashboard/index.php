@@ -6,13 +6,13 @@ if (!isset($_SESSION['loggedin']) || !($_SESSION['loggedin'])) {
 require '../app/private/db/_dbconnect.php';
 require '../app/private/functions/function.php';
 $username = $_SESSION['username'];
-$sql = 'SELECT * FROM personalPortfolio WHERE username = ?';
+$sql = 'SELECT * FROM personalportfolio WHERE username = ?';
 $pstmt = $conn->prepare($sql);
 $pstmt->bind_param('s', $username);
 $pstmt->execute();
 $presult = $pstmt->get_result();
 
-$sql = 'SELECT * FROM businessPortfolio WHERE username = ?';
+$sql = 'SELECT * FROM businessportfolio WHERE username = ?';
 $bstmt = $conn->prepare($sql);
 $bstmt->bind_param('s', $username);
 $bstmt->execute();
@@ -47,7 +47,7 @@ $contactResult = $contactStmt->get_result();;
   <meta name="keywords" content="Folio, Portfolio, Portfolio Generator, Folio Dashboard" />
   <meta name="description" content="Folio Dashboard" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://kit.fontawesome.com/0fe3b336ed.js" integrity="sha384-dQXoip1UH2Gf76Rt/vZNDhej9dqGkaJQAXegWARNJT95sqvNHAuqn37K64TKaC4f" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/0fe3b336ed.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../app/private/css/base.css" />
   <link rel="stylesheet" href="../app/private/css/nav.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&display=swap" media="screen" />
