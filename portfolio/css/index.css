@@ -165,7 +165,7 @@ i.link-icon {
 
 .certificate {
     border-radius: 8px;
-    background-color: #00ADB5;
+    background-color: #1d3738;
     margin: 1rem 0;
     padding: 1rem;
     display: flex;
@@ -195,7 +195,7 @@ i.link-icon {
     border-radius: 5px;
     font-weight: 600;
     color: #ffffff;
-    background: linear-gradient(45deg, #72cfd4, #00ADB5, #51f0f8);
+    background: linear-gradient(135deg, #008aff, #86d472);
     margin: 0 0.5rem;
 }
 
@@ -222,7 +222,7 @@ i.link-icon {
 
 .project {
     border-radius: 8px;
-    background-color: #00ADB5;
+    background-color: #1d3738;
     margin: 1rem 0;
     padding: 1rem;
     border: 1px solid #908888;
